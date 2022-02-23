@@ -1,12 +1,10 @@
 package modelo;
 
 import java.sql.Date;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 
 @Entity
 @Table(name="reservas")
@@ -33,12 +31,19 @@ public class Reservas {
 	
 	@Column(name="Alimentos")
 	private boolean alimentos;
+	
+	@ManyToMany
+	@JoinTable(
+			name = "reservas_servicios",
+			joinColumns = @JoinColumn(name = "codigo"),
+			inverseJoinColumns = @JoinColumn(name = "idServicio"))
+    Set<Servicios> servicios;
 
 	public Reservas() {		
-	}
+	}	
 
 	public Reservas(Date fecha_inicio, Date fecha_fin, String comentarios, double total, boolean peluqueria,
-			boolean alimentos) {
+			boolean alimentos, Set<Servicios> servicios) {
 		super();
 		this.fecha_inicio = fecha_inicio;
 		this.fecha_fin = fecha_fin;
@@ -46,6 +51,7 @@ public class Reservas {
 		this.total = total;
 		this.peluqueria = peluqueria;
 		this.alimentos = alimentos;
+		this.servicios = servicios;
 	}
 
 	public Date getFecha_inicio() {
@@ -98,7 +104,16 @@ public class Reservas {
 
 	public int getCodigo() {
 		return codigo;
+	}
+
+	public Set<Servicios> getServicios() {
+		return servicios;
+	}
+
+	public void setServicios(Set<Servicios> servicios) {
+		this.servicios = servicios;
 	}	
+	
 	
 	
 	
