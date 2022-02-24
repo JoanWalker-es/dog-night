@@ -1,18 +1,20 @@
 package modelo;
 
 import java.sql.Date;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
 
 @Entity
-@Table(name="reservas")
-public class Reservas {
+@Table(name="reserva")
+public class Reserva {
 	
-	@Id @GeneratedValue
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "codigo")
-    private int codigo;
+    private long codigo;
 	
 	@Column(name="Fecha_inicio")
 	private Date fecha_inicio;
@@ -37,13 +39,13 @@ public class Reservas {
 			name = "reservas_servicios",
 			joinColumns = @JoinColumn(name = "codigo"),
 			inverseJoinColumns = @JoinColumn(name = "idServicio"))
-    Set<Servicios> servicios;
+    private List<Servicios> servicios;
 
-	public Reservas() {		
+	public Reserva() {		
 	}	
 
-	public Reservas(Date fecha_inicio, Date fecha_fin, String comentarios, double total, boolean peluqueria,
-			boolean alimentos, Set<Servicios> servicios) {
+	public Reserva(Date fecha_inicio, Date fecha_fin, String comentarios, double total, boolean peluqueria,
+			boolean alimentos, List<Servicios> servicios) {
 		super();
 		this.fecha_inicio = fecha_inicio;
 		this.fecha_fin = fecha_fin;
@@ -102,17 +104,24 @@ public class Reservas {
 		this.alimentos = alimentos;
 	}
 
-	public int getCodigo() {
+	public long getCodigo() {
 		return codigo;
 	}
 
-	public Set<Servicios> getServicios() {
+	public List<Servicios> getServicios() {
 		return servicios;
 	}
 
-	public void setServicios(Set<Servicios> servicios) {
+	public void setServicios(List<Servicios> servicios) {
 		this.servicios = servicios;
 	}	
+	
+	public void addServicio(Servicios servicio) {
+		if(servicios==null) {
+			servicios=new ArrayList<Servicios>();
+			}
+		servicios.add(servicio);
+	}
 	
 	
 	

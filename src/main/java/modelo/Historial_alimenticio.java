@@ -3,6 +3,7 @@ package modelo;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
@@ -13,9 +14,10 @@ import javax.persistence.Table;
 @Table(name="historial_alimenticio")
 public class Historial_alimenticio {
 	
-	@Id @GeneratedValue
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private long id;
 	
 	@Column(name="Pienso_tipo")
 	private String tipo_pienso;
@@ -99,7 +101,7 @@ public class Historial_alimenticio {
 		this.perro = perro;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	

@@ -1,10 +1,12 @@
 package modelo;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -13,9 +15,10 @@ import javax.persistence.Table;
 @Table(name="servicios")
 public class Servicios {
 
-	@Id @GeneratedValue
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idServicio")
-	private int idServicio;
+	private long idServicio;
 	
 	@Column(name="nombre_servicio")
 	private String nombre;
@@ -26,13 +29,13 @@ public class Servicios {
 	@Column(name="descripcion")
 	private String descripcion;
 	
-	@ManyToMany(mappedBy = "reservas_servicios")
-    Set<Reservas> reservas;
+	@ManyToMany(mappedBy = "servicios")
+    private List<Reserva> reservas;
 	
 	public Servicios() {		
 	}
 
-	public Servicios(String nombre, double precio, String descripcion, Set<Reservas> reservas) {
+	public Servicios(String nombre, double precio, String descripcion, List<Reserva> reservas) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
@@ -64,16 +67,23 @@ public class Servicios {
 		this.descripcion = descripcion;
 	}
 
-	public Set<Reservas> getReservas() {
+	public List<Reserva> getReservas() {
 		return reservas;
 	}
 
-	public void setReservas(Set<Reservas> reservas) {
+	public void setReservas(List<Reserva> reservas) {
 		this.reservas = reservas;
 	}
 
-	public int getIdServicio() {
+	public long getIdServicio() {
 		return idServicio;
+	}
+	
+	public void addReserva(Reserva reserva) {
+		if(reservas==null) {
+			reservas=new ArrayList<Reserva>();
+			}
+		reservas.add(reserva);
 	}
 	
 	

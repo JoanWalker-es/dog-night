@@ -1,11 +1,13 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,9 +16,10 @@ import javax.persistence.Table;
 @Table(name="cliente")
 public class Cliente {
 
-	@Id @GeneratedValue
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column (name="idCliente")
-	private int idCliente;
+	private long idCliente;
 	
 	@Column (name="DNI")
 	private String DNI;
@@ -40,7 +43,7 @@ public class Cliente {
 	private List<Perro> perros;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	private List<Reservas> reservas;
+	private List<Reserva> reservas;
 	
 	public Cliente() {		
 	}
@@ -54,6 +57,23 @@ public class Cliente {
 		this.direccion=direccion;
 		this.perros=perros;
 			
+	}	
+
+	public Cliente(String dNI, String nombre, String apellidos, String telefono, String correo, String direccion,
+			List<Perro> perros, List<Reserva> reservas) {
+		super();
+		DNI = dNI;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.telefono = telefono;
+		this.correo = correo;
+		this.direccion = direccion;
+		this.perros = perros;
+		this.reservas = reservas;
+	}
+	
+	public long getId() {
+		return idCliente;
 	}
 
 	public String getDNI() {
@@ -103,6 +123,48 @@ public class Cliente {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+	
+	public long getIdCliente() {
+		return idCliente;
+	}
+
+	public List<Perro> getPerros() {
+		return perros;
+	}
+
+	public void setPerros(List<Perro> perros) {
+		this.perros = perros;
+	}
+
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+	
+	public void addReserva(Reserva reserva) {
+		if(reservas==null) {
+			reservas=new ArrayList<Reserva>();
+		}
+		reservas.add(reserva);
+	}
+	
+	public void addPerro(Perro perro) {
+		if(perros==null) {
+			perros=new ArrayList<Perro>();
+		}
+		perros.add(perro);
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [idCliente=" + idCliente + ", DNI=" + DNI + ", nombre=" + nombre + ", apellidos=" + apellidos
+				+ ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + ", perros=" + perros
+				+ ", reservas=" + reservas + "]";
+	}
+	
 	
 	
 	

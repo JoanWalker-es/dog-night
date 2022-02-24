@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -13,9 +14,10 @@ import javax.persistence.Table;
 @Table(name="perro")
 public class Perro {
 	
-	@Id @GeneratedValue
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idPerro")
-	private int idPerro;
+	private long idPerro;
 	
 	@Column(name="Nombre")
 	private String nombre;
@@ -86,7 +88,7 @@ public class Perro {
 		this.alimentos = alimentos;
 	}
 
-	public int getIdPerro() {
+	public long getIdPerro() {
 		return idPerro;
 	}
 	
