@@ -13,10 +13,11 @@ public class Eventos_precios implements ActionListener{
 	
 	private Precios ventana_precios;
 	private ServiciosDao servicioDao;
+	private Session sesion;
 	
 	public Eventos_precios(Precios ventana) {
 		this.ventana_precios=ventana;
-		Session sesion=HibernateUtil.get().openSession();
+		sesion=HibernateUtil.get().openSession();
 		servicioDao=new ServiciosDao(sesion);
 	}
 
@@ -28,8 +29,12 @@ public class Eventos_precios implements ActionListener{
 			//PROBANDO FUNCIONALIDAD BOTON PARA SACAR DATOS PRECIOS BBDD
 			List<Servicios> lista=servicioDao.findAll();
 			for(Servicios s:lista) {
-				System.out.println(s.toString());
+				System.out.println(s.getPrecio());
+				ventana_precios.getTf_general().setText(Double.toString(s.getPrecio()));
+				//SEGUIR AQUI RELLENANDO LOS CAMPOS CON UN SWITCH???
+				//ESTO ES LO QUE HARIA AL INICIAR LA PANTALLA
 			}
+			
 				
 		}
 		

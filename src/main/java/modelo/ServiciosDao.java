@@ -22,14 +22,14 @@ public class ServiciosDao implements CRUD<Servicios>{
 
 	public List<Servicios> findAll() {
 		Transaction tx=session.beginTransaction();
-		List<Servicios> servicios=session.createQuery("FROM servicios",Servicios.class).getResultList();
+		List<Servicios> servicios=session.createQuery("FROM Servicios",Servicios.class).getResultList();
 		tx.commit();
 		return servicios; 
 	}
 
 	public Servicios findOneById(long id) {
 		Transaction tx=session.beginTransaction();
-		Servicios servicio=session.createQuery("FROM servicios where idServicio=:id",Servicios.class).setParameter("id", id).getSingleResult();
+		Servicios servicio=session.createQuery("FROM Servicios where idServicio=:id",Servicios.class).setParameter("id", id).getSingleResult();
 		tx.commit();
 		return servicio; 
 	}
