@@ -160,9 +160,9 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", DNI=" + DNI + ", nombre=" + nombre + ", apellidos=" + apellidos
-				+ ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + ", perros=" + perros
-				+ ", reservas=" + reservas + "]";
+		return "Cliente \n[idCliente=" + idCliente + ",\n DNI=" + DNI + ",\n nombre=" + nombre + ",\n apellidos=" + apellidos
+				+ ",\n telefono=" + telefono + ",\n correo=" + correo + ",\n direccion=" + direccion + ",\n perros=" + perros
+				+ ",\n reservas=" + reservas + "]\n";
 	}
 	
 	

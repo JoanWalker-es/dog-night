@@ -85,6 +85,14 @@ public class Servicios {
 			}
 		reservas.add(reserva);
 	}
+
+	@Override
+	public String toString() {
+		return "Servicios [idServicio=" + idServicio + ", nombre=" + nombre + ", precio=" + precio + ", descripcion="
+				+ descripcion + "]";
+	}
+	
+	
 	
 	
 	

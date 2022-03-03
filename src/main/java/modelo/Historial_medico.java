@@ -46,13 +46,7 @@ public class Historial_medico {
 	private int dosis_medicacion;
 	
 	@Column(name="Comentarios_medicacion")
-	private String comentarios_medicacion;
-	
-	@Column(name="Descripcion_cirujia")
-	private String descripcion_cirujia;
-	
-	@Column(name="Fecha_cirujia")
-	private Date fecha_cirujia;
+	private String comentarios_medicacion;	
 	
 	@OneToOne
     @MapsId
@@ -64,7 +58,7 @@ public class Historial_medico {
 
 	public Historial_medico(int peso, String sexo, char talla, boolean esterilizado, String nombre_vacuna,
 			Date fecha_vacuna, String nombre_medicacion, int dosis_medicacion, String comentarios_medicacion,
-			String descripcion_cirujia, Date fecha_cirujia, Perro perro) {
+			Perro perro) {
 		super();
 		this.peso = peso;
 		this.sexo = sexo;
@@ -75,8 +69,6 @@ public class Historial_medico {
 		this.nombre_medicacion = nombre_medicacion;
 		this.dosis_medicacion = dosis_medicacion;
 		this.comentarios_medicacion = comentarios_medicacion;
-		this.descripcion_cirujia = descripcion_cirujia;
-		this.fecha_cirujia = fecha_cirujia;
 		this.perro = perro;
 	}
 
@@ -150,23 +142,7 @@ public class Historial_medico {
 
 	public void setComentarios_medicacion(String comentarios_medicacion) {
 		this.comentarios_medicacion = comentarios_medicacion;
-	}
-
-	public String getDescripcion_cirujia() {
-		return descripcion_cirujia;
-	}
-
-	public void setDescripcion_cirujia(String descripcion_cirujia) {
-		this.descripcion_cirujia = descripcion_cirujia;
-	}
-
-	public Date getFecha_cirujia() {
-		return fecha_cirujia;
-	}
-
-	public void setFecha_cirujia(Date fecha_cirujia) {
-		this.fecha_cirujia = fecha_cirujia;
-	}
+	}	
 
 	public Perro getPerro() {
 		return perro;
