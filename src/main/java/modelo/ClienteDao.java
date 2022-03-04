@@ -17,7 +17,7 @@ public class ClienteDao implements CRUD<Cliente> {
 		Transaction tx=session.beginTransaction();
 		session.save(t);
 		System.out.println("Cliente guardado correctamente con el id: "+t.getId());
-		tx.commit();		
+		tx.commit();
 	}
 
 	public List<Cliente> findAll() {

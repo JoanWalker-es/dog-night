@@ -1,10 +1,17 @@
 package vista;
 
+import controlador.Eventos_medico;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JTextArea;
 
-public class Datos_medicos extends javax.swing.JFrame {
+public class Datos_medicos extends javax.swing.JDialog {
 
-    public Datos_medicos() {
-        initComponents();setSize(450,600);
+    public Datos_medicos(javax.swing.JDialog parent,boolean modal) {
+    	super(parent,modal);
+        initComponents();setSize(500,600);
         this.setLocationRelativeTo(null); 
     }                         
     private void initComponents() {
@@ -29,13 +36,15 @@ public class Datos_medicos extends javax.swing.JFrame {
         l_medicacion_comentario = new javax.swing.JLabel();
         tf_medicacion_nombre = new javax.swing.JTextField();
         tf_medicacion_dosis = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ta_medicacion_comentarios = new javax.swing.JTextArea();
         btn_atras = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
+        ta_medicacion_comentarios=new javax.swing.JTextArea();
         
         setResizable(false);
         setTitle("Datos médicos");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);        
+        ta_medicacion_comentarios.setLineWrap(true);
+        ta_medicacion_comentarios.setWrapStyleWord(true);
 
         l_medico_titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         l_medico_titulo.setText("Datos médicos:");
@@ -50,7 +59,7 @@ public class Datos_medicos extends javax.swing.JFrame {
 
         cbox_esterilizado.setText("SI");
 
-        cbox_talla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Talla S", "Talla M", "Talla L", "Talla XL" }));
+        cbox_talla.setModel(new DefaultComboBoxModel(new String[] {"S", "M", "L", "XL"}));
 
         l_vacunas.setText("Vacuna rabia:");
 
@@ -66,121 +75,159 @@ public class Datos_medicos extends javax.swing.JFrame {
 
         l_medicacion_comentario.setText("Comentarios:");
 
-        ta_medicacion_comentarios.setColumns(20);
-        ta_medicacion_comentarios.setRows(5);
-        jScrollPane1.setViewportView(ta_medicacion_comentarios);
-
         btn_atras.setText("ATRAS");
 
-        btn_guardar.setText("GUARDAR");
+        btn_guardar.setText("GUARDAR");       
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(l_medico_titulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_atras)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(l_medico_esterilizado)
-                                .addComponent(l_medico_talla)
-                                .addComponent(l_medico_peso)
-                                .addComponent(l_medico_sexo)
-                                .addComponent(l_vacunas)
-                                .addComponent(l_vacuna_nombre)
-                                .addComponent(l_vacuna_fecha)
-                                .addComponent(l_medicacion)
-                                .addComponent(l_medicacion_nombre)
-                                .addComponent(l_medicacion_dosis)
-                                .addComponent(l_medicacion_comentario)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tf_mascota_sexo)
-                                    .addComponent(cbox_talla, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cbox_esterilizado)
-                                    .addComponent(tf_mascota_peso)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btn_guardar)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tf_vacuna_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                                            .addComponent(tf_vacuna_nombre)
-                                            .addComponent(tf_medicacion_nombre)
-                                            .addComponent(tf_medicacion_dosis))))))))
-                .addContainerGap(105, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(109)
+        					.addComponent(l_medico_titulo))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(44)
+        					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        						.addComponent(btn_atras)
+        						.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        							.addComponent(l_vacunas)
+        							.addComponent(l_medicacion)
+        							.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        								.addComponent(l_medico_peso)
+        								.addComponent(l_vacuna_fecha)
+        								.addComponent(l_medico_esterilizado)
+        								.addComponent(l_medico_talla)
+        								.addComponent(l_medico_sexo)))
+        						.addComponent(l_medicacion_dosis)
+        						.addComponent(l_medicacion_nombre)
+        						.addComponent(l_medicacion_comentario)
+        						.addComponent(l_vacuna_nombre))
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(ta_medicacion_comentarios, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(cbox_esterilizado)
+        								.addComponent(cbox_talla, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        								.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        									.addComponent(tf_medicacion_dosis, Alignment.LEADING)
+        									.addComponent(tf_medicacion_nombre, Alignment.LEADING)
+        									.addComponent(tf_vacuna_fecha, Alignment.LEADING)
+        									.addComponent(tf_vacuna_nombre, Alignment.LEADING)
+        									.addComponent(tf_mascota_peso, Alignment.LEADING)
+        									.addComponent(tf_mascota_sexo, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))))
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(114)
+        							.addComponent(btn_guardar)))
+        					.addGap(62)))
+        			.addGap(105))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(l_medico_titulo)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_medico_peso)
-                    .addComponent(tf_mascota_peso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_medico_sexo)
-                    .addComponent(tf_mascota_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_medico_talla)
-                    .addComponent(cbox_talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_medico_esterilizado)
-                    .addComponent(cbox_esterilizado))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(l_vacunas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(l_vacuna_nombre)
-                            .addComponent(tf_vacuna_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(l_vacuna_fecha))
-                    .addComponent(tf_vacuna_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(l_medicacion)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_medicacion_nombre)
-                    .addComponent(tf_medicacion_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_medicacion_dosis)
-                    .addComponent(tf_medicacion_dosis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(l_medicacion_comentario)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_atras)
-                    .addComponent(btn_guardar))
-                .addGap(25, 25, 25))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(38)
+        			.addComponent(l_medico_titulo)
+        			.addGap(34)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_medico_peso)
+        				.addComponent(tf_mascota_peso, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(tf_mascota_sexo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_medico_sexo))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_medico_talla)
+        				.addComponent(cbox_talla, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_medico_esterilizado)
+        				.addComponent(cbox_esterilizado))
+        			.addGap(26)
+        			.addComponent(l_vacunas)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(tf_vacuna_nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_vacuna_nombre))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_vacuna_fecha)
+        				.addComponent(tf_vacuna_fecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGap(18)
+        			.addComponent(l_medicacion)
+        			.addGap(18)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_medicacion_nombre)
+        				.addComponent(tf_medicacion_nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_medicacion_dosis)
+        				.addComponent(tf_medicacion_dosis, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_medicacion_comentario)
+        				.addComponent(ta_medicacion_comentarios, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(btn_atras)
+        				.addComponent(btn_guardar))
+        			.addGap(25))
         );
+        getContentPane().setLayout(layout);
 
         pack();
-    }
+        
+        //EVENTOS DE CLASE:
+        btn_atras.addActionListener(new Eventos_medico(this));
+        btn_guardar.addActionListener(new Eventos_medico(this));
+        
+    }    
     
-    private javax.swing.JButton btn_atras;
+    public javax.swing.JButton getBtn_atras() {
+		return btn_atras;
+	}
+	public javax.swing.JButton getBtn_guardar() {
+		return btn_guardar;
+	}
+	public javax.swing.JTextArea getTa_medicacion_comentarios() {
+		return ta_medicacion_comentarios;
+	}
+	public javax.swing.JTextField getTf_mascota_peso() {
+		return tf_mascota_peso;
+	}
+	public javax.swing.JTextField getTf_mascota_sexo() {
+		return tf_mascota_sexo;
+	}
+	public javax.swing.JTextField getTf_medicacion_dosis() {
+		return tf_medicacion_dosis;
+	}
+	public javax.swing.JTextField getTf_medicacion_nombre() {
+		return tf_medicacion_nombre;
+	}
+	public javax.swing.JTextField getTf_vacuna_fecha() {
+		return tf_vacuna_fecha;
+	}
+	public javax.swing.JTextField getTf_vacuna_nombre() {
+		return tf_vacuna_nombre;
+	}
+	
+	public javax.swing.JCheckBox getCbox_esterilizado() {
+		return cbox_esterilizado;
+	}
+	public javax.swing.JComboBox<String> getCbox_talla() {
+		return cbox_talla;
+	}
+
+
+
+
+	private javax.swing.JButton btn_atras;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JCheckBox cbox_esterilizado;
     private javax.swing.JComboBox<String> cbox_talla;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel l_medicacion;
     private javax.swing.JLabel l_medicacion_comentario;
     private javax.swing.JLabel l_medicacion_dosis;
@@ -193,11 +240,11 @@ public class Datos_medicos extends javax.swing.JFrame {
     private javax.swing.JLabel l_vacuna_fecha;
     private javax.swing.JLabel l_vacuna_nombre;
     private javax.swing.JLabel l_vacunas;
-    private javax.swing.JTextArea ta_medicacion_comentarios;
     private javax.swing.JTextField tf_mascota_peso;
     private javax.swing.JTextField tf_mascota_sexo;
     private javax.swing.JTextField tf_medicacion_dosis;
     private javax.swing.JTextField tf_medicacion_nombre;
     private javax.swing.JTextField tf_vacuna_fecha;
     private javax.swing.JTextField tf_vacuna_nombre; 
+    private javax.swing.JTextArea ta_medicacion_comentarios;
 }

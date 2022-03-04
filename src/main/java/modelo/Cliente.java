@@ -40,7 +40,7 @@ public class Cliente {
 	private String direccion;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	private List<Perro> perros;
+	private List<Mascota> perros;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Reserva> reservas;
@@ -48,7 +48,7 @@ public class Cliente {
 	public Cliente() {		
 	}
 	
-	public Cliente(String DNI,String nombre,String apellidos,String telefono,String correo,String direccion,List<Perro> perros) {
+	public Cliente(String DNI,String nombre,String apellidos,String telefono,String correo,String direccion,List<Mascota> perros) {
 		this.DNI=DNI;
 		this.nombre=nombre;
 		this.apellidos=apellidos;
@@ -60,7 +60,7 @@ public class Cliente {
 	}	
 
 	public Cliente(String dNI, String nombre, String apellidos, String telefono, String correo, String direccion,
-			List<Perro> perros, List<Reserva> reservas) {
+			List<Mascota> perros, List<Reserva> reservas) {
 		super();
 		DNI = dNI;
 		this.nombre = nombre;
@@ -128,11 +128,11 @@ public class Cliente {
 		return idCliente;
 	}
 
-	public List<Perro> getPerros() {
+	public List<Mascota> getPerros() {
 		return perros;
 	}
 
-	public void setPerros(List<Perro> perros) {
+	public void setPerros(List<Mascota> perros) {
 		this.perros = perros;
 	}
 
@@ -151,9 +151,9 @@ public class Cliente {
 		reservas.add(reserva);
 	}
 	
-	public void addPerro(Perro perro) {
+	public void addPerro(Mascota perro) {
 		if(perros==null) {
-			perros=new ArrayList<Perro>();
+			perros=new ArrayList<Mascota>();
 		}
 		perros.add(perro);
 	}

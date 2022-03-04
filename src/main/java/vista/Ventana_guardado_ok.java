@@ -1,9 +1,11 @@
 package vista;
 
+import controlador.*;
 
-public class Guardado_ok extends javax.swing.JFrame {
+public class Ventana_guardado_ok extends javax.swing.JDialog {
 
-    public Guardado_ok() {
+    public Ventana_guardado_ok(javax.swing.JDialog parent,boolean modal) {
+    	super(parent,modal);
         initComponents();
         setSize(350,200);
         this.setLocationRelativeTo(null); 
@@ -15,6 +17,7 @@ public class Guardado_ok extends javax.swing.JFrame {
         
         setResizable(false);
         setTitle("Guardado correcto");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         l_guardado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         l_guardado.setText("DATOS GUARDADOS CORRECTAMENTE.");
@@ -45,6 +48,9 @@ public class Guardado_ok extends javax.swing.JFrame {
         );
 
         pack();
+        
+        //EVENTOS DE CLASE:
+        btn_ok.addActionListener(new Eventos_guardado_ok(this));
     }
     
     private javax.swing.JButton btn_ok;

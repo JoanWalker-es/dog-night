@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="perro")
-public class Perro {
+public class Mascota {
 	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -27,6 +27,9 @@ public class Perro {
 	
 	@Column(name="Raza")
 	private String raza;
+	
+	@Column(name="Fecha")
+	private String fecha;
 			
 	@OneToOne(mappedBy = "perro", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
@@ -36,10 +39,10 @@ public class Perro {
     @PrimaryKeyJoinColumn
     private Historial_alimenticio alimentos;
 	
-	public Perro() {		
+	public Mascota() {		
 	}
 
-	public Perro(String nombre, String chip, String raza, Historial_medico medico, Historial_alimenticio alimentos) {
+	public Mascota(String nombre, String chip, String raza, Historial_medico medico, Historial_alimenticio alimentos) {
 		super();
 		this.nombre = nombre;
 		this.chip = chip;
@@ -91,6 +94,15 @@ public class Perro {
 	public long getIdPerro() {
 		return idPerro;
 	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+	
 	
 	
 }

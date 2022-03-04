@@ -9,7 +9,7 @@ import config.HibernateUtil;
 import modelo.*;
 import vista.*;
 
-public class Eventos_precios implements ActionListener{
+public class Eventos_precios extends WindowAdapter implements ActionListener{
 	
 	private Precios ventana_precios;
 	private ServiciosDao servicioDao;
@@ -25,19 +25,37 @@ public class Eventos_precios implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==ventana_precios.getBtn_atras()) {
 			ventana_precios.dispose();
-		}else if(e.getSource()==ventana_precios.getBtn_guardar()) {			
-			//PROBANDO FUNCIONALIDAD BOTON PARA SACAR DATOS PRECIOS BBDD
-			List<Servicios> lista=servicioDao.findAll();
-			for(Servicios s:lista) {
-				System.out.println(s.getPrecio());
-				ventana_precios.getTf_general().setText(Double.toString(s.getPrecio()));
-				//SEGUIR AQUI RELLENANDO LOS CAMPOS CON UN SWITCH???
-				//ESTO ES LO QUE HARIA AL INICIAR LA PANTALLA
-			}
+		}else if(e.getSource()==ventana_precios.getBtn_guardar()) {	
 			
+			Servicios general=servicioDao.findOneById(1);
+			general.setPrecio(Double.parseDouble(ventana_precios.getTf_general().getText()));
+			Servicios peluqueria=servicioDao.findOneById(2);
+			peluqueria.setPrecio(Double.parseDouble(ventana_precios.getTf_peluqueria().getText()));
+			Servicios alimentos=servicioDao.findOneById(3);
+			alimentos.setPrecio(Double.parseDouble(ventana_precios.getTf_alimentos().getText()));
+			Servicios socios=servicioDao.findOneById(4);
+			socios.setPrecio(Double.parseDouble(ventana_precios.getTf_socios().getText()));
+			
+			servicioDao.update(general);
+			servicioDao.update(peluqueria);
+			servicioDao.update(alimentos);
+			servicioDao.update(socios);
 				
 		}
 		
+	}		
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		cargarPrecios();		
+	}
+	
+	private void cargarPrecios() {
+		ventana_precios.getTf_general().setText(Double.toString(servicioDao.findOneById(1).getPrecio())); 
+		ventana_precios.getTf_peluqueria().setText(Double.toString(servicioDao.findOneById(2).getPrecio()));
+		ventana_precios.getTf_alimentos().setText(Double.toString(servicioDao.findOneById(3).getPrecio()));
+		ventana_precios.getTf_socios().setText(Double.toString(servicioDao.findOneById(4).getPrecio()));
 	}
 
+	
 }

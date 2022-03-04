@@ -40,14 +40,6 @@ public class ServiciosDao implements CRUD<Servicios>{
 		System.out.println("Servicio actualizado correctamente con el id: "+t.getIdServicio());
 		tx.commit();
 	}
-	
-//	public void updatePrecio(Servicios t,long id) {
-//		Transaction tx=session.beginTransaction();
-//		Servicios servicio=session.createQuery("FROM servicios where idServicio=:id",Servicios.class).setParameter("id",id).getSingleResult();
-//		session.update(t);
-//		System.out.println("Servicio actualizado correctamente con el id: "+t.getIdServicio());
-//		tx.commit();
-//	}
 
 	public void delete(Servicios t) {
 		Transaction tx=session.beginTransaction();

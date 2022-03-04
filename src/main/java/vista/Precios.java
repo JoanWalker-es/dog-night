@@ -97,6 +97,7 @@ public class Precios extends javax.swing.JDialog {
         //EVENTOS DE CLASE:
         btn_atras.addActionListener(new Eventos_precios(this));
         btn_guardar.addActionListener(new Eventos_precios(this));
+        addWindowListener(new Eventos_precios(this));
     }
     
     

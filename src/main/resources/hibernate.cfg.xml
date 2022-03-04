@@ -13,7 +13,7 @@
     		<property name="hibernate.show_sql">false</property>
     		<!-- Archivos mapping de las clases creadas -->     		
     		<mapping class="modelo.Cliente" package="modelo"/>
-    		<mapping class="modelo.Perro" package="modelo"/>
+    		<mapping class="modelo.Mascota" package="modelo"/>
     		<mapping class="modelo.Historial_medico" package="modelo"/>
     		<mapping class="modelo.Historial_alimenticio" package="modelo"/>
     		<mapping class="modelo.Reserva" package="modelo"/>

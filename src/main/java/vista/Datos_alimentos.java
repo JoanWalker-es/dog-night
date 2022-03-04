@@ -1,9 +1,14 @@
 package vista;
 
+import controlador.Eventos_alimentos;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.GroupLayout;
 
-public class Datos_alimentos extends javax.swing.JFrame {
+public class Datos_alimentos extends javax.swing.JDialog {
 
-    public Datos_alimentos() {
+    public Datos_alimentos(javax.swing.JDialog parent,boolean modal) {
+    	super(parent,modal);
         initComponents();
         setSize(500,550);
         this.setLocationRelativeTo(null); 
@@ -29,6 +34,11 @@ public class Datos_alimentos extends javax.swing.JFrame {
         
         setResizable(false);
         setTitle("Datos alimenticios");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        ta_intolerancia_descripcion.setLineWrap(true);
+        ta_intolerancia_descripcion.setWrapStyleWord(true);
+        ta_alimentos_comentarios.setLineWrap(true);
+        ta_alimentos_comentarios.setWrapStyleWord(true);
 
         l_alimentos.setText("Alimentación:");
 
@@ -57,75 +67,103 @@ public class Datos_alimentos extends javax.swing.JFrame {
         btn_guardar.setText("GUARDAR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(l_intolerancias)
-                    .addComponent(l_alimentos)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(60, 60, 60)
-                            .addComponent(btn_atras)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_guardar))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(l_alimentos_comentarios)
-                                .addComponent(l_intolerancias_tipo)
-                                .addComponent(l_alimentos_cantidad)
-                                .addComponent(l_alimentos_tipo)
-                                .addComponent(l_intolerancias_descripcion))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tf_intolerancia_tipo)
-                                    .addComponent(jScrollPane1)
-                                    .addComponent(tf_alimentos_cantidad)
-                                    .addComponent(tf_alimentos_tipo))))))
-                .addContainerGap(100, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(33)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(l_intolerancias)
+        				.addComponent(l_alimentos)
+        				.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        					.addGroup(layout.createSequentialGroup()
+        						.addGap(60)
+        						.addComponent(btn_atras)
+        						.addGap(78)
+        						.addComponent(btn_guardar))
+        					.addGroup(layout.createSequentialGroup()
+        						.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        							.addComponent(l_intolerancias_descripcion)
+        							.addComponent(l_alimentos_cantidad)
+        							.addComponent(l_alimentos_comentarios)
+        							.addComponent(l_alimentos_tipo)
+        							.addComponent(l_intolerancias_tipo))
+        						.addPreferredGap(ComponentPlacement.UNRELATED)
+        						.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        							.addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        								.addComponent(tf_intolerancia_tipo)
+        								.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(tf_alimentos_cantidad)
+        								.addComponent(tf_alimentos_tipo))))))
+        			.addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(l_alimentos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_alimentos_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_alimentos_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_alimentos_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_alimentos_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(l_alimentos_comentarios, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(l_intolerancias)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_intolerancias_tipo)
-                    .addComponent(tf_intolerancia_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(l_intolerancias_descripcion)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_atras)
-                    .addComponent(btn_guardar))
-                .addGap(31, 31, 31))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(38)
+        			.addComponent(l_alimentos)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(tf_alimentos_tipo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_alimentos_tipo, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(tf_alimentos_cantidad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_alimentos_cantidad, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_alimentos_comentarios, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+        			.addGap(38)
+        			.addComponent(l_intolerancias)
+        			.addGap(18)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(tf_intolerancia_tipo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_intolerancias_tipo))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_intolerancias_descripcion))
+        			.addPreferredGap(ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(btn_atras)
+        				.addComponent(btn_guardar))
+        			.addGap(31))
         );
+        getContentPane().setLayout(layout);
 
         pack();
+        
+        //EVENTOS DE CLASE:
+        btn_atras.addActionListener(new Eventos_alimentos(this));
+        btn_guardar.addActionListener(new Eventos_alimentos(this));
     }
-                    
-    private javax.swing.JButton btn_atras;
+                        
+    public javax.swing.JButton getBtn_atras() {
+		return btn_atras;
+	}
+	public javax.swing.JButton getBtn_guardar() {
+		return btn_guardar;
+	}
+	public javax.swing.JTextArea getTa_alimentos_comentarios() {
+		return ta_alimentos_comentarios;
+	}
+	public javax.swing.JTextArea getTa_intolerancia_descripcion() {
+		return ta_intolerancia_descripcion;
+	}
+	public javax.swing.JTextField getTf_alimentos_cantidad() {
+		return tf_alimentos_cantidad;
+	}
+	public javax.swing.JTextField getTf_alimentos_tipo() {
+		return tf_alimentos_tipo;
+	}
+	public javax.swing.JTextField getTf_intolerancia_tipo() {
+		return tf_intolerancia_tipo;
+	}
+
+
+
+	private javax.swing.JButton btn_atras;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

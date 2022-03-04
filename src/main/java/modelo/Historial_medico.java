@@ -22,13 +22,13 @@ public class Historial_medico {
     private long id;
 	
 	@Column(name="Peso")
-	private int peso;
+	private String peso;
 	
 	@Column(name="Sexo")	
 	private String sexo;
 	
 	@Column(name="Talla")
-	private char talla;
+	private String talla;
 	
 	@Column(name="Esterilizado")
 	private boolean esterilizado;
@@ -37,13 +37,13 @@ public class Historial_medico {
 	private String nombre_vacuna;
 	
 	@Column(name="Fecha_vacuna")
-	private Date fecha_vacuna;
+	private String fecha_vacuna;
 	
 	@Column(name="Nombre_medicacion")
 	private String nombre_medicacion;
 	
 	@Column(name="Dosis")
-	private int dosis_medicacion;
+	private String dosis_medicacion;
 	
 	@Column(name="Comentarios_medicacion")
 	private String comentarios_medicacion;	
@@ -51,14 +51,14 @@ public class Historial_medico {
 	@OneToOne
     @MapsId
     @JoinColumn(name = "idPerro")
-	private Perro perro;
+	private Mascota perro;
 	
 	public Historial_medico() {		
 	}
 
-	public Historial_medico(int peso, String sexo, char talla, boolean esterilizado, String nombre_vacuna,
-			Date fecha_vacuna, String nombre_medicacion, int dosis_medicacion, String comentarios_medicacion,
-			Perro perro) {
+	public Historial_medico(String peso, String sexo, String talla, boolean esterilizado, String nombre_vacuna,
+			String fecha_vacuna, String nombre_medicacion, String dosis_medicacion, String comentarios_medicacion,
+			Mascota perro) {
 		super();
 		this.peso = peso;
 		this.sexo = sexo;
@@ -72,11 +72,11 @@ public class Historial_medico {
 		this.perro = perro;
 	}
 
-	public int getPeso() {
+	public String getPeso() {
 		return peso;
 	}
 
-	public void setPeso(int peso) {
+	public void setPeso(String peso) {
 		this.peso = peso;
 	}
 
@@ -88,11 +88,11 @@ public class Historial_medico {
 		this.sexo = sexo;
 	}
 
-	public char getTalla() {
+	public String getTalla() {
 		return talla;
 	}
 
-	public void setTalla(char talla) {
+	public void setTalla(String talla) {
 		this.talla = talla;
 	}
 
@@ -112,11 +112,11 @@ public class Historial_medico {
 		this.nombre_vacuna = nombre_vacuna;
 	}
 
-	public Date getFecha_vacuna() {
+	public String getFecha_vacuna() {
 		return fecha_vacuna;
 	}
 
-	public void setFecha_vacuna(Date fecha_vacuna) {
+	public void setFecha_vacuna(String fecha_vacuna) {
 		this.fecha_vacuna = fecha_vacuna;
 	}
 
@@ -128,11 +128,11 @@ public class Historial_medico {
 		this.nombre_medicacion = nombre_medicacion;
 	}
 
-	public int getDosis_medicacion() {
+	public String getDosis_medicacion() {
 		return dosis_medicacion;
 	}
 
-	public void setDosis_medicacion(int dosis_medicacion) {
+	public void setDosis_medicacion(String dosis_medicacion) {
 		this.dosis_medicacion = dosis_medicacion;
 	}
 
@@ -144,11 +144,11 @@ public class Historial_medico {
 		this.comentarios_medicacion = comentarios_medicacion;
 	}	
 
-	public Perro getPerro() {
+	public Mascota getPerro() {
 		return perro;
 	}
 
-	public void setPerro(Perro perro) {
+	public void setPerro(Mascota perro) {
 		this.perro = perro;
 	}
 
