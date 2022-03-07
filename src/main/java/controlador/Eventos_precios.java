@@ -35,11 +35,15 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 			alimentos.setPrecio(Double.parseDouble(ventana_precios.getTf_alimentos().getText()));
 			Servicios socios=servicioDao.findOneById(4);
 			socios.setPrecio(Double.parseDouble(ventana_precios.getTf_socios().getText()));
-			
-			servicioDao.update(general);
-			servicioDao.update(peluqueria);
-			servicioDao.update(alimentos);
-			servicioDao.update(socios);
+						
+			try {
+				servicioDao.update(general);
+				servicioDao.update(peluqueria);
+				servicioDao.update(alimentos);
+				servicioDao.update(socios);				
+			}catch(Exception ex) {
+				new Ventana_error(ventana_precios,true).setVisible(true);
+			}
 				
 		}
 		

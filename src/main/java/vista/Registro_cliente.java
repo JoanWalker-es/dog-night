@@ -162,7 +162,7 @@ public class Registro_cliente extends javax.swing.JDialog {
         btn_guardar.addActionListener(new Eventos_registro_cliente(this));
         btn_mascota_add.addActionListener(new Eventos_registro_cliente(this));
         btn_reserva.addActionListener(new Eventos_registro_cliente(this));
-        addWindowListener(new Eventos_registro_cliente(this));
+        
     }    
                       
     public javax.swing.JButton getBtn_guardar() {

@@ -34,8 +34,10 @@ public class Eventos_registro_mascota implements ActionListener{
 		
 			mascota=new Mascota();
 			mascota.setNombre(ventana_registro.getTf_mascota_nombre().getText());
-			mascota.setChip(ventana_registro.getTf_mascota_chip().getText());
-			mascota.setFecha(ventana_registro.getTf_mascota_fecha().getText());
+			mascota.setChip(ventana_registro.getTf_mascota_chip().getText());			
+			if(ventana_registro.getjDate_mascota_fecha().getDate()!=null) {
+				mascota.setFecha(new java.sql.Date(ventana_registro.getjDate_mascota_fecha().getDate().getTime()));
+			}			
 			mascota.setRaza(ventana_registro.getTf_mascota_raza().getText());			
 			
 			mascotas.add(mascota);			
@@ -54,18 +56,16 @@ public class Eventos_registro_mascota implements ActionListener{
 			}			
 			
 		}else if(e.getSource()==ventana_registro.getBtn_mascota_alimentos()) {
-			//ABRIMOS LA VENTANA DE REGISTRO DE ALIMENTOS DEL PERRO
 			new Datos_alimentos(ventana_registro,true).setVisible(true);			
 			
 		}else if(e.getSource()==ventana_registro.getBtn_mascota_medico()) {
-			//ABRIMOS LA VENTANA DE REGISTRO MEDICO
 			new Datos_medicos(ventana_registro,true).setVisible(true);
 		}
 		else if(e.getSource()==ventana_registro.getBtn_limpiar()) {			
 			ventana_registro.getTf_mascota_nombre().setText("");
 			ventana_registro.getTf_mascota_raza().setText("");
 			ventana_registro.getTf_mascota_chip().setText("");
-			ventana_registro.getTf_mascota_fecha().setText("");
+			ventana_registro.getjDate_mascota_fecha().setDate(null);
 		}
 		
 	}

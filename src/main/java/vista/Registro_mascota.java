@@ -6,6 +6,7 @@ import controlador.Eventos_registro_mascota;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
+import com.toedter.calendar.JDateChooser;
 
 
 public class Registro_mascota extends javax.swing.JDialog {
@@ -24,7 +25,6 @@ public class Registro_mascota extends javax.swing.JDialog {
         tf_mascota_chip = new javax.swing.JTextField();
         l_mascota_chip = new javax.swing.JLabel();
         l_mascota_fecha = new javax.swing.JLabel();
-        tf_mascota_fecha = new javax.swing.JTextField();
         tf_mascota_raza = new javax.swing.JTextField();
         l_mascota_raza = new javax.swing.JLabel();
         l_mascota_titulo = new javax.swing.JLabel();
@@ -32,6 +32,7 @@ public class Registro_mascota extends javax.swing.JDialog {
         btn_mascota_alimentos = new javax.swing.JButton();
         btn_atras = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
+        jDate_mascota_fecha = new JDateChooser();
         
         setResizable(false);
         setTitle("Registro mascota");
@@ -58,7 +59,7 @@ public class Registro_mascota extends javax.swing.JDialog {
 
         btn_guardar.setText("GUARDAR");
         
-        btn_limpiar = new JButton("LIMPIAR CAMPOS");
+        btn_limpiar = new JButton("LIMPIAR CAMPOS");        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
@@ -79,11 +80,11 @@ public class Registro_mascota extends javax.swing.JDialog {
         					.addGroup(layout.createParallelGroup(Alignment.LEADING)
         						.addGroup(layout.createSequentialGroup()
         							.addPreferredGap(ComponentPlacement.UNRELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        								.addComponent(tf_mascota_fecha, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-        								.addComponent(tf_mascota_chip, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-        								.addComponent(tf_mascota_nombre, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-        								.addComponent(tf_mascota_raza, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE))
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        								.addComponent(tf_mascota_chip, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+        								.addComponent(tf_mascota_nombre, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+        								.addComponent(tf_mascota_raza, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+        								.addComponent(jDate_mascota_fecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         							.addPreferredGap(ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
         							.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
         								.addComponent(btn_limpiar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -112,9 +113,9 @@ public class Registro_mascota extends javax.swing.JDialog {
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(layout.createSequentialGroup()
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
         						.addComponent(l_mascota_fecha)
-        						.addComponent(tf_mascota_fecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        						.addComponent(jDate_mascota_fecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         					.addPreferredGap(ComponentPlacement.RELATED)
         					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         						.addComponent(tf_mascota_raza, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -157,11 +158,7 @@ public class Registro_mascota extends javax.swing.JDialog {
 
 	public javax.swing.JTextField getTf_mascota_chip() {
 		return tf_mascota_chip;
-	}
-
-	public javax.swing.JTextField getTf_mascota_fecha() {
-		return tf_mascota_fecha;
-	}
+	}	
 
 	public javax.swing.JTextField getTf_mascota_nombre() {
 		return tf_mascota_nombre;
@@ -173,6 +170,10 @@ public class Registro_mascota extends javax.swing.JDialog {
 	
 	public JButton getBtn_limpiar() {
 		return btn_limpiar;
+	}
+	
+	public JDateChooser getjDate_mascota_fecha() {
+		return jDate_mascota_fecha;
 	}
 
 
@@ -188,9 +189,9 @@ public class Registro_mascota extends javax.swing.JDialog {
     private javax.swing.JLabel l_mascota_raza;
     private javax.swing.JLabel l_mascota_titulo;
     private javax.swing.JTextField tf_mascota_chip;
-    private javax.swing.JTextField tf_mascota_fecha;
     private javax.swing.JTextField tf_mascota_nombre;
     private javax.swing.JTextField tf_mascota_raza;
+    private JDateChooser jDate_mascota_fecha;
     private JButton btn_limpiar;
 }
 

@@ -1,5 +1,7 @@
 package modelo;
 
+import java.sql.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +31,7 @@ public class Mascota {
 	private String raza;
 	
 	@Column(name="Fecha")
-	private String fecha;
+	private Date fecha;
 			
 	@OneToOne(mappedBy = "perro", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
@@ -95,11 +97,11 @@ public class Mascota {
 		return idPerro;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 	

@@ -44,7 +44,7 @@ public class Datos_alimentos extends javax.swing.JDialog {
 
         l_alimentos_tipo.setText("Tipo de alimento:");
 
-        l_alimentos_cantidad.setText("Cantidad_diaria:");
+        l_alimentos_cantidad.setText("Cantidad diaria:");
 
         l_alimentos_comentarios.setText("Comentarios:");
 

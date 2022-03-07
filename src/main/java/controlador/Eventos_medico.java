@@ -32,11 +32,13 @@ public class Eventos_medico implements ActionListener{
 			
 			Historial_medico medico=new Historial_medico();
 			medico.setPeso(ventana.getTf_mascota_peso().getText());
-			medico.setSexo(ventana.getTf_mascota_sexo().getText());
+			medico.setSexo(ventana.getCbox_sexo().getSelectedItem().toString());			
 			medico.setTalla(ventana.getCbox_talla().getSelectedItem().toString());
 			medico.setEsterilizado(ventana.getCbox_esterilizado().isSelected());
-			medico.setNombre_vacuna(ventana.getTf_vacuna_nombre().getText());
-			medico.setFecha_vacuna(ventana.getTf_vacuna_fecha().getText());
+			medico.setNombre_vacuna(ventana.getTf_vacuna_nombre().getText());			
+			if(ventana.getjDate_vacuna_fecha().getDate()!=null) {
+				medico.setFecha_vacuna(new java.sql.Date(ventana.getjDate_vacuna_fecha().getDate().getTime()));
+			}						
 			medico.setNombre_medicacion(ventana.getTf_medicacion_nombre().getText());
 			medico.setDosis_medicacion(ventana.getTf_medicacion_dosis().getText());
 			medico.setComentarios_medicacion(ventana.getTa_medicacion_comentarios().getText());

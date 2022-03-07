@@ -1,6 +1,12 @@
 package vista;
 
 import controlador.Eventos_reservas;
+import modelo.Cliente;
+
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
 
 public class Reservas extends javax.swing.JDialog {
 
@@ -19,7 +25,8 @@ public class Reservas extends javax.swing.JDialog {
         tabla_reservas = new javax.swing.JTable();
         btn_atras = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
-        btn_crear = new javax.swing.JButton();
+        btn_crear = new javax.swing.JButton();       
+        btn_mostrar = new JButton();
         
         setResizable(false);
         setTitle("Reservas");
@@ -27,7 +34,7 @@ public class Reservas extends javax.swing.JDialog {
 
         l_cliente.setText("Cliente:");
 
-        cbox_selec_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbox_selec_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new Cliente[] {}));
 
         tabla_reservas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,51 +63,60 @@ public class Reservas extends javax.swing.JDialog {
         btn_eliminar.setText("ELIMINAR RESERVA");
 
         btn_crear.setText("CREAR RESERVA");
+        
+        btn_mostrar.setText("MOSTRAR RESERVAS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(l_cliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbox_selec_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(btn_atras)
-                        .addGap(83, 83, 83)
-                        .addComponent(btn_eliminar)
-                        .addGap(92, 92, 92)
-                        .addComponent(btn_crear)))
-                .addContainerGap(51, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(72)
+        					.addComponent(l_cliente)
+        					.addPreferredGap(ComponentPlacement.UNRELATED)
+        					.addComponent(cbox_selec_cliente, GroupLayout.PREFERRED_SIZE, 281, GroupLayout.PREFERRED_SIZE)
+        					.addGap(18)
+        					.addComponent(btn_mostrar, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(29)
+        					.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 802, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(169)
+        					.addComponent(btn_atras)
+        					.addGap(83)
+        					.addComponent(btn_eliminar)
+        					.addGap(92)
+        					.addComponent(btn_crear)))
+        			.addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_cliente)
-                    .addComponent(cbox_selec_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_atras)
-                    .addComponent(btn_eliminar)
-                    .addComponent(btn_crear))
-                .addContainerGap(40, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(28)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_cliente)
+        				.addComponent(cbox_selec_cliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(btn_mostrar))
+        			.addGap(35)
+        			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
+        			.addGap(18)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(btn_atras)
+        				.addComponent(btn_eliminar)
+        				.addComponent(btn_crear))
+        			.addContainerGap(40, Short.MAX_VALUE))
         );
+        getContentPane().setLayout(layout);
 
         pack();
         
         //EVENTOS DE CLASE:
         btn_atras.addActionListener(new Eventos_reservas(this));
+        btn_crear.addActionListener(new Eventos_reservas(this));
+        btn_eliminar.addActionListener(new Eventos_reservas(this));
+        btn_mostrar.addActionListener(new Eventos_reservas(this));
+        addWindowListener(new Eventos_reservas(this));
     }    
     
     public javax.swing.JButton getBtn_atras() {
@@ -115,7 +131,7 @@ public class Reservas extends javax.swing.JDialog {
 		return btn_eliminar;
 	}
 
-	public javax.swing.JComboBox<String> getCbox_selec_cliente() {
+	public javax.swing.JComboBox<Cliente> getCbox_selec_cliente() {
 		return cbox_selec_cliente;
 	}
 
@@ -123,12 +139,17 @@ public class Reservas extends javax.swing.JDialog {
 		return tabla_reservas;
 	}
 
+	public JButton getBtn_mostrar() {
+		return btn_mostrar;
+	}
 
 
+
+	private JButton btn_mostrar;
 	private javax.swing.JButton btn_atras;
     private javax.swing.JButton btn_crear;
     private javax.swing.JButton btn_eliminar;
-    private javax.swing.JComboBox<String> cbox_selec_cliente;
+    private javax.swing.JComboBox<Cliente> cbox_selec_cliente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel l_cliente;
     private javax.swing.JTable tabla_reservas;      

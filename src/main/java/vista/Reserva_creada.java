@@ -1,9 +1,11 @@
 package vista;
 
+import controlador.Eventos_reserva_creada;
 
-public class Reserva_creada extends javax.swing.JFrame {
+public class Reserva_creada extends javax.swing.JDialog {
     
-    public Reserva_creada() {
+    public Reserva_creada(javax.swing.JDialog parent,boolean modal) {
+    	super(parent,modal);
         initComponents();
         setSize(400,350);
         this.setLocationRelativeTo(null); 
@@ -82,9 +84,31 @@ public class Reserva_creada extends javax.swing.JFrame {
         );
 
         pack();
-    }
+        
+        //EVENTOS DE CLASE:
+        btn_aceptar.addActionListener(new Eventos_reserva_creada(this));
+        addWindowListener(new Eventos_reserva_creada(this));
+    }    
     
-    private javax.swing.JButton btn_aceptar;
+    public javax.swing.JButton getBtn_aceptar() {
+		return btn_aceptar;
+	}
+
+	public javax.swing.JTextField getTf_fin() {
+		return tf_fin;
+	}
+
+	public javax.swing.JTextField getTf_inicio() {
+		return tf_inicio;
+	}
+
+	public javax.swing.JTextField getTf_total() {
+		return tf_total;
+	}
+
+
+
+	private javax.swing.JButton btn_aceptar;
     private javax.swing.JLabel l_creada;
     private javax.swing.JLabel l_fin;
     private javax.swing.JLabel l_inicio;

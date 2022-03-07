@@ -38,7 +38,7 @@ public class ClienteDao implements CRUD<Cliente> {
 		Transaction tx=session.beginTransaction();
 		session.update(t);
 		System.out.println("Cliente actualizado correctamente con el id: "+t.getId());
-		tx.commit();			
+		tx.commit();				
 	}
 
 	public void delete(Cliente t) {

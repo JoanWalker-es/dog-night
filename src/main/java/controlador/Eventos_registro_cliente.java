@@ -11,7 +11,7 @@ import vista.Registro_cliente;
 import vista.Registro_mascota;
 import vista.Ventana_error;
 
-public class Eventos_registro_cliente extends WindowAdapter implements ActionListener{
+public class Eventos_registro_cliente implements ActionListener{
 	
 	private Registro_cliente ventana_registro;
 	private ClienteDao clienteDao;
@@ -28,6 +28,7 @@ public class Eventos_registro_cliente extends WindowAdapter implements ActionLis
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==ventana_registro.getBtn_volver()) {
 			ventana_registro.dispose();
+			sesion.close();
 		}else if(e.getSource()==ventana_registro.getBtn_guardar()) {
 			
 			nuevo=new Cliente();
@@ -55,15 +56,7 @@ public class Eventos_registro_cliente extends WindowAdapter implements ActionLis
 	}
 	
 	
-	//LIMPIAR CAMPOS AL CERRAR LA VENTANA DE REGISTRAR MASCOTAS
-	@Override
-	public void windowGainedFocus(WindowEvent e) {
-		ventana_registro.getBtn_guardar().setEnabled(false);
-		ventana_registro.getTf_cliente_nombre().setText("");
-		System.out.println("He ganado el foco");
-		
-		
-	}
+	
 
 	
 	

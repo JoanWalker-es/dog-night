@@ -37,7 +37,7 @@ public class Historial_medico {
 	private String nombre_vacuna;
 	
 	@Column(name="Fecha_vacuna")
-	private String fecha_vacuna;
+	private Date fecha_vacuna;
 	
 	@Column(name="Nombre_medicacion")
 	private String nombre_medicacion;
@@ -57,7 +57,7 @@ public class Historial_medico {
 	}
 
 	public Historial_medico(String peso, String sexo, String talla, boolean esterilizado, String nombre_vacuna,
-			String fecha_vacuna, String nombre_medicacion, String dosis_medicacion, String comentarios_medicacion,
+			Date fecha_vacuna, String nombre_medicacion, String dosis_medicacion, String comentarios_medicacion,
 			Mascota perro) {
 		super();
 		this.peso = peso;
@@ -112,12 +112,12 @@ public class Historial_medico {
 		this.nombre_vacuna = nombre_vacuna;
 	}
 
-	public String getFecha_vacuna() {
+	public Date getFecha_vacuna() {
 		return fecha_vacuna;
 	}
 
-	public void setFecha_vacuna(String fecha_vacuna) {
-		this.fecha_vacuna = fecha_vacuna;
+	public void setFecha_vacuna(java.util.Date date) {
+		this.fecha_vacuna = (Date) date;
 	}
 
 	public String getNombre_medicacion() {

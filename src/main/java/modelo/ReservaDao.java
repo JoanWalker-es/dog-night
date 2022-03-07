@@ -22,7 +22,7 @@ public class ReservaDao implements CRUD<Reserva> {
 
 	public List<Reserva> findAll() {
 		Transaction tx=session.beginTransaction();
-		List<Reserva> reservas=session.createQuery("FROM reservas",Reserva.class).getResultList();
+		List<Reserva> reservas=session.createQuery("FROM Reserva",Reserva.class).getResultList();
 		tx.commit();
 		return reservas; 
 	}
