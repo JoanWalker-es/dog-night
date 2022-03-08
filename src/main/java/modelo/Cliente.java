@@ -40,10 +40,10 @@ public class Cliente {
 	private String direccion;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	private List<Mascota> perros;
+	private List<Mascota> perros=new ArrayList<>();
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<Reserva> reservas;
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
+	private List<Reserva> reservas=new ArrayList<>();
 	
 	public Cliente() {		
 	}

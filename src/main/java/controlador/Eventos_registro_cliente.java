@@ -15,7 +15,7 @@ public class Eventos_registro_cliente implements ActionListener{
 	
 	private Registro_cliente ventana_registro;
 	private ClienteDao clienteDao;
-	private Session sesion;
+	public static Session sesion;
 	public static Cliente nuevo;
 	
 	public Eventos_registro_cliente(Registro_cliente ventana_registro) {

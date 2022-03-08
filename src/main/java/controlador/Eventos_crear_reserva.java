@@ -54,8 +54,9 @@ public class Eventos_crear_reserva implements ActionListener{
 				ventana.getTf_precio().setText(Double.toString(total()));
 				reserva.setTotal(Double.parseDouble(ventana.getTf_precio().getText()));
 				ventana.getTf_reserva_total_dias().setText(""+diasEntreFechas(ventana.getJdate_llegada().getDate(),ventana.getJdate_salida().getDate()));
-				reservas.add(reserva);
-				Eventos_reservas.cliente.setReservas(reservas);						
+				//reservas.add(reserva);
+				Eventos_reservas.cliente.getReservas().add(reserva);
+				//Eventos_reservas.cliente.setReservas(reservas);						
 				
 				try {
 					reservaDao.save(reserva);

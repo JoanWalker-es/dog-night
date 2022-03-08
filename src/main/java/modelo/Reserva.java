@@ -32,7 +32,8 @@ public class Reserva {
 	private boolean peluqueria;
 	
 	@Column(name="Alimentos")
-	private boolean alimentos;
+	private boolean alimentos;		
+	
 	
 	@ManyToMany
 	@JoinTable(
@@ -122,8 +123,7 @@ public class Reserva {
 			}
 		servicios.add(servicio);
 	}
-	
-	
+
 	
 	
 	

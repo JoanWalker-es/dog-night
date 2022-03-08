@@ -1,9 +1,11 @@
 package vista;
 
+import controlador.Eventos_eliminar_reserva;
 
-public class Eliminar_reserva extends javax.swing.JFrame {
+public class Eliminar_reserva extends javax.swing.JDialog {
 
-    public Eliminar_reserva() {
+    public Eliminar_reserva(javax.swing.JDialog parent,boolean modal) {
+    	super(parent,modal);
         initComponents();
         setSize(400,200);
         this.setLocationRelativeTo(null); 
@@ -54,9 +56,24 @@ public class Eliminar_reserva extends javax.swing.JFrame {
         );
 
         pack();
-    }
+        
+        //EVENTOS DE CLASE:
+        btn_aceptar.addActionListener(new Eventos_eliminar_reserva(this));
+        btn_cancelar.addActionListener(new Eventos_eliminar_reserva(this));
+        
+    }   
     
-    private javax.swing.JButton btn_aceptar;
+    public javax.swing.JButton getBtn_aceptar() {
+		return btn_aceptar;
+	}
+
+	public javax.swing.JButton getBtn_cancelar() {
+		return btn_cancelar;
+	}
+
+
+
+	private javax.swing.JButton btn_aceptar;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JLabel l_mensaje;          
 }

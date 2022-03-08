@@ -21,7 +21,7 @@ public class Eventos_registro_mascota implements ActionListener{
 	
 	public Eventos_registro_mascota(Registro_mascota ventana_registro) {
 		this.ventana_registro=ventana_registro;
-		sesion=HibernateUtil.get().openSession();
+		sesion=Eventos_registro_cliente.sesion;
 		mascotaDao=new MascotaDao(sesion);
 		clienteDao=new ClienteDao(sesion);
 	}
@@ -52,6 +52,7 @@ public class Eventos_registro_mascota implements ActionListener{
 				ventana_registro.getBtn_mascota_medico().setEnabled(true);
 				
 			}catch(Exception ex) {
+				ex.printStackTrace();
 				new Ventana_error(ventana_registro,true).setVisible(true);
 			}			
 			

@@ -2,9 +2,11 @@ package vista;
 
 import controlador.Eventos_reservas;
 import modelo.Cliente;
+import modelo.Reserva;
 
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 
@@ -13,7 +15,7 @@ public class Reservas extends javax.swing.JDialog {
     public Reservas(java.awt.Frame parent,boolean modal) {
     	super(parent,modal);
         initComponents();
-        setSize(900,400);
+        setSize(1000,400);
         this.setLocationRelativeTo(null); 
     }
                          
@@ -31,28 +33,24 @@ public class Reservas extends javax.swing.JDialog {
         setResizable(false);
         setTitle("Reservas");
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        btn_eliminar.setEnabled(false);
 
         l_cliente.setText("Cliente:");
 
-        cbox_selec_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new Cliente[] {}));
-
-        tabla_reservas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Código Reserva", "Fecha inicio", "Fecha fin", "Peluquería", "Alimentación", "Comentarios", "Total"
-            }
-        ));
+        cbox_selec_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new Cliente[] {}));  
+        
+        modelo = new DefaultTableModel();
+        
+        tabla_reservas.setModel(modelo);
+        
+        modelo.addColumn("Código Reserva"); 
+        modelo.addColumn("Fecha inicio"); 
+        modelo.addColumn("Fecha fin"); 
+        modelo.addColumn("Peluquería"); 
+        modelo.addColumn("Alimentación"); 
+        modelo.addColumn("Comentarios"); 
+        modelo.addColumn("Total €"); 
+        
         tabla_reservas.setColumnSelectionAllowed(true);
         tabla_reservas.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_reservas);
@@ -79,16 +77,16 @@ public class Reservas extends javax.swing.JDialog {
         					.addGap(18)
         					.addComponent(btn_mostrar, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE))
         				.addGroup(layout.createSequentialGroup()
-        					.addGap(29)
-        					.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 802, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(layout.createSequentialGroup()
         					.addGap(169)
         					.addComponent(btn_atras)
         					.addGap(83)
         					.addComponent(btn_eliminar)
         					.addGap(92)
-        					.addComponent(btn_crear)))
-        			.addContainerGap(51, Short.MAX_VALUE))
+        					.addComponent(btn_crear))
+        				.addGroup(layout.createSequentialGroup()
+        					.addContainerGap()
+        					.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)))
+        			.addContainerGap())
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
@@ -143,6 +141,10 @@ public class Reservas extends javax.swing.JDialog {
 		return btn_mostrar;
 	}
 
+	public DefaultTableModel getModelo() {
+		return modelo;
+	}
+
 
 
 	private JButton btn_mostrar;
@@ -153,4 +155,5 @@ public class Reservas extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel l_cliente;
     private javax.swing.JTable tabla_reservas;      
+    private DefaultTableModel modelo;
 }

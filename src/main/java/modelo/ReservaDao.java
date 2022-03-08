@@ -29,7 +29,7 @@ public class ReservaDao implements CRUD<Reserva> {
 
 	public Reserva findOneById(long id) {
 		Transaction tx=session.beginTransaction();
-		Reserva reserva=session.createQuery("FROM reservas where codigo=:id",Reserva.class).setParameter("id", id).getSingleResult();
+		Reserva reserva=session.createQuery("FROM Reserva where codigo=:id",Reserva.class).setParameter("id", id).getSingleResult();
 		tx.commit();
 		return reserva; 
 	}
