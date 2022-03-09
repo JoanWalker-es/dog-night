@@ -13,7 +13,7 @@ public class Registro_cliente extends javax.swing.JDialog {
     public Registro_cliente(java.awt.Frame parent,boolean modal) {
     	super(parent,modal);
         initComponents();
-        setSize(500,350);
+        setSize(480,300);
         this.setLocationRelativeTo(null); 
     }
                       
@@ -32,14 +32,12 @@ public class Registro_cliente extends javax.swing.JDialog {
         tf_cliente_telefono = new javax.swing.JTextField();
         tf_cliente_correo = new javax.swing.JTextField();
         btn_volver = new javax.swing.JButton();
-        btn_reserva = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
         btn_mascota_add = new javax.swing.JButton();
         
         setResizable(false);
         setTitle("Registro cliente");
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        btn_reserva.setEnabled(false);
         btn_mascota_add.setEnabled(false);
         
 
@@ -60,8 +58,6 @@ public class Registro_cliente extends javax.swing.JDialog {
 
         btn_volver.setText("ATRAS");
 
-        btn_reserva.setText("RESERVA");
-
         btn_guardar.setText("GUARDAR DATOS");
 
         btn_mascota_add.setText("AÑADIR MASCOTA");
@@ -75,82 +71,72 @@ public class Registro_cliente extends javax.swing.JDialog {
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
         			.addGap(47)
-        			.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(52)
-        					.addComponent(btn_volver)
-        					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        					.addComponent(btn_reserva))
-        				.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        					.addGroup(layout.createSequentialGroup()
-        						.addGap(53)
-        						.addComponent(l_cliente))
-        					.addGroup(layout.createSequentialGroup()
-        						.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        							.addComponent(l_dni)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        								.addComponent(l_cliente_direccion)
-        								.addComponent(l_cliente_correo, Alignment.TRAILING)
-        								.addComponent(l_cliente_telefono, Alignment.TRAILING)
-        								.addComponent(l_cliente_apellidos, Alignment.TRAILING)
-        								.addComponent(l_cliente_nombre, Alignment.TRAILING)))
-        						.addPreferredGap(ComponentPlacement.RELATED)
-        						.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        								.addComponent(tf_cliente_correo)
-        								.addComponent(tf_cliente_telefono)
-        								.addComponent(tf_cliente_apellidos)
-        								.addComponent(tf_cliente_nombre, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE))
-        							.addComponent(tf_cliente_direccion, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
-        							.addComponent(tf_cliente_dni, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)))))
-        			.addGap(28)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(btn_mascota_add)
-        				.addComponent(btn_guardar))
-        			.addContainerGap(40, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(53)
+        					.addComponent(l_cliente))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        						.addComponent(btn_volver)
+        						.addComponent(l_dni)
+        						.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        							.addComponent(l_cliente_direccion)
+        							.addComponent(l_cliente_correo, Alignment.TRAILING)
+        							.addComponent(l_cliente_telefono, Alignment.TRAILING)
+        							.addComponent(l_cliente_apellidos, Alignment.TRAILING)
+        							.addComponent(l_cliente_nombre, Alignment.TRAILING)))
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        									.addComponent(tf_cliente_correo)
+        									.addComponent(tf_cliente_telefono)
+        									.addComponent(tf_cliente_apellidos)
+        									.addComponent(tf_cliente_nombre, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE))
+        								.addComponent(tf_cliente_direccion, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(tf_cliente_dni, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)))
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(10)
+        							.addComponent(btn_guardar)
+        							.addPreferredGap(ComponentPlacement.UNRELATED)
+        							.addComponent(btn_mascota_add)))))
+        			.addGap(107))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(78)
-        					.addComponent(btn_mascota_add))
-        				.addGroup(layout.createSequentialGroup()
-        					.addContainerGap()
-        					.addComponent(l_cliente)
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(tf_cliente_nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(l_cliente_nombre))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(tf_cliente_apellidos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(l_cliente_apellidos))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(tf_cliente_telefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(l_cliente_telefono))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(l_cliente_correo)
-        						.addComponent(tf_cliente_correo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(l_cliente_direccion)
-        						.addComponent(tf_cliente_direccion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(44)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(btn_volver)
-        						.addComponent(btn_reserva)
-        						.addComponent(btn_guardar)))
-        				.addGroup(layout.createSequentialGroup()
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(tf_cliente_dni, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(l_dni))))
+        			.addContainerGap()
+        			.addComponent(l_cliente)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(tf_cliente_nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_cliente_nombre))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(tf_cliente_apellidos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_cliente_apellidos))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(tf_cliente_telefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_cliente_telefono))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_cliente_correo)
+        				.addComponent(tf_cliente_correo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_cliente_direccion)
+        				.addComponent(tf_cliente_direccion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(tf_cliente_dni, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_dni))
+        			.addGap(18)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(btn_volver)
+        				.addComponent(btn_guardar)
+        				.addComponent(btn_mascota_add))
         			.addGap(21))
         );
         getContentPane().setLayout(layout);
@@ -161,7 +147,6 @@ public class Registro_cliente extends javax.swing.JDialog {
         btn_volver.addActionListener(new Eventos_registro_cliente(this));
         btn_guardar.addActionListener(new Eventos_registro_cliente(this));
         btn_mascota_add.addActionListener(new Eventos_registro_cliente(this));
-        btn_reserva.addActionListener(new Eventos_registro_cliente(this));
         
     }    
                       
@@ -175,11 +160,7 @@ public class Registro_cliente extends javax.swing.JDialog {
 
 	public javax.swing.JButton getBtn_perro_medico() {
 		return btn_perro_medico;
-	}
-
-	public javax.swing.JButton getBtn_reserva() {
-		return btn_reserva;
-	}
+	}	
 
 	public javax.swing.JButton getBtn_volver() {
 		return btn_volver;
@@ -218,7 +199,6 @@ public class Registro_cliente extends javax.swing.JDialog {
 	private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_perro_alimentacion;
     private javax.swing.JButton btn_perro_medico;
-    private javax.swing.JButton btn_reserva;
     private javax.swing.JButton btn_volver;
     private javax.swing.JButton btn_mascota_add;
     private javax.swing.JLabel l_cliente;

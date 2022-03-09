@@ -7,6 +7,7 @@ import modelo.Reserva;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 
@@ -37,19 +38,32 @@ public class Reservas extends javax.swing.JDialog {
 
         l_cliente.setText("Cliente:");
 
-        cbox_selec_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new Cliente[] {}));  
+        cbox_selec_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new Cliente[] {}));          
         
         modelo = new DefaultTableModel();
         
         tabla_reservas.setModel(modelo);
         
-        modelo.addColumn("Código Reserva"); 
+        modelo.addColumn("Código"); 
         modelo.addColumn("Fecha inicio"); 
         modelo.addColumn("Fecha fin"); 
-        modelo.addColumn("Peluquería"); 
-        modelo.addColumn("Alimentación"); 
+        modelo.addColumn("Servicios"); 
         modelo.addColumn("Comentarios"); 
         modelo.addColumn("Total €"); 
+        
+        TableColumnModel columnMode = tabla_reservas.getColumnModel();
+        columnMode.getColumn(0).setMaxWidth(50);
+        columnMode.getColumn(0).setMinWidth(50);
+        columnMode.getColumn(1).setMaxWidth(90);
+        columnMode.getColumn(1).setMinWidth(90);
+        columnMode.getColumn(2).setMaxWidth(90);
+        columnMode.getColumn(2).setMinWidth(90);
+        columnMode.getColumn(3).setMaxWidth(260);
+        columnMode.getColumn(3).setMinWidth(260);
+        columnMode.getColumn(4).setMaxWidth(410);
+        columnMode.getColumn(4).setMinWidth(410);
+        columnMode.getColumn(5).setMaxWidth(60);
+        columnMode.getColumn(5).setMinWidth(50);
         
         tabla_reservas.setColumnSelectionAllowed(true);
         tabla_reservas.getTableHeader().setReorderingAllowed(false);

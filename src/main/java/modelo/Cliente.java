@@ -42,7 +42,7 @@ public class Cliente {
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Mascota> perros=new ArrayList<>();
 	
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
+	@OneToMany(mappedBy="cliente",cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<Reserva> reservas=new ArrayList<>();
 	
 	public Cliente() {		
@@ -60,8 +60,7 @@ public class Cliente {
 	}	
 
 	public Cliente(String dNI, String nombre, String apellidos, String telefono, String correo, String direccion,
-			List<Mascota> perros, List<Reserva> reservas) {
-		super();
+			List<Mascota> perros, List<Reserva> reservas) {		
 		DNI = dNI;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -70,6 +69,11 @@ public class Cliente {
 		this.direccion = direccion;
 		this.perros = perros;
 		this.reservas = reservas;
+	}
+	
+	public Cliente(String nombre,String apellidos) {
+		this.nombre=nombre;
+		this.apellidos=apellidos;
 	}
 	
 	public long getId() {

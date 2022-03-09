@@ -23,7 +23,7 @@ public class Servicios {
 	@Column(name="nombre_servicio")
 	private String nombre;
 	
-	@Column(name="precio")
+	@Column(name="precio",scale=2)
 	private double precio;
 	
 	@Column(name="descripcion")
@@ -88,8 +88,7 @@ public class Servicios {
 
 	@Override
 	public String toString() {
-		return "Servicios [idServicio=" + idServicio + ", nombre=" + nombre + ", precio=" + precio + ", descripcion="
-				+ descripcion + "]";
+		return ""+nombre;
 	}
 	
 	

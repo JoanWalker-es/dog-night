@@ -1,6 +1,10 @@
 package vista;
 
 import controlador.Eventos_error;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.GroupLayout;
+import javax.swing.SwingConstants;
 
 public class Ventana_error extends javax.swing.JDialog {
 
@@ -15,6 +19,7 @@ public class Ventana_error extends javax.swing.JDialog {
     private void initComponents() {
 
         l_error = new javax.swing.JLabel();
+        l_error.setHorizontalAlignment(SwingConstants.CENTER);
         btn_ok = new javax.swing.JButton();
 
         setResizable(false);
@@ -27,36 +32,43 @@ public class Ventana_error extends javax.swing.JDialog {
         btn_ok.setText("OK");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(btn_ok))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(l_error)))
-                .addContainerGap(69, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(152)
+        					.addComponent(btn_ok))
+        				.addGroup(layout.createSequentialGroup()
+        					.addContainerGap()
+        					.addComponent(l_error, GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)))
+        			.addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(l_error)
-                .addGap(33, 33, 33)
-                .addComponent(btn_ok)
-                .addContainerGap(49, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(l_error)
+        			.addPreferredGap(ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+        			.addComponent(btn_ok)
+        			.addContainerGap())
         );
+        getContentPane().setLayout(layout);
 
         pack();
         
         //EVENTOS DE CLASE:
         btn_ok.addActionListener(new Eventos_error(this));
-    }
+    } 
     
-    private javax.swing.JButton btn_ok;
+    
+    public javax.swing.JLabel getL_error() {
+		return l_error;
+	}
+
+
+
+	private javax.swing.JButton btn_ok;
     private javax.swing.JLabel l_error;             
 }
 

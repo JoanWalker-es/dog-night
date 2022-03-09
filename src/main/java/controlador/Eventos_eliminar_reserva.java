@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import vista.Eliminar_reserva;
-import vista.Ventana_guardado_ok;
 
 public class Eventos_eliminar_reserva implements ActionListener{
 

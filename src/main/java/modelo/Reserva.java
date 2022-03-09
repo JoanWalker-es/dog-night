@@ -27,13 +27,10 @@ public class Reserva {
 	
 	@Column(name="Total")
 	private double total;
-	
-	@Column(name="Peluqueria")
-	private boolean peluqueria;
-	
-	@Column(name="Alimentos")
-	private boolean alimentos;		
-	
+		
+	@ManyToOne
+    @JoinColumn(name="idCliente")
+    private Cliente cliente;
 	
 	@ManyToMany
 	@JoinTable(
@@ -45,15 +42,13 @@ public class Reserva {
 	public Reserva() {		
 	}	
 
-	public Reserva(Date fecha_inicio, Date fecha_fin, String comentarios, double total, boolean peluqueria,
-			boolean alimentos, List<Servicios> servicios) {
+	public Reserva(Date fecha_inicio, Date fecha_fin, String comentarios, double total, 
+			List<Servicios> servicios) {
 		super();
 		this.fecha_inicio = fecha_inicio;
 		this.fecha_fin = fecha_fin;
 		this.comentarios = comentarios;
 		this.total = total;
-		this.peluqueria = peluqueria;
-		this.alimentos = alimentos;
 		this.servicios = servicios;
 	}
 
@@ -89,22 +84,6 @@ public class Reserva {
 		this.total = total;
 	}
 
-	public boolean isPeluqueria() {
-		return peluqueria;
-	}
-
-	public void setPeluqueria(boolean peluqueria) {
-		this.peluqueria = peluqueria;
-	}
-
-	public boolean isAlimentos() {
-		return alimentos;
-	}
-
-	public void setAlimentos(boolean alimentos) {
-		this.alimentos = alimentos;
-	}
-
 	public long getCodigo() {
 		return codigo;
 	}
@@ -122,6 +101,14 @@ public class Reserva {
 			servicios=new ArrayList<Servicios>();
 			}
 		servicios.add(servicio);
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	
