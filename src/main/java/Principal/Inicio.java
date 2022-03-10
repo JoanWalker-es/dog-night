@@ -13,7 +13,6 @@ import vista.Consulta_mascota;
 import vista.Datos_alimentos;
 import vista.Datos_medicos;
 import vista.Eliminar_reserva;
-import vista.Ventana_guardado_ok;
 import vista.Precios;
 import vista.Registro_cliente;
 import vista.Registro_mascota;

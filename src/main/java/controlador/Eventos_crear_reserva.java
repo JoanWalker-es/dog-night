@@ -3,7 +3,7 @@ package controlador;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Calendar;
 import org.hibernate.Session;
 
 import modelo.Cliente;
@@ -31,6 +31,7 @@ public class Eventos_crear_reserva implements ActionListener{
 	private Servicios alimentos;
 	private Servicios socios;
 	public static String mensaje;
+	private Calendar calendario;
 	
 	
 	public Eventos_crear_reserva(Crear_reserva ventana) {
@@ -42,7 +43,8 @@ public class Eventos_crear_reserva implements ActionListener{
 		}		
 		reservaDao=new ReservaDao(sesion);
 		serviciosDao=new ServiciosDao(sesion);
-		clienteDao=new ClienteDao(sesion);				
+		clienteDao=new ClienteDao(sesion);			
+		calendario=Calendar.getInstance();
 	}
 	
 	@Override
@@ -56,6 +58,9 @@ public class Eventos_crear_reserva implements ActionListener{
 				new Ventana_error(ventana,true).setVisible(true);						
 			}else if(diasEntreFechas(ventana.getJdate_llegada().getDate(),ventana.getJdate_salida().getDate())<0) {
 				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>LA FECHA DE LLEGADA DEBE SER</center><br><center>ANTERIOR A LA DE SALIDA</center></body></html>";
+				new Ventana_error(ventana,true).setVisible(true);
+			}else if(ventana.getJdate_llegada().getDate().getTime()<calendario.getTime().getTime()) {
+				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>LA FECHA DE LLEGADA DEBE SER</center><br><center>POSTERIOR AL DÍA DE HOY</center></body></html>";
 				new Ventana_error(ventana,true).setVisible(true);
 			}else {			
 
