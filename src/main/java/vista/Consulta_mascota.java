@@ -1,20 +1,25 @@
 package vista;
 
+import controlador.Eventos_consulta_mascota;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JButton;
 
-public class Consulta_mascota extends javax.swing.JFrame {
+public class Consulta_mascota extends javax.swing.JDialog {
 
-    public Consulta_mascota() {
+    public Consulta_mascota(javax.swing.JDialog parent,boolean modal) {
+    	super(parent,modal);
         initComponents();
-        setSize(780,700);
+        setSize(799,652);
         this.setLocationRelativeTo(null);        
 
     }
                         
     private void initComponents() {
 
-    	btn_volver = new javax.swing.JButton();
-        btn_editar = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+    	jPanel1 = new javax.swing.JPanel();
         cbox_esterilizado = new javax.swing.JCheckBox();
         l_medico_esterilizado = new javax.swing.JLabel();
         l_medico_talla = new javax.swing.JLabel();
@@ -27,7 +32,6 @@ public class Consulta_mascota extends javax.swing.JFrame {
         l_mascota_nombre = new javax.swing.JLabel();
         tf_mascota_nombre = new javax.swing.JTextField();
         tf_mascota_chip = new javax.swing.JTextField();
-        tf_mascota_fecha = new javax.swing.JTextField();
         tf_mascota_raza = new javax.swing.JTextField();
         tf_mascota_peso = new javax.swing.JTextField();
         tf_mascota_sexo = new javax.swing.JTextField();
@@ -39,6 +43,8 @@ public class Consulta_mascota extends javax.swing.JFrame {
         l_medicacion_comentario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_medicacion = new javax.swing.JTextArea();
+        jt_medicacion.setLineWrap(true);
+        jt_medicacion.setWrapStyleWord(true);
         jPanel3 = new javax.swing.JPanel();
         l_alimentos_tipo = new javax.swing.JLabel();
         l_alimentos_cantidad = new javax.swing.JLabel();
@@ -47,40 +53,47 @@ public class Consulta_mascota extends javax.swing.JFrame {
         tf_alimento_cantidad = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_alimento = new javax.swing.JTextArea();
+        jt_alimento.setWrapStyleWord(true);
+        jt_alimento.setLineWrap(true);
         jPanel4 = new javax.swing.JPanel();
         l_intolerancias_descripcion = new javax.swing.JLabel();
         l_intolerancias_tipo = new javax.swing.JLabel();
         tf_intolerancia_tipo = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         jt_intolerancia = new javax.swing.JTextArea();
+        jt_intolerancia.setLineWrap(true);
+        jt_intolerancia.setWrapStyleWord(true);
         jPanel5 = new javax.swing.JPanel();
         l_vacuna_nombre = new javax.swing.JLabel();
         l_vacuna_fecha = new javax.swing.JLabel();
         tf_vacuna_nombre = new javax.swing.JTextField();
-        tf_vacuna_fecha = new javax.swing.JTextField();
         btn_volver = new javax.swing.JButton();
-        btn_editar = new javax.swing.JButton();            
+        btn_editar = new javax.swing.JButton();   
+        jdate_mascota_fecha = new JDateChooser();
+        jdate_mascota_rabia_fecha = new JDateChooser();
+        btn_guardar=new JButton();
 
         tf_mascota_nombre.setEditable(false);
         tf_mascota_chip.setEditable(false);
-        tf_mascota_fecha.setEditable(false);
         tf_mascota_raza.setEditable(false);
         tf_mascota_peso.setEditable(false);
         tf_mascota_sexo.setEditable(false);        
         tf_medicacion_nombre.setEditable(false);
         tf_medicacion_dosis.setEditable(false);
-        cbox_talla.setEditable(false);
+        cbox_talla.setEnabled(false);
         cbox_esterilizado.setEnabled(false);
         jt_medicacion.setEditable(false);
         tf_vacuna_nombre.setEditable(false);
-        tf_vacuna_fecha.setEditable(false);
         tf_medicacion_nombre.setEditable(false);
         tf_medicacion_dosis.setEditable(false);
         jt_alimento.setEditable(false);
         tf_intolerancia_tipo.setEditable(false);
         jt_intolerancia.setEditable(false);
         tf_alimento_tipo.setEditable(false);
-        tf_alimento_cantidad.setEditable(false);      
+        tf_alimento_cantidad.setEditable(false);   
+        jdate_mascota_fecha.setEnabled(false);
+        jdate_mascota_rabia_fecha.setEnabled(false);
+        btn_guardar.setEnabled(false);
                 
         setResizable(false);
         setTitle("Consulta de datos mascota");        
@@ -97,7 +110,7 @@ public class Consulta_mascota extends javax.swing.JFrame {
 
         l_medico_talla.setText("Talla:");
 
-        cbox_talla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Talla S", "Talla M", "Talla L", "Talla XL", " ", " " }));
+        cbox_talla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Talla S", "Talla M", "Talla L", "Talla XL"}));
 
         l_medico_sexo.setText("Sexo:");
 
@@ -117,9 +130,6 @@ public class Consulta_mascota extends javax.swing.JFrame {
         tf_mascota_chip.setMaximumSize(new java.awt.Dimension(160, 160));
         tf_mascota_chip.setMinimumSize(new java.awt.Dimension(160, 160));
 
-        tf_mascota_fecha.setMaximumSize(new java.awt.Dimension(160, 160));
-        tf_mascota_fecha.setMinimumSize(new java.awt.Dimension(160, 160));
-
         tf_mascota_raza.setMaximumSize(new java.awt.Dimension(160, 160));
         tf_mascota_raza.setMinimumSize(new java.awt.Dimension(160, 160));
 
@@ -127,76 +137,77 @@ public class Consulta_mascota extends javax.swing.JFrame {
         tf_mascota_peso.setMinimumSize(new java.awt.Dimension(160, 160));
 
         tf_mascota_sexo.setMaximumSize(new java.awt.Dimension(160, 160));
-        tf_mascota_sexo.setMinimumSize(new java.awt.Dimension(160, 160));
+        tf_mascota_sexo.setMinimumSize(new java.awt.Dimension(160, 160));        
+        
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(l_mascota_chip)
-                    .addComponent(l_mascota_nombre)
-                    .addComponent(l_mascota_fecha)
-                    .addComponent(l_mascota_raza)
-                    .addComponent(l_medico_peso)
-                    .addComponent(l_medico_sexo)
-                    .addComponent(l_medico_talla)
-                    .addComponent(l_medico_esterilizado))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbox_talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbox_esterilizado))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(tf_mascota_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_mascota_chip, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_mascota_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_mascota_raza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_mascota_peso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_mascota_sexo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(l_mascota_chip)
+        				.addComponent(l_mascota_nombre)
+        				.addComponent(l_mascota_fecha)
+        				.addComponent(l_mascota_raza)
+        				.addComponent(l_medico_peso)
+        				.addComponent(l_medico_sexo)
+        				.addComponent(l_medico_talla)
+        				.addComponent(l_medico_esterilizado))
+        			.addGap(18)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(cbox_talla, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(cbox_esterilizado))
+        					.addGap(0, 120, Short.MAX_VALUE))
+        				.addComponent(tf_mascota_nombre, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+        				.addComponent(tf_mascota_chip, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+        				.addComponent(tf_mascota_raza, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+        				.addComponent(tf_mascota_peso, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+        				.addComponent(tf_mascota_sexo, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+        				.addComponent(jdate_mascota_fecha, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
+        			.addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(l_mascota_nombre)
-                            .addComponent(tf_mascota_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(l_mascota_chip)
-                            .addComponent(tf_mascota_chip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(l_mascota_fecha)
-                            .addComponent(tf_mascota_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(l_mascota_raza)
-                            .addComponent(tf_mascota_raza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(l_medico_peso))
-                    .addComponent(tf_mascota_peso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_medico_sexo)
-                    .addComponent(tf_mascota_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_medico_talla)
-                    .addComponent(cbox_talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_medico_esterilizado)
-                    .addComponent(cbox_esterilizado))
-                .addContainerGap(11, Short.MAX_VALUE))
+        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_mascota_nombre)
+        				.addComponent(tf_mascota_nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_mascota_chip)
+        				.addComponent(tf_mascota_chip, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(l_mascota_fecha)
+        				.addComponent(jdate_mascota_fecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(l_mascota_raza)
+        						.addComponent(tf_mascota_raza, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        					.addPreferredGap(ComponentPlacement.UNRELATED)
+        					.addComponent(l_medico_peso))
+        				.addComponent(tf_mascota_peso, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_medico_sexo)
+        				.addComponent(tf_mascota_sexo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGap(3)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_medico_talla)
+        				.addComponent(cbox_talla, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_medico_esterilizado)
+        				.addComponent(cbox_esterilizado))
+        			.addContainerGap(11, Short.MAX_VALUE))
         );
+        jPanel1.setLayout(jPanel1Layout);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("MEDICACIÓN"));
 
@@ -365,93 +376,192 @@ public class Consulta_mascota extends javax.swing.JFrame {
         l_vacuna_fecha.setText("Fecha inoculación:");
 
         tf_vacuna_nombre.setMaximumSize(new java.awt.Dimension(160, 160));
-        tf_vacuna_nombre.setMinimumSize(new java.awt.Dimension(160, 160));
-
-        tf_vacuna_fecha.setMaximumSize(new java.awt.Dimension(160, 160));
-        tf_vacuna_fecha.setMinimumSize(new java.awt.Dimension(160, 160));
+        tf_vacuna_nombre.setMinimumSize(new java.awt.Dimension(160, 160));  
+        
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(l_vacuna_fecha)
-                    .addComponent(l_vacuna_nombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tf_vacuna_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_vacuna_fecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+        	jPanel5Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel5Layout.createSequentialGroup()
+        			.addGap(21)
+        			.addGroup(jPanel5Layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(l_vacuna_fecha)
+        				.addComponent(l_vacuna_nombre))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel5Layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(jdate_mascota_rabia_fecha, GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+        				.addComponent(tf_vacuna_nombre, GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
+        			.addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_vacuna_nombre)
-                    .addComponent(tf_vacuna_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_vacuna_fecha)
-                    .addComponent(tf_vacuna_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        	jPanel5Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel5Layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(jPanel5Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_vacuna_nombre)
+        				.addComponent(tf_vacuna_nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel5Layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(l_vacuna_fecha)
+        				.addComponent(jdate_mascota_rabia_fecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        jPanel5.setLayout(jPanel5Layout);
 
         btn_volver.setText("VOLVER");
 
         btn_editar.setText("EDITAR DATOS");
+        
+        btn_guardar.setText("GUARDAR MASCOTA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_volver)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(btn_editar))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addContainerGap()
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        						.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        						.addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(jPanel4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        								.addComponent(jPanel5, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
+        							.addGap(0))
+        						.addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(159)
+        					.addComponent(btn_volver)
+        					.addGap(18)
+        					.addComponent(btn_editar)
+        					.addGap(18)
+        					.addComponent(btn_guardar)))
+        			.addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_volver)
-                    .addComponent(btn_editar))
-                .addGap(44, 44, 44))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(jPanel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        					.addGap(18)
+        					.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(236)
+        					.addComponent(jPanel4, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+        					.addGap(18)
+        					.addComponent(jPanel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        			.addPreferredGap(ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(btn_volver)
+        				.addComponent(btn_editar)
+        				.addComponent(btn_guardar))
+        			.addContainerGap())
         );
+        getContentPane().setLayout(layout);
 
         pack();
-    }
+        
+        //EVENTOS DE CLASE:
+        addWindowListener(new Eventos_consulta_mascota(this));
+        btn_editar.addActionListener(new Eventos_consulta_mascota(this));
+        btn_volver.addActionListener(new Eventos_consulta_mascota(this));
+        btn_guardar.addActionListener(new Eventos_consulta_mascota(this));
+    }    
     
-    private javax.swing.JButton btn_editar;
+    public javax.swing.JButton getBtn_editar() {
+		return btn_editar;
+	}
+
+	public javax.swing.JButton getBtn_volver() {
+		return btn_volver;
+	}
+
+	public javax.swing.JCheckBox getCbox_esterilizado() {
+		return cbox_esterilizado;
+	}
+
+	public javax.swing.JComboBox<String> getCbox_talla() {
+		return cbox_talla;
+	}
+
+	public javax.swing.JTextArea getJt_alimento() {
+		return jt_alimento;
+	}
+
+	public javax.swing.JTextArea getJt_intolerancia() {
+		return jt_intolerancia;
+	}
+
+	public javax.swing.JTextArea getJt_medicacion() {
+		return jt_medicacion;
+	}
+
+	public javax.swing.JTextField getTf_alimento_cantidad() {
+		return tf_alimento_cantidad;
+	}
+
+	public javax.swing.JTextField getTf_alimento_tipo() {
+		return tf_alimento_tipo;
+	}
+
+	public javax.swing.JTextField getTf_intolerancia_tipo() {
+		return tf_intolerancia_tipo;
+	}
+
+	public javax.swing.JTextField getTf_mascota_chip() {
+		return tf_mascota_chip;
+	}
+
+	public javax.swing.JTextField getTf_mascota_nombre() {
+		return tf_mascota_nombre;
+	}
+
+	public javax.swing.JTextField getTf_mascota_peso() {
+		return tf_mascota_peso;
+	}
+
+	public javax.swing.JTextField getTf_mascota_raza() {
+		return tf_mascota_raza;
+	}
+
+	public javax.swing.JTextField getTf_mascota_sexo() {
+		return tf_mascota_sexo;
+	}
+
+	public javax.swing.JTextField getTf_medicacion_dosis() {
+		return tf_medicacion_dosis;
+	}
+
+	public javax.swing.JTextField getTf_medicacion_nombre() {
+		return tf_medicacion_nombre;
+	}
+
+	public javax.swing.JTextField getTf_vacuna_nombre() {
+		return tf_vacuna_nombre;
+	}
+	
+	public JDateChooser getJdate_mascota_fecha() {
+		return jdate_mascota_fecha;
+	}
+
+	public JDateChooser getJdate_mascota_rabia_fecha() {
+		return jdate_mascota_rabia_fecha;
+	}
+	
+	public JButton getBtn_guardar() {
+		return btn_guardar;
+	}
+
+
+
+	private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_volver;
     private javax.swing.JCheckBox cbox_esterilizado;
     private javax.swing.JComboBox<String> cbox_talla;
@@ -488,13 +598,14 @@ public class Consulta_mascota extends javax.swing.JFrame {
     private javax.swing.JTextField tf_alimento_tipo;
     private javax.swing.JTextField tf_intolerancia_tipo;
     private javax.swing.JTextField tf_mascota_chip;
-    private javax.swing.JTextField tf_mascota_fecha;
     private javax.swing.JTextField tf_mascota_nombre;
     private javax.swing.JTextField tf_mascota_peso;
     private javax.swing.JTextField tf_mascota_raza;
     private javax.swing.JTextField tf_mascota_sexo;
     private javax.swing.JTextField tf_medicacion_dosis;
     private javax.swing.JTextField tf_medicacion_nombre;
-    private javax.swing.JTextField tf_vacuna_fecha;
     private javax.swing.JTextField tf_vacuna_nombre;
+    private JDateChooser jdate_mascota_fecha;
+    private JDateChooser jdate_mascota_rabia_fecha; 
+    private JButton btn_guardar;
 }

@@ -58,10 +58,10 @@ public class Reservas extends javax.swing.JDialog {
         columnMode.getColumn(1).setMinWidth(90);
         columnMode.getColumn(2).setMaxWidth(90);
         columnMode.getColumn(2).setMinWidth(90);
-        columnMode.getColumn(3).setMaxWidth(260);
-        columnMode.getColumn(3).setMinWidth(260);
-        columnMode.getColumn(4).setMaxWidth(410);
-        columnMode.getColumn(4).setMinWidth(410);
+        columnMode.getColumn(3).setMaxWidth(220);
+        columnMode.getColumn(3).setMinWidth(220);
+        columnMode.getColumn(4).setMaxWidth(450);
+        columnMode.getColumn(4).setMinWidth(450);
         columnMode.getColumn(5).setMaxWidth(60);
         columnMode.getColumn(5).setMinWidth(50);
         
@@ -158,7 +158,6 @@ public class Reservas extends javax.swing.JDialog {
 	public DefaultTableModel getModelo() {
 		return modelo;
 	}
-
 
 
 	private JButton btn_mostrar;

@@ -17,12 +17,12 @@ private static Session session;
 		Transaction tx=session.beginTransaction();
 		session.save(t);
 		System.out.println("Historial medico guardado correctamente con id: "+t.getId());
-		tx.commit();		
+		tx.commit();				
 	}
 
 	public Historial_medico findOneById(long id) {
 		Transaction tx=session.beginTransaction();
-		Historial_medico medico=session.createQuery("FROM historial_medico where idPerro=:id",Historial_medico.class).setParameter("id", id).getSingleResult();
+		Historial_medico medico=session.createQuery("FROM Historial_medico where idPerro=:id",Historial_medico.class).setParameter("id", id).getSingleResult();
 		tx.commit();
 		return medico; 
 	}

@@ -20,6 +20,8 @@ public class Eventos_error implements ActionListener{
 			ventana.getL_error().setText(Eventos_crear_reserva.mensaje);
 		}else if(!(Eventos_reservas.mensaje==null)) {
 			ventana.getL_error().setText(Eventos_reservas.mensaje);
+		}else if(!(Eventos_seleccion_cliente.mensaje==null)) {
+			ventana.getL_error().setText(Eventos_seleccion_cliente.mensaje);
 		}
 	}
 	

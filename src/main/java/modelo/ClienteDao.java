@@ -47,5 +47,12 @@ public class ClienteDao implements CRUD<Cliente> {
 		System.out.println("Cliente eliminado correctamente con el id: "+t.getId());
 		tx.commit();
 	}
+	
+	public List<Cliente> like(String nombre) {
+		Transaction tx=session.beginTransaction();
+		List<Cliente> clientes=session.createQuery("FROM Cliente WHERE CONCAT( Nombre,  ' ', Apellidos ) LIKE  :n",Cliente.class).setParameter("n","%" + nombre + "%").getResultList();	
+		tx.commit();
+		return clientes; 
+	}
 
 }

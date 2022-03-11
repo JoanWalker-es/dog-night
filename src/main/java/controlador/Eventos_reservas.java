@@ -73,6 +73,7 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 	}
 	
 	public void windowOpened(WindowEvent e) {
+		
 		List<Cliente> clientes=clienteDao.findAll();
 		ventana_reservas.getCbox_selec_cliente().addItem(todos);
 		for(Cliente c:clientes) {				
@@ -101,6 +102,7 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 
 	private void rellenaTablaCliente(Cliente cliente) {			
 		ventana_reservas.getModelo().setRowCount(0);
+		
 		List<Reserva> reservas=cliente.getReservas();		
 		if(cliente.getReservas().size()<1) {
 			ventana_reservas.getModelo().setRowCount(0);

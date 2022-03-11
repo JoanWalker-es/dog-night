@@ -104,6 +104,11 @@ public class Mascota {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+
+	@Override
+	public String toString() {
+		return nombre;
+	}
 	
 	
 	
