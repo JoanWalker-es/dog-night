@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Calendar;
 import org.hibernate.Session;
+import org.hibernate.internal.build.AllowSysOut;
 
+import config.HibernateUtil;
 import modelo.Cliente;
 import modelo.ClienteDao;
+import modelo.Mascota;
 import modelo.Reserva;
 import modelo.ReservaDao;
 import modelo.Servicios;
@@ -16,7 +19,7 @@ import vista.Crear_reserva;
 import vista.Reserva_creada;
 import vista.Ventana_error;
 
-public class Eventos_crear_reserva implements ActionListener{
+public class Eventos_crear_reserva extends WindowAdapter implements ActionListener{
 
 	private Crear_reserva ventana;
 	private Session sesion;
@@ -36,15 +39,20 @@ public class Eventos_crear_reserva implements ActionListener{
 	
 	public Eventos_crear_reserva(Crear_reserva ventana) {
 		this.ventana=ventana;
-		if(Eventos_reservas.sesion==null) {
-			sesion=Eventos_registro_cliente.sesion;
-		}else {
+		if(Eventos_reservas.sesion==null) {			
+			sesion=Eventos_consulta_cliente.sesion;
+		}else{
 			sesion=Eventos_reservas.sesion;
-		}		
+		}	
 		reservaDao=new ReservaDao(sesion);
 		serviciosDao=new ServiciosDao(sesion);
 		clienteDao=new ClienteDao(sesion);			
 		calendario=Calendar.getInstance();
+		if(Eventos_consulta_cliente.consulta) {
+			cliente=Eventos_consulta_cliente.cliente;
+		}else {
+			cliente=Eventos_reservas.cliente;			
+		}		
 	}
 	
 	@Override
@@ -62,9 +70,16 @@ public class Eventos_crear_reserva implements ActionListener{
 			}else if(ventana.getJdate_llegada().getDate().getTime()<calendario.getTime().getTime()) {
 				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>LA FECHA DE LLEGADA DEBE SER</center><br><center>POSTERIOR AL DÍA DE HOY</center></body></html>";
 				new Ventana_error(ventana,true).setVisible(true);
-			}else {			
+			}else if(ventana.getList_mascotas().isSelectionEmpty()){
+				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>DEBE SELECCIONAR UNA MASCOTA</center><br></body></html>";
+				new Ventana_error(ventana,true).setVisible(true);
+			}else {		
+				List<Mascota> mascotas=ventana.getList_mascotas().getSelectedValuesList();				
 
-				reserva=new Reserva();
+				if(!Eventos_reservas.modificar) {
+					reserva=new Reserva();		
+				}				
+				reserva.setNum_mascotas(mascotas.size());
 				reserva.setFecha_inicio(new java.sql.Date(ventana.getJdate_llegada().getDate().getTime()));
 				reserva.setFecha_fin(new java.sql.Date(ventana.getJdate_salida().getDate().getTime()));
 				reserva.setComentarios(ventana.getTa_comentarios().getText());					
@@ -72,15 +87,19 @@ public class Eventos_crear_reserva implements ActionListener{
 				reserva.setTotal(Double.parseDouble(ventana.getTf_precio().getText()));
 				ventana.getTf_reserva_total_dias().setText(""+diasEntreFechas(ventana.getJdate_llegada().getDate(),ventana.getJdate_salida().getDate()));
 				
-				reserva.setServicios(serviciosSeleccion(servicios));				
-				
-				cliente=Eventos_reservas.cliente;				
+				reserva.setServicios(serviciosSeleccion(servicios));								
 				
 				reserva.setCliente(cliente);
 				cliente.addReserva(reserva);
 				
 				try {
-					reservaDao.save(reserva);
+					if(Eventos_reservas.modificar) {
+						System.out.println("ACTUALIZANDO");
+						reservaDao.update(reserva);						
+					}else {
+						System.out.println("GUARDANDO");
+						reservaDao.save(reserva);
+					}					
 					clienteDao.update(cliente);
 					new Reserva_creada(ventana,true).setVisible(true);
 					ventana.getBtn_registrar().setEnabled(false);
@@ -91,13 +110,53 @@ public class Eventos_crear_reserva implements ActionListener{
 					ventana.getCbox_peluqueria().setEnabled(false);
 					ventana.getCbox_alimentos().setEnabled(false);
 
-				}catch(Exception ex) {					
+				}catch(Exception ex) {	
+					mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center></body></html>";
 					new Ventana_error(ventana,true).setVisible(true);					
+					ex.printStackTrace();
 				}
 			}
 		}
 		
 	}	
+	
+	public void windowOpened(WindowEvent e) {		
+		if(Eventos_reservas.modificar) {
+			reserva=Eventos_reservas.reserva;
+			rellenaDatos();
+		}else {
+			for(Mascota m:cliente.getMascotas()) {
+				ventana.getModelo().addElement(m);
+			}
+		}		
+				
+	}
+	
+	private void rellenaDatos() {		
+		ventana.getJdate_llegada().setDate(reserva.getFecha_inicio());
+		ventana.getJdate_salida().setDate(reserva.getFecha_fin());
+		ventana.getTf_reserva_total_dias().setText(""+diasEntreFechas(reserva.getFecha_inicio(),reserva.getFecha_fin()));
+		for(Mascota m:cliente.getMascotas()) {
+			ventana.getModelo().addElement(m);
+		}
+		ventana.getTa_comentarios().setText(reserva.getComentarios());
+		seleccionServicios(reserva.getServicios());
+		ventana.getTf_precio().setText(Double.toString(reserva.getTotal()));
+		
+	}
+	
+	private void seleccionServicios(List<Servicios> servicios) {
+		for(Servicios s:servicios) {
+			if(s.getIdServicio()==2) {
+				ventana.getCbox_peluqueria().setSelected(true);
+			}else if(s.getIdServicio()==3) {
+				ventana.getCbox_alimentos().setSelected(true);
+			}else if(s.getIdServicio()==4) {
+				ventana.getCbox_socio().setSelected(true);
+			}
+		}
+		
+	}
 	
 	
 	private double total() {
@@ -167,8 +226,7 @@ public class Eventos_crear_reserva implements ActionListener{
 		}else if(!ventana.getCbox_peluqueria().isSelected()&&ventana.getCbox_alimentos().isSelected()&&ventana.getCbox_socio().isSelected()) {
 			servicios.add(alimentos);
 			servicios.add(socios);
-		}
-		
+		}		
 		
 		return servicios;
 	}

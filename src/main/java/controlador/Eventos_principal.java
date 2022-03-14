@@ -9,6 +9,7 @@ public class Eventos_principal implements ActionListener {
 	
 	public Eventos_principal(Ventana_principal ventana) {
 		this.ventana=ventana;
+		
 	}
 
 	@Override

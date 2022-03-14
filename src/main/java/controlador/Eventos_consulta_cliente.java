@@ -13,14 +13,17 @@ import modelo.ClienteDao;
 import modelo.Mascota;
 import vista.Consulta_cliente;
 import vista.Consulta_mascota;
+import vista.Crear_reserva;
+import vista.Registro_mascota;
 
 public class Eventos_consulta_cliente extends WindowAdapter implements ActionListener {
 
-	private Session sesion;
+	public static Session sesion;
 	private Consulta_cliente ventana;
 	public static Cliente cliente;
 	public static Mascota mascota;
 	private ClienteDao clienteDao;
+	public static boolean consulta;
 	
 	public Eventos_consulta_cliente(Consulta_cliente ventana) {
 		sesion=Eventos_seleccion_cliente.sesion;
@@ -34,9 +37,10 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 		if(e.getSource()==ventana.getBtn_volver()) {
 			ventana.dispose();
 		}else if(e.getSource()==ventana.getBtn_reserva()) {
-			//ABRIR RESERVA NUEVA
+			consulta=true;
+			new Crear_reserva(ventana,true).setVisible(true);
+			
 		}else if(e.getSource()==ventana.getBtn_mascota_datos()) {
-			//ABRIR CONSULTA DE MASCOTA
 			mascota=(Mascota)ventana.getCb_mascotas().getSelectedItem();
 			new Consulta_mascota(ventana,true).setVisible(true);
 			
@@ -49,6 +53,8 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 			habilitarCampos(false);
 			ventana.getBtn_editar().setEnabled(true);
 			ventana.getBtn_guardar().setEnabled(false);
+		}else if(e.getSource()==ventana.getBtn_mascota_add()) {
+			new Registro_mascota(ventana,true).setVisible(true);
 		}
 		
 	}
@@ -61,7 +67,7 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 		ventana.getTf_cliente_direccion().setText(cliente.getDireccion());
 		ventana.getTf_cliente_DNI().setText(cliente.getDNI());
 		ventana.getTf_cliente_telefono().setText(cliente.getTelefono());
-		for(Mascota m:cliente.getPerros()) {
+		for(Mascota m:cliente.getMascotas()) {
 			ventana.getCb_mascotas().addItem(m);
 		}
 		

@@ -3,16 +3,18 @@ package vista;
 import controlador.Eventos_crear_reserva;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JCheckBox;
+import javax.swing.JList;
 
 public class Crear_reserva extends javax.swing.JDialog {
 
     public Crear_reserva(javax.swing.JDialog parent,boolean modal) {
     	super(parent,modal);
         initComponents();
-        setSize(550,550);
+        setSize(450,620);
         this.setLocationRelativeTo(null); 
     }
     
@@ -32,13 +34,11 @@ public class Crear_reserva extends javax.swing.JDialog {
         jdate_salida = new com.toedter.calendar.JDateChooser();
         tf_precio = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ta_comentarios = new javax.swing.JTextArea();
-        ta_comentarios.setLineWrap(true);
-        ta_comentarios.setWrapStyleWord(true);
         btn_cancelar = new javax.swing.JButton();
         btn_registrar = new javax.swing.JButton();    
         cbox_socio = new JCheckBox();
         l_reserva_socio = new JLabel();
+        modelo = new DefaultListModel();
         
         setResizable(false);
         setTitle("Creación de reserva");
@@ -63,10 +63,6 @@ public class Crear_reserva extends javax.swing.JDialog {
 
         cbox_alimentos.setText("SI");
 
-        ta_comentarios.setColumns(20);
-        ta_comentarios.setRows(5);
-        jScrollPane1.setViewportView(ta_comentarios);
-
         btn_cancelar.setText("ATRAS");
 
         btn_registrar.setText("REGISTRAR RESERVA");        
@@ -74,79 +70,133 @@ public class Crear_reserva extends javax.swing.JDialog {
         l_reserva_socio.setText("Socio:");        
         
         cbox_socio.setText("SI");
+        
+        list_mascotas = new JList();       
+        
+        list_mascotas.setModel(modelo);
+        
+        l_reserva_mascotas = new JLabel();
+        l_reserva_mascotas.setText("Mascotas:");
+        ta_comentarios = new javax.swing.JTextArea();
+        ta_comentarios.setLineWrap(true);
+        ta_comentarios.setWrapStyleWord(true);
+        
+        ta_comentarios.setColumns(20);
+        ta_comentarios.setRows(5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addGap(48)
+        			.addContainerGap()
+        			.addComponent(l_reserva_comentarios)
+        			.addContainerGap(619, Short.MAX_VALUE))
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(28)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(l_reserva_llegada)
+        				.addComponent(tf_precio, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_reserva_precio))
+        			.addContainerGap(595, Short.MAX_VALUE))
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(ta_comentarios, GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+        			.addContainerGap())
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(layout.createSequentialGroup()
-        					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        						.addComponent(btn_cancelar)
-        						.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        							.addComponent(l_reserva_peluqueria)
-        							.addComponent(l_reserva_alimentacion)
-        							.addComponent(l_reserva_total)
-        							.addComponent(l_reserva_salida)
-        							.addComponent(l_reserva_precio)
-        							.addComponent(tf_precio, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-        							.addComponent(l_reserva_socio, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)))
-        					.addGap(93)
+        					.addComponent(list_mascotas, GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+        					.addContainerGap())
+        				.addGroup(layout.createSequentialGroup()
         					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(l_reserva_comentarios)
-        						.addComponent(jdate_salida, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(cbox_peluqueria)
-        						.addComponent(tf_reserva_total_dias, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(jdate_llegada, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(btn_registrar)
-        						.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
-        							.addComponent(cbox_socio, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        							.addComponent(cbox_alimentos, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-        			.addContainerGap(49, Short.MAX_VALUE))
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(216))
+        						.addComponent(l_reserva_mascotas)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(61)
+        							.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        								.addComponent(l_reserva_llegada)
+        								.addComponent(l_reserva_salida)
+        								.addComponent(l_reserva_total)
+        								.addComponent(l_reserva_peluqueria)
+        								.addComponent(l_reserva_alimentacion)
+        								.addComponent(l_reserva_socio))
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(cbox_peluqueria)
+        								.addComponent(tf_reserva_total_dias, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(jdate_salida, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(jdate_llegada, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+        								.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        									.addComponent(cbox_socio, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        									.addComponent(cbox_alimentos, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+        					.addPreferredGap(ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
+        					.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        					.addContainerGap(59, Short.MAX_VALUE))))
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(84)
+        			.addComponent(btn_cancelar)
+        			.addGap(33)
+        			.addComponent(btn_registrar)
+        			.addContainerGap(374, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addGap(51)
-        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        				.addComponent(l_reserva_llegada)
-        				.addComponent(jdate_llegada, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        				.addComponent(l_reserva_salida)
-        				.addComponent(jdate_salida, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addGap(23)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(l_reserva_total)
-        				.addComponent(tf_reserva_total_dias, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(l_reserva_peluqueria)
-        				.addComponent(cbox_peluqueria))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(l_reserva_alimentacion)
-        				.addComponent(cbox_alimentos))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(l_reserva_socio)
-        				.addComponent(cbox_socio))
-        			.addGap(19)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(l_reserva_precio)
-        				.addComponent(l_reserva_comentarios))
-        			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(tf_precio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addPreferredGap(ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(btn_registrar)
-        				.addComponent(btn_cancelar))
-        			.addGap(62))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(51)
+        					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        						.addComponent(l_reserva_llegada)
+        						.addComponent(jdate_llegada, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        						.addComponent(l_reserva_salida)
+        						.addComponent(jdate_salida, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(l_reserva_total)
+        						.addComponent(tf_reserva_total_dias, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(l_reserva_peluqueria)
+        						.addComponent(cbox_peluqueria))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(cbox_alimentos, Alignment.TRAILING)
+        						.addComponent(l_reserva_alimentacion, Alignment.TRAILING))
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        								.addComponent(l_reserva_socio)
+        								.addComponent(cbox_socio)))
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(26)
+        							.addComponent(l_reserva_mascotas)))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(list_mascotas, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+        					.addGap(33)
+        					.addComponent(l_reserva_comentarios)
+        					.addGap(71)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(226)
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(40)
+        							.addComponent(l_reserva_precio)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(tf_precio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        							.addGap(18)
+        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        								.addComponent(btn_registrar)
+        								.addComponent(btn_cancelar)))))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(343)
+        					.addComponent(ta_comentarios, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        			.addContainerGap(275, Short.MAX_VALUE))
         );
         getContentPane().setLayout(layout);
 
@@ -155,6 +205,7 @@ public class Crear_reserva extends javax.swing.JDialog {
         //EVENTOS DE CLASE:
         btn_cancelar.addActionListener(new Eventos_crear_reserva(this));
         btn_registrar.addActionListener(new Eventos_crear_reserva(this));
+        addWindowListener(new Eventos_crear_reserva(this));
     }    
     
     public javax.swing.JButton getBtn_cancelar() {
@@ -196,6 +247,15 @@ public class Crear_reserva extends javax.swing.JDialog {
 	public JCheckBox getCbox_socio() {
 		return cbox_socio;
 	}
+	
+	public JList getList_mascotas() {
+		return list_mascotas;
+	}
+
+	public DefaultListModel getModelo() {
+		return modelo;
+	}
+
 
 
 
@@ -218,5 +278,8 @@ public class Crear_reserva extends javax.swing.JDialog {
     private javax.swing.JTextField tf_reserva_total_dias;
     private JCheckBox cbox_socio;
     private JLabel l_reserva_socio;
+    private JList list_mascotas;
+    private JLabel l_reserva_mascotas;
+    private DefaultListModel modelo;
 }
 

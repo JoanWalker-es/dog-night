@@ -40,7 +40,7 @@ public class Cliente {
 	private String direccion;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	private List<Mascota> perros=new ArrayList<>();
+	private List<Mascota> mascotas=new ArrayList<>();
 	
 	@OneToMany(mappedBy="cliente",cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<Reserva> reservas=new ArrayList<>();
@@ -55,7 +55,7 @@ public class Cliente {
 		this.telefono=telefono;
 		this.correo=correo;
 		this.direccion=direccion;
-		this.perros=perros;
+		this.mascotas=perros;
 			
 	}	
 
@@ -67,7 +67,7 @@ public class Cliente {
 		this.telefono = telefono;
 		this.correo = correo;
 		this.direccion = direccion;
-		this.perros = perros;
+		this.mascotas = perros;
 		this.reservas = reservas;
 	}
 	
@@ -132,12 +132,12 @@ public class Cliente {
 		return idCliente;
 	}
 
-	public List<Mascota> getPerros() {
-		return perros;
+	public List<Mascota> getMascotas() {
+		return mascotas;
 	}
 
-	public void setPerros(List<Mascota> perros) {
-		this.perros = perros;
+	public void setMascotas(List<Mascota> mascotas) {
+		this.mascotas = mascotas;
 	}
 
 	public List<Reserva> getReservas() {
@@ -156,10 +156,10 @@ public class Cliente {
 	}
 	
 	public void addPerro(Mascota perro) {
-		if(perros==null) {
-			perros=new ArrayList<Mascota>();
+		if(mascotas==null) {
+			mascotas=new ArrayList<Mascota>();
 		}
-		perros.add(perro);
+		mascotas.add(perro);
 	}
 
 	@Override

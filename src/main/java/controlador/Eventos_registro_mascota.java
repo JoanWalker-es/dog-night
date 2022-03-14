@@ -13,10 +13,15 @@ public class Eventos_registro_mascota implements ActionListener{
 	private ClienteDao clienteDao;	
 	public static Mascota mascota;
 	public static String mensaje;
+	private Cliente cliente;
 	
 	public Eventos_registro_mascota(Registro_mascota ventana_registro) {
 		this.ventana_registro=ventana_registro;
-		sesion=Eventos_registro_cliente.sesion;
+		if(Eventos_registro_cliente.sesion==null) {
+			sesion=Eventos_seleccion_cliente.sesion;
+		}else {
+			sesion=Eventos_registro_cliente.sesion;
+		}		
 		mascotaDao=new MascotaDao(sesion);
 		clienteDao=new ClienteDao(sesion);
 	}
@@ -39,12 +44,17 @@ public class Eventos_registro_mascota implements ActionListener{
 				}			
 				mascota.setRaza(ventana_registro.getTf_mascota_raza().getText());			
 							
-				Eventos_registro_cliente.nuevo.getPerros().add(mascota);
+				if(Eventos_registro_cliente.nuevo==null) {
+					cliente=Eventos_consulta_cliente.cliente;					
+				}else {
+					cliente=Eventos_registro_cliente.nuevo;
+				}
+				cliente.getMascotas().add(mascota);
 				
 				try {
 					
 					mascotaDao.save(mascota);
-					clienteDao.update(Eventos_registro_cliente.nuevo);
+					clienteDao.update(cliente);
 					new Ventana_guardado_ok(ventana_registro,true).setVisible(true);				
 					ventana_registro.getBtn_mascota_alimentos().setEnabled(true);
 					ventana_registro.getBtn_mascota_medico().setEnabled(true);

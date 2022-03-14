@@ -32,9 +32,7 @@ public class Inicio {
 		System.out.println("Iniciando configuracion Hibernate");		
 		Session sesion=HibernateUtil.get().openSession(); 
 		
-		//crearPrecios(sesion);	
-		//crearMascotas(sesion);
-		//crearClientes(sesion);
+		//crearDatos(sesion);
 		
 		Ventana_principal nueva=new Ventana_principal();
 		nueva.setVisible(true);		
@@ -44,7 +42,9 @@ public class Inicio {
 		System.out.println("Finalizando configuracion Hibernate");
 	}
 	
-	public static void crearPrecios(Session sesion) {
+	public static void crearDatos(Session sesion) {
+		ClienteDao clienteDao = new ClienteDao(sesion);		
+		MascotaDao mascotaDao=new MascotaDao(sesion);
 		ServiciosDao oper_serv=new ServiciosDao(sesion);
 		
 		Servicios general=new Servicios();
@@ -70,11 +70,22 @@ public class Inicio {
 		socios.setPrecio(20);
 		socios.setDescripcion("Estancia de una noche en el hotel Dog-Night para socios.");		
 		oper_serv.save(socios);	
-	}
-	
-	public static void crearClientes(Session sesion) {
-		ClienteDao clienteDao = new ClienteDao(sesion);
 		
+		Mascota mUno=new Mascota();
+		mUno.setNombre("Kala");
+		mUno.setRaza("Braco de Weimar");
+		mascotaDao.save(mUno);
+		
+		Mascota mDos=new Mascota();
+		mDos.setNombre("Espartaco");
+		mDos.setRaza("Persa mezcla");
+		mascotaDao.save(mDos);
+		
+		Mascota mTres=new Mascota();
+		mTres.setNombre("Roma");
+		mTres.setRaza("Golden");
+		mascotaDao.save(mTres);				
+
 		Cliente uno=new Cliente();
 		uno.setNombre("Juan");
 		uno.setApellidos("De la Rubia Jiménez");
@@ -82,6 +93,7 @@ public class Inicio {
 		uno.setTelefono("600634605");
 		uno.setDireccion("Calle Los Robles, 12, Casarrubios del Monte");
 		uno.setDNI("74891618F");
+		uno.getMascotas().add(mUno);
 		clienteDao.save(uno);
 		
 		Cliente dos=new Cliente();
@@ -91,6 +103,7 @@ public class Inicio {
 		dos.setTelefono("666219105");
 		dos.setDireccion("Calle Los Robles, 12, Casarrubios del Monte");
 		dos.setDNI("47098448Z");
+		dos.getMascotas().add(mDos);
 		clienteDao.save(dos);
 		
 		Cliente tres=new Cliente();
@@ -100,27 +113,8 @@ public class Inicio {
 		tres.setTelefono("no tiene");
 		tres.setDireccion("Calle Los Robles, 12, Casarrubios del Monte");
 		tres.setDNI("no tiene");
+		tres.getMascotas().add(mTres);
 		clienteDao.save(tres);
-		
-	}
-	
-	public static void crearMascotas(Session sesion) {
-		MascotaDao mascotaDao=new MascotaDao(sesion);
-		
-		Mascota uno=new Mascota();
-		uno.setNombre("Kala");
-		uno.setRaza("Braco de Weimar");
-		mascotaDao.save(uno);
-		
-		Mascota dos=new Mascota();
-		dos.setNombre("Espartaco");
-		dos.setRaza("Persa mezcla");
-		mascotaDao.save(dos);
-		
-		Mascota tres=new Mascota();
-		tres.setNombre("Roma");
-		tres.setRaza("Golden");
-		mascotaDao.save(tres);		
 		
 	}
 

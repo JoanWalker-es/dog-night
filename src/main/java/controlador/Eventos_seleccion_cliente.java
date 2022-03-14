@@ -20,7 +20,7 @@ public class Eventos_seleccion_cliente implements ActionListener{
 	
 	public Eventos_seleccion_cliente(Seleccion_cliente ventana_seleccion) {
 		this.ventana=ventana_seleccion;
-		sesion=HibernateUtil.get().openSession();
+		sesion=HibernateUtil.get().openSession();		
 		clienteDao=new ClienteDao(sesion);
 		
 	}
@@ -29,8 +29,7 @@ public class Eventos_seleccion_cliente implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==ventana.getBtn_atras()) {
 			ventana.dispose();
-		}else if(e.getSource()==ventana.getBtn_buscar()) {
-			//AL PULSAR EL BOTON BUSCAR LLENAMOS EL COMBOBOX CON LOS CLIENTES 
+		}else if(e.getSource()==ventana.getBtn_buscar()) { 
 			ventana.getCbox_clientes().removeAllItems();
 			String busca=ventana.getTf_buscar().getText();
 			List <Cliente> clientes=clienteDao.like(busca);
@@ -38,8 +37,6 @@ public class Eventos_seleccion_cliente implements ActionListener{
 				ventana.getCbox_clientes().addItem(c);				
 			}
 		}else if(e.getSource()==ventana.getBtn_consulta()){
-			//AL PULSAR BOTON CONSULTA ABRIMOS NUEVA VENTANA CON LOS DATOS
-			
 			Cliente nuevo=(Cliente) ventana.getCbox_clientes().getSelectedItem();			
 			if(nuevo==null) {
 				mensaje="<html><body><center>DEBE SELECCIONAR UN</center><br><center>CLIENTE</center><br></body></html>";

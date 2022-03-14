@@ -27,6 +27,9 @@ public class Reserva {
 	
 	@Column(name="Total")
 	private double total;
+	
+	@Column(name="Mascotas")
+	private int num_mascotas;
 		
 	@ManyToOne
     @JoinColumn(name="idCliente")
@@ -111,6 +114,15 @@ public class Reserva {
 		this.cliente = cliente;
 	}
 
+	public int getNum_mascotas() {
+		return num_mascotas;
+	}
+
+	public void setNum_mascotas(int mascotas) {
+		this.num_mascotas = mascotas;
+	}
+
+	
 	
 	
 	

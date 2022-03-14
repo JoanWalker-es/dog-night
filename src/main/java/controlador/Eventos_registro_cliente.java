@@ -50,7 +50,6 @@ public class Eventos_registro_cliente implements ActionListener{
 				try {
 					clienteDao.save(nuevo);										
 					new Ventana_guardado_ok(ventana_registro,true).setVisible(true);
-					//ventana_registro.getBtn_reserva().setEnabled(true);
 					ventana_registro.getBtn_mascota_add().setEnabled(true);
 					ventana_registro.getBtn_guardar().setEnabled(false);
 				}catch(Exception ex) {

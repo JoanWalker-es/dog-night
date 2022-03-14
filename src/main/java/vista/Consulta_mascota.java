@@ -97,6 +97,7 @@ public class Consulta_mascota extends javax.swing.JDialog {
                 
         setResizable(false);
         setTitle("Consulta de datos mascota");        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btn_volver.setText("VOLVER");
 

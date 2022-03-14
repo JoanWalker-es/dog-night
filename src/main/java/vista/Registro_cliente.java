@@ -6,6 +6,7 @@ import controlador.Eventos_registro_cliente;
 
 import javax.swing.GroupLayout;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 
 public class Registro_cliente extends javax.swing.JDialog {
@@ -13,7 +14,7 @@ public class Registro_cliente extends javax.swing.JDialog {
     public Registro_cliente(java.awt.Frame parent,boolean modal) {
     	super(parent,modal);
         initComponents();
-        setSize(480,300);
+        setSize(480,350);
         this.setLocationRelativeTo(null); 
     }
                       
@@ -62,9 +63,11 @@ public class Registro_cliente extends javax.swing.JDialog {
 
         btn_mascota_add.setText("AÑADIR MASCOTA");
         
-        tf_cliente_direccion = new JTextField();
-        
         tf_cliente_dni = new JTextField();
+        
+        tf_cliente_direccion = new JTextArea();
+        tf_cliente_direccion.setWrapStyleWord(true);
+        tf_cliente_direccion.setLineWrap(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
@@ -87,20 +90,19 @@ public class Registro_cliente extends javax.swing.JDialog {
         							.addComponent(l_cliente_nombre, Alignment.TRAILING)))
         					.addGroup(layout.createParallelGroup(Alignment.LEADING)
         						.addGroup(layout.createSequentialGroup()
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        								.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        									.addComponent(tf_cliente_correo)
-        									.addComponent(tf_cliente_telefono)
-        									.addComponent(tf_cliente_apellidos)
-        									.addComponent(tf_cliente_nombre, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE))
-        								.addComponent(tf_cliente_direccion, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
-        								.addComponent(tf_cliente_dni, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)))
-        						.addGroup(layout.createSequentialGroup()
         							.addGap(10)
         							.addComponent(btn_guardar)
         							.addPreferredGap(ComponentPlacement.UNRELATED)
-        							.addComponent(btn_mascota_add)))))
+        							.addComponent(btn_mascota_add))
+        						.addGroup(layout.createSequentialGroup()
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        								.addComponent(tf_cliente_direccion, Alignment.LEADING)
+        								.addComponent(tf_cliente_correo, Alignment.LEADING)
+        								.addComponent(tf_cliente_telefono, Alignment.LEADING)
+        								.addComponent(tf_cliente_apellidos, Alignment.LEADING)
+        								.addComponent(tf_cliente_nombre, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+        								.addComponent(tf_cliente_dni, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))))))
         			.addGap(107))
         );
         layout.setVerticalGroup(
@@ -127,7 +129,7 @@ public class Registro_cliente extends javax.swing.JDialog {
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(l_cliente_direccion)
-        				.addComponent(tf_cliente_direccion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(tf_cliente_direccion, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(tf_cliente_dni, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -177,11 +179,7 @@ public class Registro_cliente extends javax.swing.JDialog {
 	public javax.swing.JTextField getTf_cliente_correo() {
 		return tf_cliente_correo;
 	}
-
-	public javax.swing.JTextField getTf_cliente_direccion() {
-		return tf_cliente_direccion;
-	}
-
+	
 	public javax.swing.JTextField getTf_cliente_nombre() {
 		return tf_cliente_nombre;
 	}
@@ -192,6 +190,10 @@ public class Registro_cliente extends javax.swing.JDialog {
 
 	public JTextField getTf_dni() {
 		return tf_cliente_dni;
+	}
+
+	public JTextArea getTf_cliente_direccion() {
+		return tf_cliente_direccion;
 	}
 
 
@@ -212,6 +214,6 @@ public class Registro_cliente extends javax.swing.JDialog {
     private javax.swing.JTextField tf_cliente_correo;
     private javax.swing.JTextField tf_cliente_nombre;
     private javax.swing.JTextField tf_cliente_telefono;
-    private JTextField tf_cliente_direccion;
     private JTextField tf_cliente_dni;
+    private JTextArea tf_cliente_direccion;
 }

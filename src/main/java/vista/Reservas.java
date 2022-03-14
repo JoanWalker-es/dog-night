@@ -30,6 +30,7 @@ public class Reservas extends javax.swing.JDialog {
         btn_eliminar = new javax.swing.JButton();
         btn_crear = new javax.swing.JButton();       
         btn_mostrar = new JButton();
+        btn_modificar = new JButton();
         
         setResizable(false);
         setTitle("Reservas");
@@ -76,7 +77,10 @@ public class Reservas extends javax.swing.JDialog {
 
         btn_crear.setText("CREAR RESERVA");
         
-        btn_mostrar.setText("MOSTRAR RESERVAS");
+        btn_mostrar.setText("MOSTRAR RESERVAS");        
+        
+        btn_modificar.setText("MODIFICAR RESERVA");
+        btn_modificar.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
@@ -93,9 +97,11 @@ public class Reservas extends javax.swing.JDialog {
         				.addGroup(layout.createSequentialGroup()
         					.addGap(169)
         					.addComponent(btn_atras)
-        					.addGap(83)
+        					.addGap(18)
         					.addComponent(btn_eliminar)
-        					.addGap(92)
+        					.addGap(18)
+        					.addComponent(btn_modificar)
+        					.addGap(18)
         					.addComponent(btn_crear))
         				.addGroup(layout.createSequentialGroup()
         					.addContainerGap()
@@ -116,6 +122,7 @@ public class Reservas extends javax.swing.JDialog {
         			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(btn_atras)
         				.addComponent(btn_eliminar)
+        				.addComponent(btn_modificar)
         				.addComponent(btn_crear))
         			.addContainerGap(40, Short.MAX_VALUE))
         );
@@ -128,6 +135,7 @@ public class Reservas extends javax.swing.JDialog {
         btn_crear.addActionListener(new Eventos_reservas(this));
         btn_eliminar.addActionListener(new Eventos_reservas(this));
         btn_mostrar.addActionListener(new Eventos_reservas(this));
+        btn_modificar.addActionListener(new Eventos_reservas(this));
         addWindowListener(new Eventos_reservas(this));
     }    
     
@@ -158,6 +166,11 @@ public class Reservas extends javax.swing.JDialog {
 	public DefaultTableModel getModelo() {
 		return modelo;
 	}
+	
+	public JButton getBtn_modificar() {
+		return btn_modificar;
+	}
+
 
 
 	private JButton btn_mostrar;
@@ -169,4 +182,5 @@ public class Reservas extends javax.swing.JDialog {
     private javax.swing.JLabel l_cliente;
     private javax.swing.JTable tabla_reservas;      
     private DefaultTableModel modelo;
+    private JButton btn_modificar;
 }

@@ -19,6 +19,8 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 	public static Cliente cliente;
 	public static String mensaje;
 	private Cliente todos=new Cliente("TODOS","LOS CLIENTES");
+	public static Reserva reserva;
+	public static boolean modificar;
 	
 	public Eventos_reservas(Reservas ventana_reservas) {
 		this.ventana_reservas=ventana_reservas;
@@ -33,7 +35,7 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 		if(e.getSource()==ventana_reservas.getBtn_atras()) {
 			ventana_reservas.dispose();
 		}else if(e.getSource()==ventana_reservas.getBtn_eliminar()) {	
-			
+			modificar=false;
 			try {
 				Object ob=ventana_reservas.getTabla_reservas().getValueAt(ventana_reservas.getTabla_reservas().getSelectedRow(),ventana_reservas.getTabla_reservas().getSelectedColumn());
 				Reserva reser=reservaDao.findOneById(Long.parseLong(ob.toString()));				
@@ -52,7 +54,8 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 			}				
 						
 			
-		}else if(e.getSource()==ventana_reservas.getBtn_crear()) {				
+		}else if(e.getSource()==ventana_reservas.getBtn_crear()) {		
+			modificar=false;
 			new Crear_reserva(ventana_reservas,true).setVisible(true);	
 			ventana_reservas.getBtn_crear().setEnabled(false);
 		}else if(e.getSource()==ventana_reservas.getBtn_mostrar()) {
@@ -66,6 +69,21 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 				ventana_reservas.getBtn_crear().setEnabled(true);	
 				rellenaTablaCliente(nuevo);
 				ventana_reservas.getBtn_eliminar().setEnabled(true);
+				ventana_reservas.getBtn_modificar().setEnabled(true);
+			}
+			
+		}else if(e.getSource()==ventana_reservas.getBtn_modificar()) {
+			//MODIFICAMOS LA RESERVA SELECIONADA
+			try {
+				Object ob=ventana_reservas.getTabla_reservas().getValueAt(ventana_reservas.getTabla_reservas().getSelectedRow(),ventana_reservas.getTabla_reservas().getSelectedColumn());
+				Reserva reser=reservaDao.findOneById(Long.parseLong(ob.toString()));
+				reserva=reser;
+				modificar=true;
+				new Crear_reserva(ventana_reservas,true).setVisible(true);
+
+			}catch(Exception ex) {
+				mensaje="<html><body><center>DEBE SELECCIONAR UN</center><br><center>CÓDIGO DE RESERVA</center><br></body></html>";
+				new Ventana_error(ventana_reservas,true).setVisible(true);
 			}
 			
 		}
