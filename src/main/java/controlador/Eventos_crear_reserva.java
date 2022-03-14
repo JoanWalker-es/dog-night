@@ -39,7 +39,7 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 	
 	public Eventos_crear_reserva(Crear_reserva ventana) {
 		this.ventana=ventana;
-		if(Eventos_reservas.sesion==null) {			
+		if(Eventos_consulta_cliente.sesion==null) {			
 			sesion=Eventos_consulta_cliente.sesion;
 		}else{
 			sesion=Eventos_reservas.sesion;
