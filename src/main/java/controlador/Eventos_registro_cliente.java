@@ -30,7 +30,6 @@ public class Eventos_registro_cliente implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==ventana_registro.getBtn_volver()) {
 			ventana_registro.dispose();
-			sesion.close();
 		}else if(e.getSource()==ventana_registro.getBtn_guardar()) {
 			
 			if(ventana_registro.getTf_cliente_nombre().getText().isEmpty()||ventana_registro.getTf_cliente_nombre().getText().isBlank()

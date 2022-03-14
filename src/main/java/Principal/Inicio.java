@@ -9,19 +9,6 @@ import modelo.Mascota;
 import modelo.MascotaDao;
 import modelo.Servicios;
 import modelo.ServiciosDao;
-import vista.Calendario;
-import vista.Consulta_cliente;
-import vista.Consulta_mascota;
-import vista.Datos_alimentos;
-import vista.Datos_medicos;
-import vista.Eliminar_reserva;
-import vista.Precios;
-import vista.Registro_cliente;
-import vista.Registro_mascota;
-import vista.Reserva_creada;
-import vista.Reservas;
-import vista.Crear_reserva;
-import vista.Seleccion_cliente;
 import vista.Ventana_principal;
 
 public class Inicio {
