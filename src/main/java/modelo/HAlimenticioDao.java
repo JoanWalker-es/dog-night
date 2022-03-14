@@ -5,40 +5,50 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import config.HibernateUtil;
+
 public class HAlimenticioDao implements CRUD<Historial_alimenticio> {
 	
-	private static Session session;
-	
-	public HAlimenticioDao(Session session) {
-		this.session=session;
-	}
+//	private static Session sesion;
+//	
+//	public HAlimenticioDao(Session session) {
+//		this.sesion=session;
+//	}
 
 	public void save(Historial_alimenticio t) {
-		Transaction tx=session.beginTransaction();
-		session.save(t);
+		Session sesion=HibernateUtil.get().openSession();
+		Transaction tx=sesion.beginTransaction();
+		sesion.save(t);
 		System.out.println("Historial alimenticio guardado correctamente con id: "+t.getId());
 		tx.commit();		
+		sesion.close();
 	}
 
 	public Historial_alimenticio findOneById(long id) {
-		Transaction tx=session.beginTransaction();
-		Historial_alimenticio alimentos=session.createQuery("FROM historial_alimenticio where idPerro=:id",Historial_alimenticio.class).setParameter("id", id).getSingleResult();
+		Session sesion=HibernateUtil.get().openSession();
+		Transaction tx=sesion.beginTransaction();
+		Historial_alimenticio alimentos=sesion.createQuery("FROM historial_alimenticio where idPerro=:id",Historial_alimenticio.class).setParameter("id", id).getSingleResult();
 		tx.commit();
+		sesion.close();
 		return alimentos; 
 	}
 
 	public void update(Historial_alimenticio t) {
-		Transaction tx=session.beginTransaction();
-		session.update(t);
+		Session sesion=HibernateUtil.get().openSession();
+		Transaction tx=sesion.beginTransaction();
+		sesion.update(t);
 		System.out.println("Historial alimenticio actualizado correctamente con id: "+t.getId());
-		tx.commit();		
+		tx.commit();	
+		sesion.close();
 	}
 
 	public void delete(Historial_alimenticio t) {
-		Transaction tx=session.beginTransaction();
-		session.delete(t);
+		Session sesion=HibernateUtil.get().openSession();
+		Transaction tx=sesion.beginTransaction();
+		sesion.delete(t);
 		System.out.println("Historial alimenticio eliminado correctamente con id: "+t.getId());
-		tx.commit();			
+		tx.commit();	
+		sesion.close();
 	}
 
 	public List<Historial_alimenticio> findAll() {

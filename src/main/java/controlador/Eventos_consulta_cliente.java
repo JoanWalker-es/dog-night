@@ -18,18 +18,16 @@ import vista.Registro_mascota;
 
 public class Eventos_consulta_cliente extends WindowAdapter implements ActionListener {
 
-	public static Session sesion;
 	private Consulta_cliente ventana;
 	public static Cliente cliente;
 	public static Mascota mascota;
 	private ClienteDao clienteDao;
 	public static boolean consulta;
 	
-	public Eventos_consulta_cliente(Consulta_cliente ventana) {
-		sesion=Eventos_seleccion_cliente.sesion;
+	public Eventos_consulta_cliente(Consulta_cliente ventana) {		
 		this.ventana=ventana;
 		this.cliente=Eventos_seleccion_cliente.cliente;
-		clienteDao=new ClienteDao(sesion);		
+		clienteDao=new ClienteDao();		
 	}
 	
 	@Override

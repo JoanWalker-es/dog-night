@@ -21,7 +21,6 @@ import vista.Consulta_mascota;
 
 public class Eventos_consulta_mascota extends WindowAdapter implements ActionListener {
 
-	private Session sesion;
 	private Consulta_mascota ventana;
 	private Mascota mascota;
 	private MascotaDao mascotaDao;
@@ -31,12 +30,11 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 	private Historial_alimenticio alimento;
 	
 	public Eventos_consulta_mascota(Consulta_mascota ventana) {
-		sesion=Eventos_seleccion_cliente.sesion;
 		this.ventana=ventana;
 		this.mascota=Eventos_consulta_cliente.mascota;
-		mascotaDao=new MascotaDao(sesion);		
-		medicoDao=new HMedicoDao(sesion);
-		alimentoDao=new HAlimenticioDao(sesion);
+		mascotaDao=new MascotaDao();		
+		medicoDao=new HMedicoDao();
+		alimentoDao=new HAlimenticioDao();
 		medico=new Historial_medico();
 		alimento=new Historial_alimenticio();
 	}

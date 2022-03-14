@@ -42,10 +42,10 @@ public class Inicio {
 		System.out.println("Finalizando configuracion Hibernate");
 	}
 	
-	public static void crearDatos(Session sesion) {
-		ClienteDao clienteDao = new ClienteDao(sesion);		
-		MascotaDao mascotaDao=new MascotaDao(sesion);
-		ServiciosDao oper_serv=new ServiciosDao(sesion);
+	public static void crearDatos() {
+		ClienteDao clienteDao = new ClienteDao();		
+		MascotaDao mascotaDao=new MascotaDao();
+		ServiciosDao oper_serv=new ServiciosDao();
 		
 		Servicios general=new Servicios();
 		general.setNombre("General");

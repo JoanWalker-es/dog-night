@@ -22,7 +22,6 @@ import vista.Ventana_error;
 public class Eventos_crear_reserva extends WindowAdapter implements ActionListener{
 
 	private Crear_reserva ventana;
-	private Session sesion;
 	private ReservaDao reservaDao;
 	private ServiciosDao serviciosDao;
 	private ClienteDao clienteDao;
@@ -38,15 +37,10 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 	
 	
 	public Eventos_crear_reserva(Crear_reserva ventana) {
-		this.ventana=ventana;
-		if(Eventos_reservas.sesion==null) {			
-			sesion=Eventos_consulta_cliente.sesion;
-		}else{
-			sesion=Eventos_reservas.sesion;
-		}	
-		reservaDao=new ReservaDao(sesion);
-		serviciosDao=new ServiciosDao(sesion);
-		clienteDao=new ClienteDao(sesion);			
+		this.ventana=ventana;			
+		reservaDao=new ReservaDao();
+		serviciosDao=new ServiciosDao();
+		clienteDao=new ClienteDao();			
 		calendario=Calendar.getInstance();
 		if(Eventos_consulta_cliente.consulta) {
 			cliente=Eventos_consulta_cliente.cliente;
@@ -93,13 +87,14 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 				cliente.addReserva(reserva);
 				
 				try {
-					if(Eventos_reservas.modificar) {
-						System.out.println("ACTUALIZANDO");
-						reservaDao.update(reserva);						
-					}else {
-						System.out.println("GUARDANDO");
-						reservaDao.save(reserva);
-					}					
+//					if(Eventos_reservas.modificar) {
+//						System.out.println("ACTUALIZANDO");
+//						reservaDao.update(reserva);						
+//					}else {
+//						System.out.println("GUARDANDO");
+//						reservaDao.save(reserva);
+//					}	
+					reservaDao.saveOrUpdate(reserva);
 					clienteDao.update(cliente);
 					new Reserva_creada(ventana,true).setVisible(true);
 					ventana.getBtn_registrar().setEnabled(false);

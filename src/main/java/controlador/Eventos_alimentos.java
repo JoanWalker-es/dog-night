@@ -15,12 +15,10 @@ public class Eventos_alimentos implements ActionListener{
 	private Datos_alimentos ventana;
 	private HAlimenticioDao alimentoDao;
 	private Historial_alimenticio alimento;
-	private Session sesion;
 	
 	public Eventos_alimentos(Datos_alimentos ventana) {
 		this.ventana=ventana;
-		sesion=HibernateUtil.get().openSession();
-		alimentoDao=new HAlimenticioDao(sesion);		
+		alimentoDao=new HAlimenticioDao();		
 	}
 	
 	@Override

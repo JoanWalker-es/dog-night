@@ -16,21 +16,18 @@ public class Eventos_registro_cliente implements ActionListener{
 	
 	private Registro_cliente ventana_registro;
 	private ClienteDao clienteDao;
-	public static Session sesion;
 	public static Cliente nuevo;
 	public static String mensaje;
 	
 	public Eventos_registro_cliente(Registro_cliente ventana_registro) {
 		this.ventana_registro=ventana_registro;
-		sesion=HibernateUtil.get().openSession();
-		clienteDao=new ClienteDao(sesion);
+		clienteDao=new ClienteDao();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==ventana_registro.getBtn_volver()) {
 			ventana_registro.dispose();
-			sesion.close();
 		}else if(e.getSource()==ventana_registro.getBtn_guardar()) {
 			
 			if(ventana_registro.getTf_cliente_nombre().getText().isEmpty()||ventana_registro.getTf_cliente_nombre().getText().isBlank()

@@ -13,12 +13,10 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 	
 	private Precios ventana_precios;
 	private ServiciosDao servicioDao;
-	private Session sesion;
 	
 	public Eventos_precios(Precios ventana) {
 		this.ventana_precios=ventana;
-		sesion=HibernateUtil.get().openSession();
-		servicioDao=new ServiciosDao(sesion);
+		servicioDao=new ServiciosDao();
 	}
 
 	@Override

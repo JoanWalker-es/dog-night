@@ -31,11 +31,11 @@ public class Reserva {
 	@Column(name="Mascotas")
 	private int num_mascotas;
 		
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idCliente")
     private Cliente cliente;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)	
 	@JoinTable(
 			name = "reservas_servicios",
 			joinColumns = @JoinColumn(name = "codigo"),

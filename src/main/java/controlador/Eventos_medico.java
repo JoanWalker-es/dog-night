@@ -14,14 +14,12 @@ import vista.Ventana_guardado_ok;
 
 public class Eventos_medico implements ActionListener{
 
-	private Session sesion;
 	private Datos_medicos ventana;
 	private HMedicoDao medicoDao;
 	
 	public Eventos_medico(Datos_medicos ventana) {
 		this.ventana=ventana;
-		sesion=HibernateUtil.get().openSession();
-		medicoDao=new HMedicoDao(sesion);
+		medicoDao=new HMedicoDao();
 	}
 	
 	@Override
