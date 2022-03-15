@@ -11,14 +11,15 @@ public class Eventos_registro_mascota implements ActionListener{
 	
 	private Registro_mascota ventana_registro;
 	private MascotaDao mascotaDao;
-	private Session sesion;
 	private ClienteDao clienteDao;	
 	public static Mascota mascota;
 	public static String mensaje;
 	private Cliente cliente;
+	private Session sesion;
 	
 	public Eventos_registro_mascota(Registro_mascota ventana_registro) {
 		this.ventana_registro=ventana_registro;
+
 //		if(Eventos_registro_cliente.sesion==null) {
 //			sesion=Eventos_seleccion_cliente.sesion;
 //		}else {
@@ -27,6 +28,7 @@ public class Eventos_registro_mascota implements ActionListener{
 		sesion=Inicio.sesion;
 		mascotaDao=new MascotaDao(sesion);
 		clienteDao=new ClienteDao(sesion);
+
 	}
 
 	@Override

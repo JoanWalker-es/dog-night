@@ -22,7 +22,6 @@ import vista.Consulta_mascota;
 
 public class Eventos_consulta_mascota extends WindowAdapter implements ActionListener {
 
-	private Session sesion;
 	private Consulta_mascota ventana;
 	private Mascota mascota;
 	private MascotaDao mascotaDao;
@@ -30,8 +29,10 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 	private HAlimenticioDao alimentoDao;
 	private Historial_medico medico;
 	private Historial_alimenticio alimento;
+	private Session sesion;
 	
 	public Eventos_consulta_mascota(Consulta_mascota ventana) {
+
 		//sesion=Eventos_seleccion_cliente.sesion;
 		sesion=Inicio.sesion;
 		this.ventana=ventana;

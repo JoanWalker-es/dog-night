@@ -14,17 +14,19 @@ import vista.Ventana_error;
 
 public class Eventos_seleccion_cliente implements ActionListener{
 	
-	public static Session sesion;
 	private Seleccion_cliente ventana;
 	private ClienteDao clienteDao;
 	public static Cliente cliente;
 	public static String mensaje;
+	private Session sesion;
 	
 	public Eventos_seleccion_cliente(Seleccion_cliente ventana_seleccion) {
+
 		this.ventana=ventana_seleccion;
 		//sesion=HibernateUtil.get().openSession();
 		sesion=Inicio.sesion;
 		clienteDao=new ClienteDao(sesion);
+
 		
 	}
 

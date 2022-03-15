@@ -20,14 +20,15 @@ import vista.Registro_mascota;
 
 public class Eventos_consulta_cliente extends WindowAdapter implements ActionListener {
 
-	public static Session sesion;
 	private Consulta_cliente ventana;
 	public static Cliente cliente;
 	public static Mascota mascota;
 	private ClienteDao clienteDao;
 	public static boolean consulta;
 	private MascotaDao mascotaDao;
+	private Session sesion;
 	
+
 	public Eventos_consulta_cliente(Consulta_cliente ventana) {
 		//sesion=Eventos_seleccion_cliente.sesion;
 		sesion=Inicio.sesion;

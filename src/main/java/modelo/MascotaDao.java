@@ -5,45 +5,47 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import config.HibernateUtil;
+
 public class MascotaDao implements CRUD<Mascota> {
 	
-	private Session session;
+	private Session sesion;
 
 	public MascotaDao(Session session) {
-		this.session=session;
+		this.sesion=session;
 	}
 
 	public void save(Mascota t) {
-		Transaction tx=session.beginTransaction();
-		session.save(t);
+		Transaction tx=sesion.beginTransaction();
+		sesion.save(t);
 		System.out.println("Perro guardado correctamente con el id: "+t.getIdPerro());
-		tx.commit();		
+		tx.commit();	
 	}
 
 	public List<Mascota> findAll() {
-		Transaction tx=session.beginTransaction();
-		List<Mascota> perros=session.createQuery("FROM Mascota",Mascota.class).getResultList();
+		Transaction tx=sesion.beginTransaction();
+		List<Mascota> perros=sesion.createQuery("FROM Mascota",Mascota.class).getResultList();
 		tx.commit();
 		return perros; 
 	}
 
 	public Mascota findOneById(long id) {
-		Transaction tx=session.beginTransaction();
-		Mascota perro=session.createQuery("FROM Mascota where idPerro=:id",Mascota.class).setParameter("id", id).getSingleResult();
+		Transaction tx=sesion.beginTransaction();
+		Mascota perro=sesion.createQuery("FROM Mascota where idPerro=:id",Mascota.class).setParameter("id", id).getSingleResult();
 		tx.commit();
 		return perro; 
 	}
 
 	public void update(Mascota t) {
-		Transaction tx=session.beginTransaction();
-		session.update(t);
+		Transaction tx=sesion.beginTransaction();
+		sesion.update(t);
 		System.out.println("Perro actualizado correctamente con el id: "+t.getIdPerro());
-		tx.commit();			
+		tx.commit();		
 	}
 
 	public void delete(Mascota t) {
-		Transaction tx=session.beginTransaction();
-		session.delete(t);
+		Transaction tx=sesion.beginTransaction();
+		sesion.delete(t);
 		System.out.println("Perro eliminado correctamente con el id: "+t.getIdPerro());
 		tx.commit();
 	}

@@ -27,6 +27,7 @@ public class Eventos_alimentos implements ActionListener{
 		sesion=Inicio.sesion;
 		alimentoDao=new HAlimenticioDao(sesion);
 		mascotaDao=new MascotaDao(sesion);
+
 	}
 	
 	@Override

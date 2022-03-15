@@ -18,15 +18,16 @@ public class Eventos_registro_cliente implements ActionListener{
 	
 	private Registro_cliente ventana_registro;
 	private ClienteDao clienteDao;
-	public static Session sesion;
 	public static Cliente nuevo;
 	public static String mensaje;
+	private Session sesion;
 	
 	public Eventos_registro_cliente(Registro_cliente ventana_registro) {
 		this.ventana_registro=ventana_registro;
 		//sesion=HibernateUtil.get().openSession();
 		sesion=Inicio.sesion;
 		clienteDao=new ClienteDao(sesion);
+
 	}
 
 	@Override

@@ -15,7 +15,6 @@ import vista.*;
 public class Eventos_reservas extends WindowAdapter implements ActionListener{
 	
 	private Reservas ventana_reservas;
-	public static Session sesion;
 	private ReservaDao reservaDao;
 	private ClienteDao clienteDao;
 	public static Cliente cliente;
@@ -23,13 +22,16 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 	private Cliente todos=new Cliente("TODOS","LOS CLIENTES");
 	public static Reserva reserva;
 	public static boolean modificar;
+	private Session sesion;
 	
 	public Eventos_reservas(Reservas ventana_reservas) {
 		this.ventana_reservas=ventana_reservas;
+
 		//sesion=HibernateUtil.get().openSession();
 		sesion=Inicio.sesion;
 		reservaDao=new ReservaDao(sesion);
 		clienteDao=new ClienteDao(sesion);
+
 		
 	}
 

@@ -35,7 +35,7 @@ public class Reserva {
     @JoinColumn(name="idCliente")
     private Cliente cliente;
 	
-	@ManyToMany
+	@ManyToMany	
 	@JoinTable(
 			name = "reservas_servicios",
 			joinColumns = @JoinColumn(name = "codigo"),

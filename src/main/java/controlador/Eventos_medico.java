@@ -16,10 +16,10 @@ import vista.Ventana_guardado_ok;
 
 public class Eventos_medico implements ActionListener{
 
-	private Session sesion;
 	private Datos_medicos ventana;
 	private HMedicoDao medicoDao;
 	private MascotaDao mascotaDao;
+	private Session sesion;
 	
 	public Eventos_medico(Datos_medicos ventana) {
 		this.ventana=ventana;
@@ -27,6 +27,7 @@ public class Eventos_medico implements ActionListener{
 		sesion=Inicio.sesion;
 		medicoDao=new HMedicoDao(sesion);
 		mascotaDao=new MascotaDao(sesion);
+
 	}
 	
 	@Override

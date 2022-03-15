@@ -21,6 +21,7 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 		//sesion=HibernateUtil.get().openSession();
 		sesion=Inicio.sesion;
 		servicioDao=new ServiciosDao(sesion);
+
 	}
 
 	@Override
