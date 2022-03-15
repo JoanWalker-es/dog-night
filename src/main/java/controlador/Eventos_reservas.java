@@ -3,6 +3,8 @@ package controlador;
 import java.awt.event.*;
 import java.util.List;
 import org.hibernate.Session;
+
+import Principal.Inicio;
 import config.HibernateUtil;
 import modelo.Cliente;
 import modelo.ClienteDao;
@@ -24,7 +26,8 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 	
 	public Eventos_reservas(Reservas ventana_reservas) {
 		this.ventana_reservas=ventana_reservas;
-		sesion=HibernateUtil.get().openSession();
+		//sesion=HibernateUtil.get().openSession();
+		sesion=Inicio.sesion;
 		reservaDao=new ReservaDao(sesion);
 		clienteDao=new ClienteDao(sesion);
 		
@@ -35,7 +38,7 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 		if(e.getSource()==ventana_reservas.getBtn_atras()) {
 			ventana_reservas.dispose();
 		}else if(e.getSource()==ventana_reservas.getBtn_eliminar()) {	
-			modificar=false;
+			//modificar=false;
 			try {
 				Object ob=ventana_reservas.getTabla_reservas().getValueAt(ventana_reservas.getTabla_reservas().getSelectedRow(),ventana_reservas.getTabla_reservas().getSelectedColumn());
 				Reserva reser=reservaDao.findOneById(Long.parseLong(ob.toString()));				
@@ -55,19 +58,18 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 						
 			
 		}else if(e.getSource()==ventana_reservas.getBtn_crear()) {		
-			modificar=false;
+			//modificar=false;
 			new Crear_reserva(ventana_reservas,true).setVisible(true);	
 			ventana_reservas.getBtn_crear().setEnabled(false);
 		}else if(e.getSource()==ventana_reservas.getBtn_mostrar()) {
 			
-			Cliente nuevo=(Cliente) ventana_reservas.getCbox_selec_cliente().getSelectedItem();
-			
+			Cliente nuevo=(Cliente) ventana_reservas.getCbox_selec_cliente().getSelectedItem();			
 			if(nuevo.getNombre().equals(todos.getNombre())) {
 				rellenaTabla();
 			}else {				
 				cliente=clienteDao.findOneById(nuevo.getIdCliente());
 				ventana_reservas.getBtn_crear().setEnabled(true);	
-				rellenaTablaCliente(nuevo);
+				rellenaTablaCliente(cliente);
 				ventana_reservas.getBtn_eliminar().setEnabled(true);
 				ventana_reservas.getBtn_modificar().setEnabled(true);
 			}
@@ -79,7 +81,9 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 				Reserva reser=reservaDao.findOneById(Long.parseLong(ob.toString()));
 				reserva=reser;
 				modificar=true;
+				mensaje="<html><body><center>RESERVA MODIFICADA CORRECTAMENTE</center><br></body></html>";
 				new Crear_reserva(ventana_reservas,true).setVisible(true);
+				modificar=false;
 
 			}catch(Exception ex) {
 				mensaje="<html><body><center>DEBE SELECCIONAR UN</center><br><center>CÓDIGO DE RESERVA</center><br></body></html>";
@@ -118,13 +122,12 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 		}
 	}
 
-	private void rellenaTablaCliente(Cliente cliente) {			
+	private void rellenaTablaCliente(Cliente cliente) {				
+		List<Reserva> reservas=clienteDao.findOneById(cliente.getId()).getReservas();
 		ventana_reservas.getModelo().setRowCount(0);
-		
-		List<Reserva> reservas=cliente.getReservas();		
 		if(cliente.getReservas().size()<1) {
 			ventana_reservas.getModelo().setRowCount(0);
-		}else {
+		}else {			
 			for(Reserva r:reservas) {
 				Object[] obj=new Object[6];
 				obj[0]=r.getCodigo();

@@ -12,6 +12,9 @@ public class Eventos_reserva_creada extends WindowAdapter implements ActionListe
 	
 	public Eventos_reserva_creada(Reserva_creada ventana) {
 		this.ventana=ventana;		
+		if(Eventos_reservas.mensaje!=null) {
+			ventana.getL_creada().setText(Eventos_reservas.mensaje);
+		}
 	}
 	
 	

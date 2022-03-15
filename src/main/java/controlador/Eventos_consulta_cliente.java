@@ -8,9 +8,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import Principal.Inicio;
 import modelo.Cliente;
 import modelo.ClienteDao;
 import modelo.Mascota;
+import modelo.MascotaDao;
 import vista.Consulta_cliente;
 import vista.Consulta_mascota;
 import vista.Crear_reserva;
@@ -24,12 +26,15 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 	public static Mascota mascota;
 	private ClienteDao clienteDao;
 	public static boolean consulta;
+	private MascotaDao mascotaDao;
 	
 	public Eventos_consulta_cliente(Consulta_cliente ventana) {
-		sesion=Eventos_seleccion_cliente.sesion;
+		//sesion=Eventos_seleccion_cliente.sesion;
+		sesion=Inicio.sesion;
 		this.ventana=ventana;
 		this.cliente=Eventos_seleccion_cliente.cliente;
 		clienteDao=new ClienteDao(sesion);		
+		mascotaDao=new MascotaDao(sesion);
 	}
 	
 	@Override
@@ -39,9 +44,10 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 		}else if(e.getSource()==ventana.getBtn_reserva()) {
 			consulta=true;
 			new Crear_reserva(ventana,true).setVisible(true);
-			
+			consulta=false;
 		}else if(e.getSource()==ventana.getBtn_mascota_datos()) {
-			mascota=(Mascota)ventana.getCb_mascotas().getSelectedItem();
+			Mascota perro=(Mascota)ventana.getCb_mascotas().getSelectedItem();
+			mascota=mascotaDao.findOneById(perro.getIdPerro());			
 			new Consulta_mascota(ventana,true).setVisible(true);
 			
 		}else if(e.getSource()==ventana.getBtn_editar()) {

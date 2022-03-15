@@ -22,14 +22,14 @@ public class MascotaDao implements CRUD<Mascota> {
 
 	public List<Mascota> findAll() {
 		Transaction tx=session.beginTransaction();
-		List<Mascota> perros=session.createQuery("FROM perro",Mascota.class).getResultList();
+		List<Mascota> perros=session.createQuery("FROM Mascota",Mascota.class).getResultList();
 		tx.commit();
 		return perros; 
 	}
 
 	public Mascota findOneById(long id) {
 		Transaction tx=session.beginTransaction();
-		Mascota perro=session.createQuery("FROM perro where idPerro=:id",Mascota.class).setParameter("id", id).getSingleResult();
+		Mascota perro=session.createQuery("FROM Mascota where idPerro=:id",Mascota.class).setParameter("id", id).getSingleResult();
 		tx.commit();
 		return perro; 
 	}

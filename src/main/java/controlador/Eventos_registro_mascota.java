@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.*;
 import org.hibernate.Session;
+
+import Principal.Inicio;
 import modelo.*;
 import vista.*;
 
@@ -17,11 +19,12 @@ public class Eventos_registro_mascota implements ActionListener{
 	
 	public Eventos_registro_mascota(Registro_mascota ventana_registro) {
 		this.ventana_registro=ventana_registro;
-		if(Eventos_registro_cliente.sesion==null) {
-			sesion=Eventos_seleccion_cliente.sesion;
-		}else {
-			sesion=Eventos_registro_cliente.sesion;
-		}		
+//		if(Eventos_registro_cliente.sesion==null) {
+//			sesion=Eventos_seleccion_cliente.sesion;
+//		}else {
+//			sesion=Eventos_registro_cliente.sesion;
+//		}	
+		sesion=Inicio.sesion;
 		mascotaDao=new MascotaDao(sesion);
 		clienteDao=new ClienteDao(sesion);
 	}

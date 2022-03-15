@@ -6,6 +6,7 @@ import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class Reserva_creada extends javax.swing.JDialog {
     
@@ -19,6 +20,7 @@ public class Reserva_creada extends javax.swing.JDialog {
     private void initComponents() {
 
         l_creada = new javax.swing.JLabel();
+        l_creada.setHorizontalAlignment(SwingConstants.CENTER);
         l_inicio = new javax.swing.JLabel();
         l_fin = new javax.swing.JLabel();
         l_total = new javax.swing.JLabel();
@@ -62,21 +64,22 @@ public class Reserva_creada extends javax.swing.JDialog {
         		.addGroup(layout.createSequentialGroup()
         			.addContainerGap(54, Short.MAX_VALUE)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(l_creada)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        							.addComponent(l_inicio)
-        							.addComponent(l_fin)
-        							.addComponent(l_total, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        						.addComponent(l_total_mascotas, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE))
-        					.addGap(18)
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(tf_total, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(tf_total_mascotas, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(tf_fin, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(tf_inicio, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))))
-        			.addGap(66))
+        				.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        					.addComponent(l_inicio)
+        					.addComponent(l_fin)
+        					.addComponent(l_total, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        				.addComponent(l_total_mascotas, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE))
+        			.addGap(18)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(tf_total, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(tf_total_mascotas, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(tf_fin, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(tf_inicio, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+        			.addGap(110))
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(l_creada, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+        			.addContainerGap())
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
@@ -131,6 +134,11 @@ public class Reserva_creada extends javax.swing.JDialog {
 	public JTextField getTf_total_mascotas() {
 		return tf_total_mascotas;
 	}
+	
+	public javax.swing.JLabel getL_creada() {
+		return l_creada;
+	}
+
 
 
 

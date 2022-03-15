@@ -3,6 +3,8 @@ package controlador;
 import java.awt.event.*;
 import java.util.List;
 import org.hibernate.Session;
+
+import Principal.Inicio;
 import config.HibernateUtil;
 import modelo.Cliente;
 import modelo.ClienteDao;
@@ -20,7 +22,8 @@ public class Eventos_seleccion_cliente implements ActionListener{
 	
 	public Eventos_seleccion_cliente(Seleccion_cliente ventana_seleccion) {
 		this.ventana=ventana_seleccion;
-		sesion=HibernateUtil.get().openSession();		
+		//sesion=HibernateUtil.get().openSession();
+		sesion=Inicio.sesion;
 		clienteDao=new ClienteDao(sesion);
 		
 	}

@@ -7,6 +7,7 @@ import java.util.Calendar;
 import org.hibernate.Session;
 import org.hibernate.internal.build.AllowSysOut;
 
+import Principal.Inicio;
 import config.HibernateUtil;
 import modelo.Cliente;
 import modelo.ClienteDao;
@@ -39,11 +40,12 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 	
 	public Eventos_crear_reserva(Crear_reserva ventana) {
 		this.ventana=ventana;
-		if(Eventos_consulta_cliente.sesion==null) {			
-			sesion=Eventos_consulta_cliente.sesion;
-		}else{
-			sesion=Eventos_reservas.sesion;
-		}	
+//		if(Eventos_consulta_cliente.sesion!=null) {			
+//			sesion=Eventos_consulta_cliente.sesion;
+//		}else{
+//			sesion=Eventos_reservas.sesion;
+//		}	
+		sesion=Inicio.sesion;
 		reservaDao=new ReservaDao(sesion);
 		serviciosDao=new ServiciosDao(sesion);
 		clienteDao=new ClienteDao(sesion);			
@@ -75,10 +77,7 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 				new Ventana_error(ventana,true).setVisible(true);
 			}else {		
 				List<Mascota> mascotas=ventana.getList_mascotas().getSelectedValuesList();				
-
-				if(!Eventos_reservas.modificar) {
-					reserva=new Reserva();		
-				}				
+			
 				reserva.setNum_mascotas(mascotas.size());
 				reserva.setFecha_inicio(new java.sql.Date(ventana.getJdate_llegada().getDate().getTime()));
 				reserva.setFecha_fin(new java.sql.Date(ventana.getJdate_salida().getDate().getTime()));
@@ -94,10 +93,8 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 				
 				try {
 					if(Eventos_reservas.modificar) {
-						System.out.println("ACTUALIZANDO");
 						reservaDao.update(reserva);						
 					}else {
-						System.out.println("GUARDANDO");
 						reservaDao.save(reserva);
 					}					
 					clienteDao.update(cliente);
@@ -125,6 +122,7 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 			reserva=Eventos_reservas.reserva;
 			rellenaDatos();
 		}else {
+			reserva=new Reserva();	
 			for(Mascota m:cliente.getMascotas()) {
 				ventana.getModelo().addElement(m);
 			}

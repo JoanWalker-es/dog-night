@@ -3,9 +3,12 @@ package controlador;
 import java.awt.event.*;
 
 import org.hibernate.Session;
+
+import Principal.Inicio;
 import config.HibernateUtil;
 import modelo.HAlimenticioDao;
 import modelo.Historial_alimenticio;
+import modelo.MascotaDao;
 import vista.Datos_alimentos;
 import vista.Ventana_error;
 import vista.Ventana_guardado_ok;
@@ -16,11 +19,14 @@ public class Eventos_alimentos implements ActionListener{
 	private HAlimenticioDao alimentoDao;
 	private Historial_alimenticio alimento;
 	private Session sesion;
+	private MascotaDao mascotaDao;
 	
 	public Eventos_alimentos(Datos_alimentos ventana) {
 		this.ventana=ventana;
-		sesion=HibernateUtil.get().openSession();
-		alimentoDao=new HAlimenticioDao(sesion);		
+		//sesion=HibernateUtil.get().openSession();
+		sesion=Inicio.sesion;
+		alimentoDao=new HAlimenticioDao(sesion);
+		mascotaDao=new MascotaDao(sesion);
 	}
 	
 	@Override
@@ -35,9 +41,11 @@ public class Eventos_alimentos implements ActionListener{
 			alimento.setTipo_intolerancia(ventana.getTf_intolerancia_tipo().getText());
 			alimento.setDescripcion_intolerancia(ventana.getTa_intolerancia_descripcion().getText());			
 			alimento.setPerro(Eventos_registro_mascota.mascota);
+			Eventos_registro_mascota.mascota.setAlimentos(alimento);
 			
 			try {
-				alimentoDao.save(alimento);						
+				alimentoDao.save(alimento);		
+				mascotaDao.update(Eventos_registro_mascota.mascota);
 				new Ventana_guardado_ok(ventana,true).setVisible(true);
 				ventana.getBtn_guardar().setEnabled(false);
 			}catch(Exception ex) {				

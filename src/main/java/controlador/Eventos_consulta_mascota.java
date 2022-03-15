@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import Principal.Inicio;
 import modelo.Cliente;
 import modelo.ClienteDao;
 import modelo.HAlimenticioDao;
@@ -31,27 +32,27 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 	private Historial_alimenticio alimento;
 	
 	public Eventos_consulta_mascota(Consulta_mascota ventana) {
-		sesion=Eventos_seleccion_cliente.sesion;
+		//sesion=Eventos_seleccion_cliente.sesion;
+		sesion=Inicio.sesion;
 		this.ventana=ventana;
-		this.mascota=Eventos_consulta_cliente.mascota;
+		//this.mascota=Eventos_consulta_cliente.mascota;		
 		mascotaDao=new MascotaDao(sesion);		
 		medicoDao=new HMedicoDao(sesion);
 		alimentoDao=new HAlimenticioDao(sesion);
 		medico=new Historial_medico();
 		alimento=new Historial_alimenticio();
+		this.mascota=mascotaDao.findOneById(Eventos_consulta_cliente.mascota.getIdPerro());		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==ventana.getBtn_volver()) {
 			ventana.dispose();
-		}else if(e.getSource()==ventana.getBtn_editar()) {
-			
+		}else if(e.getSource()==ventana.getBtn_editar()) {			
 			habilitarCampos(true);
 			ventana.getBtn_guardar().setEnabled(true);
 			ventana.getBtn_editar().setEnabled(false);
-		}else if(e.getSource()==ventana.getBtn_guardar()) {
-			
+		}else if(e.getSource()==ventana.getBtn_guardar()) {			
 			guardarMascota();
 			habilitarCampos(false);
 			ventana.getBtn_guardar().setEnabled(false);
@@ -60,7 +61,7 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 		
 	}
 	
-	public void windowOpened(WindowEvent e) {
+	public void windowOpened(WindowEvent e) {		
 		ventana.getTf_mascota_nombre().setText(mascota.getNombre());
 		ventana.getTf_mascota_chip().setText(mascota.getChip());
 		ventana.getJdate_mascota_fecha().setDate(mascota.getFecha());

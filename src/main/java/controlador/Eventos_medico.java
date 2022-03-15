@@ -5,9 +5,11 @@ import java.awt.event.ActionListener;
 
 import org.hibernate.Session;
 
+import Principal.Inicio;
 import config.HibernateUtil;
 import modelo.HMedicoDao;
 import modelo.Historial_medico;
+import modelo.MascotaDao;
 import vista.Datos_medicos;
 import vista.Ventana_error;
 import vista.Ventana_guardado_ok;
@@ -17,11 +19,14 @@ public class Eventos_medico implements ActionListener{
 	private Session sesion;
 	private Datos_medicos ventana;
 	private HMedicoDao medicoDao;
+	private MascotaDao mascotaDao;
 	
 	public Eventos_medico(Datos_medicos ventana) {
 		this.ventana=ventana;
-		sesion=HibernateUtil.get().openSession();
+		//sesion=HibernateUtil.get().openSession();
+		sesion=Inicio.sesion;
 		medicoDao=new HMedicoDao(sesion);
+		mascotaDao=new MascotaDao(sesion);
 	}
 	
 	@Override
@@ -43,9 +48,11 @@ public class Eventos_medico implements ActionListener{
 			medico.setDosis_medicacion(ventana.getTf_medicacion_dosis().getText());
 			medico.setComentarios_medicacion(ventana.getTa_medicacion_comentarios().getText());
 			medico.setPerro(Eventos_registro_mascota.mascota);
+			Eventos_registro_mascota.mascota.setMedico(medico);
 			
 			try {
-				medicoDao.save(medico);						
+				medicoDao.save(medico);			
+				mascotaDao.update(Eventos_registro_mascota.mascota);
 				new Ventana_guardado_ok(ventana,true).setVisible(true);
 				ventana.getBtn_guardar().setEnabled(false);
 			}catch(Exception ex) {				

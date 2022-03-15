@@ -3,6 +3,8 @@ package controlador;
 import java.awt.event.*;
 
 import org.hibernate.Session;
+
+import Principal.Inicio;
 import config.HibernateUtil;
 import modelo.Cliente;
 import modelo.ClienteDao;
@@ -22,7 +24,8 @@ public class Eventos_registro_cliente implements ActionListener{
 	
 	public Eventos_registro_cliente(Registro_cliente ventana_registro) {
 		this.ventana_registro=ventana_registro;
-		sesion=HibernateUtil.get().openSession();
+		//sesion=HibernateUtil.get().openSession();
+		sesion=Inicio.sesion;
 		clienteDao=new ClienteDao(sesion);
 	}
 

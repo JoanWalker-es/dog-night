@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import Principal.Inicio;
 import config.HibernateUtil;
 import modelo.*;
 import vista.*;
@@ -17,7 +18,8 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 	
 	public Eventos_precios(Precios ventana) {
 		this.ventana_precios=ventana;
-		sesion=HibernateUtil.get().openSession();
+		//sesion=HibernateUtil.get().openSession();
+		sesion=Inicio.sesion;
 		servicioDao=new ServiciosDao(sesion);
 	}
 
