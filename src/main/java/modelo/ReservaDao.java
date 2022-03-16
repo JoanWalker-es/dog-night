@@ -1,11 +1,9 @@
 package modelo;
 
 import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import config.HibernateUtil;
 
 public class ReservaDao implements CRUD<Reserva> {
 	
@@ -56,5 +54,7 @@ public class ReservaDao implements CRUD<Reserva> {
 		System.out.println("Reserva eliminada correctamente con el id: "+t.getCodigo());
 		tx.commit();
 	}
+	
+	
 
 }
