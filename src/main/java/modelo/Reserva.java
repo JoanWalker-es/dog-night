@@ -122,6 +122,11 @@ public class Reserva {
 		this.num_mascotas = mascotas;
 	}
 
+	@Override
+	public String toString() {
+		return "Reserva [codigo=" + codigo + "]";
+	}
+
 	
 	
 	

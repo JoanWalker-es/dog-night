@@ -54,10 +54,18 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 				new Ventana_error(ventana_reservas,true).setVisible(true);
 			}						
 			
-		}else if(e.getSource()==ventana_reservas.getBtn_crear()) {	
-			mensaje="<html><body><center>RESERVA CREADA CORRECTAMENTE</center><br></body></html>";
-			new Crear_reserva(ventana_reservas,true).setVisible(true);	
-			ventana_reservas.getBtn_crear().setEnabled(false);
+		}else if(e.getSource()==ventana_reservas.getBtn_crear()) {				
+			Cliente nuevo=(Cliente) ventana_reservas.getCbox_selec_cliente().getSelectedItem();					
+			if(nuevo.getNombre().equals(todos.getNombre())) {
+				mensaje="<html><body><center>DEBE SELECCIONAR UN</center><br><center>CLIENTE DEL LISTADO</center><br></body></html>";
+				new Ventana_error(ventana_reservas,true).setVisible(true);
+			}else {	
+				cliente=clienteDao.findOneById(nuevo.getId());
+				mensaje="<html><body><center>RESERVA CREADA CORRECTAMENTE</center><br></body></html>";
+				new Crear_reserva(ventana_reservas,true).setVisible(true);	
+				rellenaTablaCliente(cliente);
+			}			
+			
 		}else if(e.getSource()==ventana_reservas.getBtn_mostrar()) {			
 			Cliente nuevo=(Cliente) ventana_reservas.getCbox_selec_cliente().getSelectedItem();			
 			if(nuevo.getNombre().equals(todos.getNombre())) {
@@ -78,7 +86,8 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 				modificar=true;
 				mensaje="<html><body><center>RESERVA MODIFICADA CORRECTAMENTE</center><br></body></html>";
 				new Crear_reserva(ventana_reservas,true).setVisible(true);
-				modificar=false;
+				modificar=false;				
+				rellenaTablaCliente(cliente);
 
 			}catch(Exception ex) {
 				mensaje="<html><body><center>DEBE SELECCIONAR UN</center><br><center>CÓDIGO DE RESERVA</center><br></body></html>";
@@ -117,12 +126,12 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 		}
 	}
 
-	private void rellenaTablaCliente(Cliente cliente) {				
+	private void rellenaTablaCliente(Cliente cliente) {	
 		List<Reserva> reservas=clienteDao.findOneById(cliente.getId()).getReservas();
 		ventana_reservas.getModelo().setRowCount(0);
 		if(cliente.getReservas().size()<1) {
 			ventana_reservas.getModelo().setRowCount(0);
-		}else {			
+		}else {		
 			for(Reserva r:reservas) {
 				Object[] obj=new Object[6];
 				obj[0]=r.getCodigo();
@@ -132,6 +141,7 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 				obj[4]=r.getComentarios();
 				obj[5]=r.getTotal();
 				ventana_reservas.getModelo().addRow(obj);
+
 			}
 		}
 

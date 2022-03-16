@@ -69,6 +69,9 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 			}else if(ventana.getJdate_llegada().getDate().getTime()<calendario.getTime().getTime()) {
 				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>LA FECHA DE LLEGADA DEBE SER</center><br><center>POSTERIOR AL DÍA DE HOY</center></body></html>";
 				new Ventana_error(ventana,true).setVisible(true);
+			}else if(cliente.getMascotas().size()<1){
+				mensaje="<html><body><center>EL CLIENTE NO TIENE NINGUNA</center><br><center>MASCOTA REGISTRADA</center><br></body></html>";
+				new Ventana_error(ventana,true).setVisible(true);
 			}else if(ventana.getList_mascotas().isSelectionEmpty()){
 				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>DEBE SELECCIONAR UNA MASCOTA</center><br></body></html>";
 				new Ventana_error(ventana,true).setVisible(true);
@@ -86,17 +89,19 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 				reserva.setServicios(serviciosSeleccion(servicios));								
 				
 				reserva.setCliente(cliente);
-				cliente.addReserva(reserva);
 				
 				try {
 
 					if(Eventos_reservas.modificar) {
 						reservaDao.update(reserva);						
 					}else {
+
+						cliente.addReserva(reserva);
 						reservaDao.save(reserva);
 					}					
 
 					clienteDao.update(cliente);
+					System.out.println(cliente.getReservas().toString());
 					new Reserva_creada(ventana,true).setVisible(true);
 					ventana.getBtn_registrar().setEnabled(false);
 					ventana.getTa_comentarios().setEnabled(false);
@@ -105,6 +110,7 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 					ventana.getCbox_socio().setEnabled(false);
 					ventana.getCbox_peluqueria().setEnabled(false);
 					ventana.getCbox_alimentos().setEnabled(false);
+					ventana.getBtn_cancelar().setText("ATRAS");
 
 				}catch(Exception ex) {	
 					mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center></body></html>";
