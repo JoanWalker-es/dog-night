@@ -1,5 +1,7 @@
 package vista;
 
+import java.beans.PropertyChangeListener;
+
 import controlador.Eventos_calendario;
 
 public class Calendario extends javax.swing.JDialog {
@@ -50,6 +52,8 @@ public class Calendario extends javax.swing.JDialog {
         
         //EVENTOS DE LA CLASE:
         btn_atras.addActionListener(new Eventos_calendario(this));
+        addWindowListener(new Eventos_calendario(this));
+        jCalendar.getDayChooser().addPropertyChangeListener(new Eventos_calendario(this));
     }       
     
     
