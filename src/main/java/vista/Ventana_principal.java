@@ -109,6 +109,7 @@ public class Ventana_principal extends javax.swing.JFrame {
 	        btn_nuevo_cliente.addActionListener(new Eventos_principal(this));
 	        btn_reservas.addActionListener(new Eventos_principal(this));
 	        btn_seleccion_cliente.addActionListener(new Eventos_principal(this));
+	        addWindowListener(new Eventos_principal(this));
 	    }
 	    
 	    

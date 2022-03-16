@@ -1,15 +1,17 @@
 package controlador;
 
 import java.awt.event.*;
+
+import Principal.Inicio;
 import vista.*;
 
-public class Eventos_principal implements ActionListener {
+public class Eventos_principal extends WindowAdapter implements ActionListener {
 	
 	private Ventana_principal ventana;
 	
+	
 	public Eventos_principal(Ventana_principal ventana) {
-		this.ventana=ventana;
-		
+		this.ventana=ventana;		
 	}
 
 	@Override
@@ -27,6 +29,12 @@ public class Eventos_principal implements ActionListener {
 			new Seleccion_cliente(ventana,true).setVisible(true);
 		}		
 		
+	}
+	
+	//REVISAR BIEN ESTE MÉTODO PARA VERIFICAR QUE SE CIERRA LA SESION
+	public void windowClosed(WindowEvent e) {
+		Inicio.sesion.close();
+		System.out.println("Cerrando sesión");
 	}
 	
 	

@@ -26,12 +26,9 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 	
 	public Eventos_reservas(Reservas ventana_reservas) {
 		this.ventana_reservas=ventana_reservas;
-
-		//sesion=HibernateUtil.get().openSession();
 		sesion=Inicio.sesion;
 		reservaDao=new ReservaDao(sesion);
 		clienteDao=new ClienteDao(sesion);
-
 		
 	}
 
@@ -40,7 +37,6 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 		if(e.getSource()==ventana_reservas.getBtn_atras()) {
 			ventana_reservas.dispose();
 		}else if(e.getSource()==ventana_reservas.getBtn_eliminar()) {	
-			//modificar=false;
 			try {
 				Object ob=ventana_reservas.getTabla_reservas().getValueAt(ventana_reservas.getTabla_reservas().getSelectedRow(),ventana_reservas.getTabla_reservas().getSelectedColumn());
 				Reserva reser=reservaDao.findOneById(Long.parseLong(ob.toString()));				
@@ -56,15 +52,13 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 			}catch(Exception ex) {
 				mensaje="<html><body><center>DEBE SELECCIONAR UN</center><br><center>CÓDIGO DE RESERVA</center><br></body></html>";
 				new Ventana_error(ventana_reservas,true).setVisible(true);
-			}				
-						
+			}						
 			
-		}else if(e.getSource()==ventana_reservas.getBtn_crear()) {		
-			//modificar=false;
+		}else if(e.getSource()==ventana_reservas.getBtn_crear()) {	
+			mensaje="<html><body><center>RESERVA CREADA CORRECTAMENTE</center><br></body></html>";
 			new Crear_reserva(ventana_reservas,true).setVisible(true);	
 			ventana_reservas.getBtn_crear().setEnabled(false);
-		}else if(e.getSource()==ventana_reservas.getBtn_mostrar()) {
-			
+		}else if(e.getSource()==ventana_reservas.getBtn_mostrar()) {			
 			Cliente nuevo=(Cliente) ventana_reservas.getCbox_selec_cliente().getSelectedItem();			
 			if(nuevo.getNombre().equals(todos.getNombre())) {
 				rellenaTabla();
@@ -77,7 +71,6 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 			}
 			
 		}else if(e.getSource()==ventana_reservas.getBtn_modificar()) {
-			//MODIFICAMOS LA RESERVA SELECIONADA
 			try {
 				Object ob=ventana_reservas.getTabla_reservas().getValueAt(ventana_reservas.getTabla_reservas().getSelectedRow(),ventana_reservas.getTabla_reservas().getSelectedColumn());
 				Reserva reser=reservaDao.findOneById(Long.parseLong(ob.toString()));

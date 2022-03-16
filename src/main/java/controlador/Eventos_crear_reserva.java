@@ -79,7 +79,7 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 				reserva.setFecha_inicio(new java.sql.Date(ventana.getJdate_llegada().getDate().getTime()));
 				reserva.setFecha_fin(new java.sql.Date(ventana.getJdate_salida().getDate().getTime()));
 				reserva.setComentarios(ventana.getTa_comentarios().getText());					
-				ventana.getTf_precio().setText(Double.toString(total()));				
+				ventana.getTf_precio().setText(Double.toString(total()*mascotas.size()));				
 				reserva.setTotal(Double.parseDouble(ventana.getTf_precio().getText()));
 				ventana.getTf_reserva_total_dias().setText(""+diasEntreFechas(ventana.getJdate_llegada().getDate(),ventana.getJdate_salida().getDate()));
 				

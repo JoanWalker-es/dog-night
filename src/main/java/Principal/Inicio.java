@@ -26,7 +26,7 @@ public class Inicio {
 		Ventana_principal nueva=new Ventana_principal();
 		nueva.setVisible(true);		
 		
-		//sesion.close();			
+				
 		
 		System.out.println("Finalizando configuracion Hibernate");
 	}
