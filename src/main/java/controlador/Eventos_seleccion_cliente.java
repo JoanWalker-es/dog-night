@@ -23,7 +23,6 @@ public class Eventos_seleccion_cliente implements ActionListener{
 	public Eventos_seleccion_cliente(Seleccion_cliente ventana_seleccion) {
 
 		this.ventana=ventana_seleccion;
-		//sesion=HibernateUtil.get().openSession();
 		sesion=Inicio.sesion;
 		clienteDao=new ClienteDao(sesion);
 

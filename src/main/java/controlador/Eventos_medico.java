@@ -23,7 +23,6 @@ public class Eventos_medico implements ActionListener{
 	
 	public Eventos_medico(Datos_medicos ventana) {
 		this.ventana=ventana;
-		//sesion=HibernateUtil.get().openSession();
 		sesion=Inicio.sesion;
 		medicoDao=new HMedicoDao(sesion);
 		mascotaDao=new MascotaDao(sesion);
