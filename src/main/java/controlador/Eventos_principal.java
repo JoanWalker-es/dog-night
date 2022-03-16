@@ -31,10 +31,8 @@ public class Eventos_principal extends WindowAdapter implements ActionListener {
 		
 	}
 	
-	//REVISAR BIEN ESTE MÉTODO PARA VERIFICAR QUE SE CIERRA LA SESION
-	public void windowClosed(WindowEvent e) {
+	public void windowClosing(WindowEvent e) {
 		Inicio.sesion.close();
-		System.out.println("Cerrando sesión");
 	}
 	
 	

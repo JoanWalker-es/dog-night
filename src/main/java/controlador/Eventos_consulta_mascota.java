@@ -32,17 +32,14 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 	private Session sesion;
 	
 	public Eventos_consulta_mascota(Consulta_mascota ventana) {
-
-		//sesion=Eventos_seleccion_cliente.sesion;
 		sesion=Inicio.sesion;
-		this.ventana=ventana;
-		//this.mascota=Eventos_consulta_cliente.mascota;		
+		this.ventana=ventana;	
 		mascotaDao=new MascotaDao(sesion);		
 		medicoDao=new HMedicoDao(sesion);
 		alimentoDao=new HAlimenticioDao(sesion);
-		medico=new Historial_medico();
-		alimento=new Historial_alimenticio();
-		this.mascota=mascotaDao.findOneById(Eventos_consulta_cliente.mascota.getIdPerro());		
+		this.mascota=mascotaDao.findOneById(Eventos_consulta_cliente.mascota.getIdPerro());	
+		medico=mascota.getMedico();
+		alimento=mascota.getAlimentos();
 	}
 	
 	@Override
@@ -136,8 +133,7 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 		if(ventana.getJdate_mascota_fecha().getDate()!=null) {
 			mascota.setFecha(new java.sql.Date(ventana.getJdate_mascota_fecha().getDate().getTime()));
 		}		
-		mascota.setRaza(ventana.getTf_mascota_raza().getText());
-		
+		mascota.setRaza(ventana.getTf_mascota_raza().getText());		
 		
 		if(mascota.getMedico()!=null) {
 			mascota.getMedico().setPeso(ventana.getTf_mascota_peso().getText());
@@ -152,8 +148,7 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 				mascota.getMedico().setFecha_vacuna(new java.sql.Date(ventana.getJdate_mascota_rabia_fecha().getDate().getTime()));
 			}
 			
-		}else {
-					
+		}else {					
 			medico.setPerro(mascota);
 			medico.setPeso(ventana.getTf_mascota_peso().getText());
 			medico.setSexo(ventana.getTf_mascota_sexo().getText());			
@@ -176,8 +171,7 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 			mascota.getAlimentos().setComentarios_pienso(ventana.getJt_alimento().getText());
 			mascota.getAlimentos().setTipo_intolerancia(ventana.getTf_intolerancia_tipo().getText());
 			mascota.getAlimentos().setDescripcion_intolerancia(ventana.getJt_intolerancia().getText());
-		}else {
-			
+		}else {			
 			alimento.setPerro(mascota);
 			alimento.setTipo_pienso(ventana.getTf_alimento_tipo().getText());
 			alimento.setCantidad_pienso(ventana.getTf_alimento_cantidad().getText());

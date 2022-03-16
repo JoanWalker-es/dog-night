@@ -19,12 +19,6 @@ public class Eventos_registro_mascota implements ActionListener{
 	
 	public Eventos_registro_mascota(Registro_mascota ventana_registro) {
 		this.ventana_registro=ventana_registro;
-
-//		if(Eventos_registro_cliente.sesion==null) {
-//			sesion=Eventos_seleccion_cliente.sesion;
-//		}else {
-//			sesion=Eventos_registro_cliente.sesion;
-//		}	
 		sesion=Inicio.sesion;
 		mascotaDao=new MascotaDao(sesion);
 		clienteDao=new ClienteDao(sesion);
@@ -69,7 +63,8 @@ public class Eventos_registro_mascota implements ActionListener{
 					new Ventana_error(ventana_registro,true).setVisible(true);
 				}
 			}			
-						
+			ventana_registro.getBtn_guardar().setEnabled(false);	
+			Campos(false);
 			
 		}else if(e.getSource()==ventana_registro.getBtn_mascota_alimentos()) {
 			new Datos_alimentos(ventana_registro,true).setVisible(true);			
@@ -82,8 +77,17 @@ public class Eventos_registro_mascota implements ActionListener{
 			ventana_registro.getTf_mascota_raza().setText("");
 			ventana_registro.getTf_mascota_chip().setText("");
 			ventana_registro.getjDate_mascota_fecha().setDate(null);
+			ventana_registro.getBtn_guardar().setEnabled(true);	
+			Campos(true);
 		}
 		
+	}
+	
+	private void Campos(boolean activar) {
+		ventana_registro.getTf_mascota_nombre().setEnabled(activar);
+		ventana_registro.getTf_mascota_raza().setEnabled(activar);
+		ventana_registro.getTf_mascota_chip().setEnabled(activar);
+		ventana_registro.getjDate_mascota_fecha().setEnabled(activar);
 	}
 
 }

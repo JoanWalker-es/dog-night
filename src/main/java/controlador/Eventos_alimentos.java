@@ -23,7 +23,6 @@ public class Eventos_alimentos implements ActionListener{
 	
 	public Eventos_alimentos(Datos_alimentos ventana) {
 		this.ventana=ventana;
-		//sesion=HibernateUtil.get().openSession();
 		sesion=Inicio.sesion;
 		alimentoDao=new HAlimenticioDao(sesion);
 		mascotaDao=new MascotaDao(sesion);

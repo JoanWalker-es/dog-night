@@ -30,7 +30,6 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 	
 
 	public Eventos_consulta_cliente(Consulta_cliente ventana) {
-		//sesion=Eventos_seleccion_cliente.sesion;
 		sesion=Inicio.sesion;
 		this.ventana=ventana;
 		this.cliente=Eventos_seleccion_cliente.cliente;
@@ -50,6 +49,7 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 			Mascota perro=(Mascota)ventana.getCb_mascotas().getSelectedItem();
 			mascota=mascotaDao.findOneById(perro.getIdPerro());			
 			new Consulta_mascota(ventana,true).setVisible(true);
+			rellenaCombo();
 			
 		}else if(e.getSource()==ventana.getBtn_editar()) {
 			habilitarCampos(true);
@@ -62,22 +62,13 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 			ventana.getBtn_guardar().setEnabled(false);
 		}else if(e.getSource()==ventana.getBtn_mascota_add()) {
 			new Registro_mascota(ventana,true).setVisible(true);
+			rellenaCombo();
 		}
 		
 	}
 	
 	public void windowOpened(WindowEvent e) {
-		
-		ventana.getTf_cliente_nombre().setText(cliente.getNombre());
-		ventana.getTf_cliente_apellidos().setText(cliente.getApellidos());
-		ventana.getTf_cliente_correo().setText(cliente.getCorreo());
-		ventana.getTf_cliente_direccion().setText(cliente.getDireccion());
-		ventana.getTf_cliente_DNI().setText(cliente.getDNI());
-		ventana.getTf_cliente_telefono().setText(cliente.getTelefono());
-		for(Mascota m:cliente.getMascotas()) {
-			ventana.getCb_mascotas().addItem(m);
-		}
-		
+		rellenaCombo();		
 	}
 	
 	private void habilitarCampos(boolean variable) {
@@ -97,6 +88,19 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 		cliente.setDNI(ventana.getTf_cliente_DNI().getText());
 		cliente.setTelefono(ventana.getTf_cliente_telefono().getText());
 		clienteDao.update(cliente);
+	}
+	
+	private void rellenaCombo() {
+		ventana.getCb_mascotas().removeAllItems();
+		ventana.getTf_cliente_nombre().setText(cliente.getNombre());
+		ventana.getTf_cliente_apellidos().setText(cliente.getApellidos());
+		ventana.getTf_cliente_correo().setText(cliente.getCorreo());
+		ventana.getTf_cliente_direccion().setText(cliente.getDireccion());
+		ventana.getTf_cliente_DNI().setText(cliente.getDNI());
+		ventana.getTf_cliente_telefono().setText(cliente.getTelefono());
+		for(Mascota m:cliente.getMascotas()) {
+			ventana.getCb_mascotas().addItem(m);
+		}
 	}
 
 }
