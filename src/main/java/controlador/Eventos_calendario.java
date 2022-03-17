@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Color;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -54,21 +55,30 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 	private void comprobarDia(Date dia) {
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		int contador=0;
+		ventana_calendario.getTa_reservas().setText("");
 		
 		try {
-			List<Reserva> reservas=reservaDao.findAll();
+			List<Reserva> reservas=reservaDao.findAll();			
 			for(Reserva r:reservas) {
 				List<Date> fechas=getListaFechas(r.getFecha_inicio(),r.getFecha_fin());			
-				
+				int indice=fechas.size()-1;
+				fechas.remove(indice);
 				for(Date fecha:fechas) {
 					String diaReserva=formato.format(fecha);
 					if(diaReserva.equalsIgnoreCase(formato.format(dia))) {
-						System.out.println("Reserva: "+r.getCodigo()+" tiene: "+r.getNum_mascotas()+" mascotas");	
-						
+						contador+=r.getNum_mascotas();
+						ventana_calendario.getTa_reservas().append("Código reserva: "+r.getCodigo()+" Fecha inicio: "+formato.format(r.getFecha_inicio())+" Fecha fin: "+formato.format(r.getFecha_fin())+"\n");
 					}
 				}
+				
+			}
+			if(contador==10) {
+				ventana_calendario.getTf_mascotas().setBackground(Color.RED);
+			}else if(contador<10){
+				ventana_calendario.getTf_mascotas().setBackground(Color.GREEN);
 			}
 			
+			ventana_calendario.getTf_mascotas().setText(""+contador);
 			
 			
 		}catch(Exception e){
