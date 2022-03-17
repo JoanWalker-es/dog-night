@@ -15,7 +15,6 @@ public class Precios extends javax.swing.JDialog {
                          
     private void initComponents() {
 
-    	DecimalFormat formato = new DecimalFormat("0,00");
     	
         btn_atras = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
@@ -24,10 +23,10 @@ public class Precios extends javax.swing.JDialog {
         l_socios = new javax.swing.JLabel();
         l_peluqueria = new javax.swing.JLabel();
         l_alimentos = new javax.swing.JLabel();
-        tf_general = new javax.swing.JFormattedTextField(formato);
-        tf_socios = new javax.swing.JFormattedTextField(formato);
-        tf_peluqueria = new javax.swing.JFormattedTextField(formato);
-        tf_alimentos = new javax.swing.JFormattedTextField(formato);
+        tf_general = new javax.swing.JTextField();
+        tf_socios = new javax.swing.JTextField();
+        tf_peluqueria = new javax.swing.JTextField();
+        tf_alimentos = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         l_habitaciones = new javax.swing.JLabel();
         tf_habitaciones = new javax.swing.JTextField();
@@ -199,10 +198,10 @@ public class Precios extends javax.swing.JDialog {
     private javax.swing.JLabel l_habitaciones;
     private javax.swing.JLabel l_peluqueria;
     private javax.swing.JLabel l_socios;
-    private javax.swing.JFormattedTextField tf_alimentos;
-    private javax.swing.JFormattedTextField tf_general;
+    private javax.swing.JTextField tf_alimentos;
+    private javax.swing.JTextField tf_general;
     private javax.swing.JTextField tf_habitaciones;
-    private javax.swing.JFormattedTextField tf_peluqueria;
-    private javax.swing.JFormattedTextField tf_socios;      
+    private javax.swing.JTextField tf_peluqueria;
+    private javax.swing.JTextField tf_socios;      
 }
 

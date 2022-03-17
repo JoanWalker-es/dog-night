@@ -63,11 +63,12 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 	}
 	
 	private void cargarPrecios() {
+		DecimalFormat formato = new DecimalFormat("0.00");
 		
-		ventana_precios.getTf_general().setText(String.format("%.2f", servicioDao.findOneById(1).getPrecio())); 
-		ventana_precios.getTf_peluqueria().setText(Double.toString(servicioDao.findOneById(2).getPrecio()));
-		ventana_precios.getTf_alimentos().setText(Double.toString(servicioDao.findOneById(3).getPrecio()));
-		ventana_precios.getTf_socios().setText(Double.toString(servicioDao.findOneById(4).getPrecio()));
+		ventana_precios.getTf_general().setText(formato.format(servicioDao.findOneById(1).getPrecio()).replace(",", ".")); 
+		ventana_precios.getTf_peluqueria().setText(formato.format(servicioDao.findOneById(2).getPrecio()).replace(",", "."));
+		ventana_precios.getTf_alimentos().setText(formato.format(servicioDao.findOneById(3).getPrecio()).replace(",", "."));
+		ventana_precios.getTf_socios().setText(formato.format(servicioDao.findOneById(4).getPrecio()).replace(",", "."));
 		ventana_precios.getTf_habitaciones().setText(hotelDao.findOneById(1).getHabitaciones()+"");
 	}
 

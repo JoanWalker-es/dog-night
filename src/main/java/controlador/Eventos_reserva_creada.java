@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.DecimalFormat;
+
 import vista.Reserva_creada;
 
 public class Eventos_reserva_creada extends WindowAdapter implements ActionListener{
@@ -24,9 +26,10 @@ public class Eventos_reserva_creada extends WindowAdapter implements ActionListe
 	}
 	
 	public void windowOpened(WindowEvent e) {
+		DecimalFormat formato = new DecimalFormat("0.00");
 		ventana.getTf_inicio().setText(Eventos_crear_reserva.reserva.getFecha_inicio().toString());
 		ventana.getTf_fin().setText(Eventos_crear_reserva.reserva.getFecha_fin().toString());
-		ventana.getTf_total().setText(Eventos_crear_reserva.reserva.getTotal()+"");
+		ventana.getTf_total().setText(formato.format(Eventos_crear_reserva.reserva.getTotal().replace(",", ".")));
 		ventana.getTf_total_mascotas().setText(Eventos_crear_reserva.reserva.getNum_mascotas()+"");
 	}
 	
