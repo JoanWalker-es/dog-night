@@ -10,6 +10,8 @@ import java.util.*;
 import org.hibernate.Session;
 
 import Principal.Inicio;
+import modelo.Hotel;
+import modelo.HotelDao;
 import modelo.Reserva;
 import modelo.ReservaDao;
 import vista.*;
@@ -18,12 +20,14 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 	
 	private Calendario ventana_calendario;
 	private ReservaDao reservaDao;
+	private HotelDao hotelDao;
 	private Session sesion;
 	
 	public Eventos_calendario(Calendario ventana) {
 		this.ventana_calendario=ventana;
 		sesion=Inicio.sesion;
 		reservaDao=new ReservaDao(sesion);
+		hotelDao=new HotelDao(sesion);
 		
 	}	
 	
@@ -53,6 +57,7 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		int contador=0;
 		ventana_calendario.getTa_reservas().setText("");
+		Hotel hotel=hotelDao.findOneById(1);
 		
 		try {
 			List<Reserva> reservas=reservaDao.findAll();			
@@ -70,7 +75,7 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 				
 			}
 			
-			if(contador>=10) {
+			if(contador>=hotel.getHabitaciones()) {
 				ventana_calendario.getTf_mascotas().setBackground(Color.RED);
 			}else{
 				ventana_calendario.getTf_mascotas().setBackground(Color.GREEN);

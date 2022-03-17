@@ -12,6 +12,8 @@ import javax.swing.JDialog;
 import org.hibernate.Session;
 
 import Principal.Inicio;
+import modelo.Hotel;
+import modelo.HotelDao;
 import modelo.Reserva;
 import modelo.ReservaDao;
 import vista.Calendario;
@@ -22,11 +24,13 @@ public class Metodos_utiles {
 	private ReservaDao reservaDao;
 	private Session sesion;
 	private JDialog ventana;
+	private HotelDao hotelDao;
 	
 	public Metodos_utiles(JDialog ventana) {
 		this.ventana=ventana;
 		this.sesion=Inicio.sesion;
 		reservaDao=new ReservaDao(sesion);
+		hotelDao=new HotelDao(sesion);
 	}
 	
 	public static List<Date> getListaFechas(Date fechaInicio, Date fechaFin) {
@@ -55,6 +59,7 @@ public class Metodos_utiles {
 	public boolean comprobarDia(Date dia) {
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		int contador=0;
+		Hotel hotel=hotelDao.findOneById(1);
 		
 		try {
 			List<Reserva> reservas=reservaDao.findAll();			
@@ -70,7 +75,7 @@ public class Metodos_utiles {
 				}
 				
 			}
-			if(contador>=10) {
+			if(contador>=hotel.getHabitaciones()) {
 				return false;
 			}else{
 				return true;

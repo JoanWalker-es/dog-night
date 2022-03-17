@@ -47,7 +47,7 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 			consulta=false;
 		}else if(e.getSource()==ventana.getBtn_mascota_datos()) {
 			Mascota perro=(Mascota)ventana.getCb_mascotas().getSelectedItem();
-			mascota=mascotaDao.findOneById(perro.getIdPerro());			
+			mascota=mascotaDao.findOneById(perro.getIdMascota());			
 			new Consulta_mascota(ventana,true).setVisible(true);
 			rellenaCombo();
 			

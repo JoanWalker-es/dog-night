@@ -37,7 +37,7 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 		mascotaDao=new MascotaDao(sesion);		
 		medicoDao=new HMedicoDao(sesion);
 		alimentoDao=new HAlimenticioDao(sesion);
-		this.mascota=mascotaDao.findOneById(Eventos_consulta_cliente.mascota.getIdPerro());	
+		this.mascota=mascotaDao.findOneById(Eventos_consulta_cliente.mascota.getIdMascota());	
 		medico=mascota.getMedico();
 		alimento=mascota.getAlimentos();
 	}

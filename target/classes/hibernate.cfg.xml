@@ -18,6 +18,7 @@
     		<mapping class="modelo.Historial_alimenticio" package="modelo"/>
     		<mapping class="modelo.Reserva" package="modelo"/>
     		<mapping class="modelo.Servicios" package="modelo"/>
+    		<mapping class="modelo.Hotel" package="modelo"/>
     		
     	</session-factory>    
     </hibernate-configuration>

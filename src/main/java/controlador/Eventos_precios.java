@@ -14,12 +14,14 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 	
 	private Precios ventana_precios;
 	private ServiciosDao servicioDao;
+	private HotelDao hotelDao;
 	private Session sesion;
 	
 	public Eventos_precios(Precios ventana) {
 		this.ventana_precios=ventana;
 		sesion=Inicio.sesion;
 		servicioDao=new ServiciosDao(sesion);
+		hotelDao=new HotelDao(sesion);
 
 	}
 
@@ -36,13 +38,16 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 			Servicios alimentos=servicioDao.findOneById(3);
 			alimentos.setPrecio(Double.parseDouble(ventana_precios.getTf_alimentos().getText()));
 			Servicios socios=servicioDao.findOneById(4);
-			socios.setPrecio(Double.parseDouble(ventana_precios.getTf_socios().getText()));
+			socios.setPrecio(Double.parseDouble(ventana_precios.getTf_socios().getText()));			
+			Hotel nuevo=hotelDao.findOneById(1);
+			nuevo.setHabitaciones(Integer.parseInt(ventana_precios.getTf_habitaciones().getText()));
 						
 			try {
 				servicioDao.update(general);
 				servicioDao.update(peluqueria);
 				servicioDao.update(alimentos);
-				servicioDao.update(socios);				
+				servicioDao.update(socios);			
+				hotelDao.update(nuevo);
 			}catch(Exception ex) {
 				new Ventana_error(ventana_precios,true).setVisible(true);
 			}
@@ -61,6 +66,7 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 		ventana_precios.getTf_peluqueria().setText(Double.toString(servicioDao.findOneById(2).getPrecio()));
 		ventana_precios.getTf_alimentos().setText(Double.toString(servicioDao.findOneById(3).getPrecio()));
 		ventana_precios.getTf_socios().setText(Double.toString(servicioDao.findOneById(4).getPrecio()));
+		ventana_precios.getTf_habitaciones().setText(hotelDao.findOneById(1).getHabitaciones()+"");
 	}
 
 	

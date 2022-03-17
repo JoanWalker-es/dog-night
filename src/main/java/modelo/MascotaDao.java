@@ -18,7 +18,7 @@ public class MascotaDao implements CRUD<Mascota> {
 	public void save(Mascota t) {
 		Transaction tx=sesion.beginTransaction();
 		sesion.save(t);
-		System.out.println("Perro guardado correctamente con el id: "+t.getIdPerro());
+		System.out.println("Mascota guardado correctamente con el id: "+t.getIdMascota());
 		tx.commit();	
 	}
 
@@ -31,7 +31,7 @@ public class MascotaDao implements CRUD<Mascota> {
 
 	public Mascota findOneById(long id) {
 		Transaction tx=sesion.beginTransaction();
-		Mascota perro=sesion.createQuery("FROM Mascota where idPerro=:id",Mascota.class).setParameter("id", id).getSingleResult();
+		Mascota perro=sesion.createQuery("FROM Mascota where idMascota=:id",Mascota.class).setParameter("id", id).getSingleResult();
 		tx.commit();
 		return perro; 
 	}
@@ -39,14 +39,14 @@ public class MascotaDao implements CRUD<Mascota> {
 	public void update(Mascota t) {
 		Transaction tx=sesion.beginTransaction();
 		sesion.update(t);
-		System.out.println("Perro actualizado correctamente con el id: "+t.getIdPerro());
+		System.out.println("Mascota actualizado correctamente con el id: "+t.getIdMascota());
 		tx.commit();		
 	}
 
 	public void delete(Mascota t) {
 		Transaction tx=sesion.beginTransaction();
 		sesion.delete(t);
-		System.out.println("Perro eliminado correctamente con el id: "+t.getIdPerro());
+		System.out.println("Mascota eliminado correctamente con el id: "+t.getIdMascota());
 		tx.commit();
 	}
 

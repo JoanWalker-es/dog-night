@@ -6,10 +6,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -45,6 +46,10 @@ public class Cliente {
 	
 	@OneToMany(mappedBy="cliente",cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<Reserva> reservas=new ArrayList<>();
+	
+	@ManyToOne
+    @JoinColumn(name="id")
+    private Hotel hotel;
 	
 	public Cliente() {		
 	}
@@ -161,6 +166,14 @@ public class Cliente {
 			mascotas=new ArrayList<Mascota>();
 		}
 		mascotas.add(perro);
+	}	
+
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
 	}
 
 	@Override

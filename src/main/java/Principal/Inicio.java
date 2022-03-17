@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import config.HibernateUtil;
 import modelo.Cliente;
 import modelo.ClienteDao;
+import modelo.Hotel;
+import modelo.HotelDao;
 import modelo.Mascota;
 import modelo.MascotaDao;
 import modelo.Servicios;
@@ -21,7 +23,7 @@ public class Inicio {
 		System.out.println("Iniciando configuracion Hibernate");		
 		sesion=HibernateUtil.get().openSession(); 
 		
-		//crearDatos(sesion);
+		//crearDatos(sesion);		
 		
 		Ventana_principal nueva=new Ventana_principal();
 		nueva.setVisible(true);		
@@ -35,6 +37,12 @@ public class Inicio {
 		ClienteDao clienteDao = new ClienteDao(sesion);		
 		MascotaDao mascotaDao=new MascotaDao(sesion);
 		ServiciosDao oper_serv=new ServiciosDao(sesion);
+		HotelDao hotelDao=new HotelDao(sesion);
+		
+		Hotel dog_night=new Hotel();
+		dog_night.setNombre("Dog-Night");
+		dog_night.setHabitaciones(10);
+		hotelDao.save(dog_night);
 		
 		Servicios general=new Servicios();
 		general.setNombre("General");
@@ -104,6 +112,8 @@ public class Inicio {
 		tres.setDNI("no tiene");
 		tres.getMascotas().add(mTres);
 		clienteDao.save(tres);
+		
+		
 		
 	}
 

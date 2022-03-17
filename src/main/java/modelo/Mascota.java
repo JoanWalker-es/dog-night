@@ -18,8 +18,8 @@ public class Mascota {
 	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idPerro")
-	private long idPerro;
+	@Column(name="idMascota")
+	private long idMascota;
 	
 	@Column(name="Nombre")
 	private String nombre;
@@ -93,8 +93,8 @@ public class Mascota {
 		this.alimentos = alimentos;
 	}
 
-	public long getIdPerro() {
-		return idPerro;
+	public long getIdMascota() {
+		return idMascota;
 	}
 
 	public Date getFecha() {
