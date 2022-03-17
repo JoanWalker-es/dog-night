@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.event.*;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -62,7 +63,8 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 	}
 	
 	private void cargarPrecios() {
-		ventana_precios.getTf_general().setText(Double.toString(servicioDao.findOneById(1).getPrecio())); 
+		
+		ventana_precios.getTf_general().setText(String.format("%.2f", servicioDao.findOneById(1).getPrecio())); 
 		ventana_precios.getTf_peluqueria().setText(Double.toString(servicioDao.findOneById(2).getPrecio()));
 		ventana_precios.getTf_alimentos().setText(Double.toString(servicioDao.findOneById(3).getPrecio()));
 		ventana_precios.getTf_socios().setText(Double.toString(servicioDao.findOneById(4).getPrecio()));
