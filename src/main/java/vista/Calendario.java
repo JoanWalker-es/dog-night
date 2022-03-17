@@ -1,12 +1,9 @@
 package vista;
 
-import java.beans.PropertyChangeListener;
 
 import controlador.Eventos_calendario;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class Calendario extends javax.swing.JDialog {
 
@@ -23,6 +20,7 @@ public class Calendario extends javax.swing.JDialog {
         btn_atras = new javax.swing.JButton();
         l_numero_mascotas = new javax.swing.JLabel();
         tf_mascotas = new javax.swing.JTextField();
+        tf_mascotas.setHorizontalAlignment(SwingConstants.CENTER);
         tf_mascotas.setFont(new Font("Arial Black", Font.BOLD, 13));
         jScrollPane1 = new javax.swing.JScrollPane();
         ta_reservas = new javax.swing.JTextArea();

@@ -25,8 +25,7 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 		sesion=Inicio.sesion;
 		reservaDao=new ReservaDao(sesion);
 		
-	}
-	
+	}	
 	
 
 	@Override
@@ -38,7 +37,7 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 	}
 
 	public void windowOpened(WindowEvent e) {
-		
+		comprobarDia(ventana_calendario.getjCalendar().getDate());
 	}
 
 
@@ -46,8 +45,6 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
 		if (e.getPropertyName().compareTo("day") == 0) {
-            //SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy");
-            //System.out.println(formatoDeFecha.format(ventana_calendario.getjCalendar().getDate()));
 			comprobarDia(ventana_calendario.getjCalendar().getDate());
         }
 	}
@@ -60,7 +57,7 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 		try {
 			List<Reserva> reservas=reservaDao.findAll();			
 			for(Reserva r:reservas) {
-				List<Date> fechas=getListaFechas(r.getFecha_inicio(),r.getFecha_fin());			
+				List<Date> fechas=Metodos_utiles.getListaFechas(r.getFecha_inicio(),r.getFecha_fin());			
 				int indice=fechas.size()-1;
 				fechas.remove(indice);
 				for(Date fecha:fechas) {
@@ -72,9 +69,10 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 				}
 				
 			}
-			if(contador==10) {
+			
+			if(contador>=10) {
 				ventana_calendario.getTf_mascotas().setBackground(Color.RED);
-			}else if(contador<10){
+			}else{
 				ventana_calendario.getTf_mascotas().setBackground(Color.GREEN);
 			}
 			
@@ -83,31 +81,10 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 			
 		}catch(Exception e){
 			e.printStackTrace();
+			new Ventana_error(ventana_calendario,true).setVisible(true);
 		}
 		
 		
-	}
-	
-	private void enumeracionDias(Date llegada,Date salida) {
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-		System.out.println("Fecha inicio:" +formato.format(llegada)+", fecha fin: "+formato.format(salida));
-		
-		
-		
-		
-	}
-	
-	public List<Date> getListaFechas(Date fechaInicio, Date fechaFin) {
-	    Calendar c1 = Calendar.getInstance();
-	    c1.setTime(fechaInicio);
-	    Calendar c2 = Calendar.getInstance();
-	    c2.setTime(fechaFin);
-	    List<Date> listaFechas = new ArrayList<Date>();
-	    while (!c1.after(c2)) {
-	        listaFechas.add(c1.getTime());
-	        c1.add(Calendar.DAY_OF_MONTH, 1);
-	    }
-	    return listaFechas;
 	}
 	
         
