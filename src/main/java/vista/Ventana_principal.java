@@ -7,6 +7,7 @@ import javax.swing.UIManager;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.ImageIcon;
 
 public class Ventana_principal extends javax.swing.JFrame {
 	
@@ -16,27 +17,25 @@ public class Ventana_principal extends javax.swing.JFrame {
 			} catch( Exception ex ) {
 			    System.err.println( "Failed to initialize LaF" );
 			}
-	        initComponents();setSize(550,450);
+	        initComponents();setSize(600,550);
 	        this.setLocationRelativeTo(null); 
 	    }
 	                         
 	    private void initComponents() {
 
-	    	label_titulo = new javax.swing.JLabel();
-	        btn_reservas = new javax.swing.JButton();
-	        btn_calendario = new javax.swing.JButton();
-	        btn_nuevo_cliente = new javax.swing.JButton();
-	        btn_precios = new javax.swing.JButton();
-	        btn_seleccion_cliente = new javax.swing.JButton();
-	        jPanel1 = new javax.swing.JPanel();
-	        
+	    		        
 	        setResizable(false);
 	        setTitle("Dog-Night");
 	        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-	        label_titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-	        label_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	        label_titulo.setText("Hotel canino Dog-Night");
+	        jPanel1 = new javax.swing.JPanel();
+	        btn_calendario = new javax.swing.JButton();
+	        btn_precios = new javax.swing.JButton();
+	        btn_reservas = new javax.swing.JButton();
+	        btn_nuevo_cliente = new javax.swing.JButton();
+	        btn_seleccion_cliente = new javax.swing.JButton();
+	        jPanel3 = new javax.swing.JPanel();
+	        imagen = new javax.swing.JLabel();	        
 
 	        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("MENÚ"));
 
@@ -85,27 +84,47 @@ public class Ventana_principal extends javax.swing.JFrame {
 	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 	        );
 
+	        jPanel3.setPreferredSize(new java.awt.Dimension(530, 300));
+
+	        imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+	        imagen.setIcon(new ImageIcon(Ventana_principal.class.getResource("/imagen/Logo_Dog_night_reducido transparente.png"))); // NOI18N
+
+	        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+	        jPanel3.setLayout(jPanel3Layout);
+	        jPanel3Layout.setHorizontalGroup(
+	            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            .addGroup(jPanel3Layout.createSequentialGroup()
+	                .addContainerGap()
+	                .addComponent(imagen, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+	                .addContainerGap())
+	        );
+	        jPanel3Layout.setVerticalGroup(
+	            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addComponent(imagen)
+	                .addContainerGap())
+	        );
+
 	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 	        getContentPane().setLayout(layout);
 	        layout.setHorizontalGroup(
 	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 	            .addGroup(layout.createSequentialGroup()
-	                .addGap(162, 162, 162)
-	                .addComponent(label_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                .addContainerGap(162, Short.MAX_VALUE))
-	            .addGroup(layout.createSequentialGroup()
 	                .addContainerGap()
-	                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 	                .addContainerGap())
 	        );
 	        layout.setVerticalGroup(
 	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 	            .addGroup(layout.createSequentialGroup()
-	                .addGap(29, 29, 29)
-	                .addComponent(label_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
+	                .addContainerGap()
+	                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                .addGap(18, 18, 18)
 	                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                .addContainerGap())
+	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 	        );
 
 	        pack();
@@ -143,8 +162,9 @@ public class Ventana_principal extends javax.swing.JFrame {
 	    private javax.swing.JButton btn_precios;
 	    private javax.swing.JButton btn_reservas;
 	    private javax.swing.JButton btn_seleccion_cliente;
-	    private javax.swing.JLabel label_titulo;        
+	    private javax.swing.JLabel imagen;
 	    private javax.swing.JPanel jPanel1;
+	    private javax.swing.JPanel jPanel3;
 	}
 
 
