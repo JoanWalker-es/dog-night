@@ -29,8 +29,8 @@ public class Eventos_reserva_creada extends WindowAdapter implements ActionListe
 		DecimalFormat formato = new DecimalFormat("0.00");
 		ventana.getTf_inicio().setText(Eventos_crear_reserva.reserva.getFecha_inicio().toString());
 		ventana.getTf_fin().setText(Eventos_crear_reserva.reserva.getFecha_fin().toString());
-		ventana.getTf_total().setText(formato.format(Eventos_crear_reserva.reserva.getTotal().replace(",", ".")));
-		ventana.getTf_total_mascotas().setText(Eventos_crear_reserva.reserva.getNum_mascotas()+"");
+		ventana.getTf_total().setText(formato.format(Eventos_crear_reserva.reserva.getTotal()).replace(",","."));
+		ventana.getTf_total_mascotas().setText(Eventos_crear_reserva.reserva.getNum_mascotas()+"");	
 	}
 	
 

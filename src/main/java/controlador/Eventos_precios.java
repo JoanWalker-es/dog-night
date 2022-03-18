@@ -49,8 +49,10 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 				servicioDao.update(alimentos);
 				servicioDao.update(socios);			
 				hotelDao.update(nuevo);
+				new Ventana_guardado_ok(ventana_precios,true).setVisible(true);
 			}catch(Exception ex) {
 				new Ventana_error(ventana_precios,true).setVisible(true);
+				ex.printStackTrace();
 			}
 				
 		}

@@ -40,6 +40,7 @@ public class Eventos_registro_cliente implements ActionListener{
 			||ventana_registro.getTf_dni().getText().isBlank()||ventana_registro.getTf_dni().getText().isEmpty()){
 				mensaje="<html><body><center>DEBE INTRODUCIR:</center><br><center>NOMBRE,TELÉFONO Y DNI</center><br><center>DEL CLIENTE</center></body></html>";
 				new Ventana_error(ventana_registro,true).setVisible(true);
+				mensaje=null;
 			}else {
 				nuevo=new Cliente();
 				nuevo.setNombre(ventana_registro.getTf_cliente_nombre().getText());
@@ -55,7 +56,10 @@ public class Eventos_registro_cliente implements ActionListener{
 					ventana_registro.getBtn_mascota_add().setEnabled(true);
 					ventana_registro.getBtn_guardar().setEnabled(false);
 				}catch(Exception ex) {
+					mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center></body></html>";
 					new Ventana_error(ventana_registro,true).setVisible(true);
+					ex.printStackTrace();
+					mensaje=null;
 				}
 			}			
 							

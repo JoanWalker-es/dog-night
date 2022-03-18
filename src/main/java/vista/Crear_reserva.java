@@ -29,6 +29,8 @@ public class Crear_reserva extends javax.swing.JDialog {
         tf_precio = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         ta_comentarios = new javax.swing.JTextArea();
+        ta_comentarios.setLineWrap(true);
+        ta_comentarios.setWrapStyleWord(true);
         btn_cancelar = new javax.swing.JButton();
         btn_registrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();

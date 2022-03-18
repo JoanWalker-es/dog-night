@@ -58,10 +58,6 @@ public class Reserva_creada extends javax.swing.JDialog {
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addGap(136)
-        			.addComponent(btn_aceptar)
-        			.addContainerGap(168, Short.MAX_VALUE))
-        		.addGroup(layout.createSequentialGroup()
         			.addContainerGap(54, Short.MAX_VALUE)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
@@ -80,6 +76,10 @@ public class Reserva_creada extends javax.swing.JDialog {
         			.addContainerGap()
         			.addComponent(l_creada, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
         			.addContainerGap())
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(145)
+        			.addComponent(btn_aceptar)
+        			.addContainerGap(159, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)

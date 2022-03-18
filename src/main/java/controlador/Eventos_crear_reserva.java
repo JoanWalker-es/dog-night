@@ -47,8 +47,7 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 		sesion=Inicio.sesion;
 		reservaDao=new ReservaDao(sesion);
 		serviciosDao=new ServiciosDao(sesion);
-		clienteDao=new ClienteDao(sesion);			
-
+		clienteDao=new ClienteDao(sesion);	
 		calendario=Calendar.getInstance();
 		if(Eventos_consulta_cliente.consulta) {
 			cliente=Eventos_consulta_cliente.cliente;
@@ -69,8 +68,8 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 			}else if(Metodos_utiles.diasEntreFechas(ventana.getJdate_llegada().getDate(),ventana.getJdate_salida().getDate())<0) {
 				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>LA FECHA DE LLEGADA DEBE SER</center><br><center>ANTERIOR A LA DE SALIDA</center></body></html>";
 				new Ventana_error(ventana,true).setVisible(true);
-			}else if(ventana.getJdate_llegada().getDate().getTime()<calendario.getTime().getTime()) {
-				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>LA FECHA DE LLEGADA DEBE SER</center><br><center>POSTERIOR AL DÍA DE HOY</center></body></html>";
+			}else if(ventana.getJdate_llegada().getDate().getTime()<calendario.getTime().getTime()-86400000) {				
+				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>LA FECHA DE LLEGADA DEBE SER</center><br><center>COMO MÍNIMO EL DÍA DE HOY</center></body></html>";
 				new Ventana_error(ventana,true).setVisible(true);
 			}else if(cliente.getMascotas().size()<1){
 				mensaje="<html><body><center>EL CLIENTE NO TIENE NINGUNA</center><br><center>MASCOTA REGISTRADA</center><br></body></html>";

@@ -1,22 +1,17 @@
 package controlador;
 
-import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
 import javax.swing.JDialog;
-
 import org.hibernate.Session;
-
 import Principal.Inicio;
 import modelo.Hotel;
 import modelo.HotelDao;
 import modelo.Reserva;
 import modelo.ReservaDao;
-import vista.Calendario;
 import vista.Ventana_error;
 
 public class Metodos_utiles {
@@ -52,15 +47,13 @@ public class Metodos_utiles {
 	     long diasDesde = (long) Math.floor(inicio / (1000*60*60*24)); 
 	     long diasHasta = (long) Math.floor(fin / (1000*60*60*24)); 
 	     long dias = diasHasta - diasDesde;
-
 	     return dias;
 	}
-	
+
 	public boolean comprobarDia(Date dia) {
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		int contador=0;
 		Hotel hotel=hotelDao.findOneById(1);
-		
 		try {
 			List<Reserva> reservas=reservaDao.findAll();			
 			for(Reserva r:reservas) {
@@ -73,23 +66,23 @@ public class Metodos_utiles {
 						contador+=r.getNum_mascotas();						
 					}
 				}
-				
 			}
 			if(contador>=hotel.getHabitaciones()) {
 				return false;
 			}else{
 				return true;
 			}	
-			
-			
-			
 		}catch(Exception e){
 			e.printStackTrace();
 			new Ventana_error(ventana,true).setVisible(true);
 		}
 		return true;
-		
-		
+	}
+	
+	public static Date formatoFecha(Date dia) {
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		formato.format(dia);
+		return dia;
 	}
 
 }
