@@ -36,21 +36,21 @@ public class Historial_alimenticio {
 	
 	@OneToOne
     @MapsId
-    @JoinColumn(name = "idPerro")
-	private Mascota perro;
+    @JoinColumn(name = "idMascota")
+	private Mascota mascota;
 
 	public Historial_alimenticio() {		
 	}
 
 	public Historial_alimenticio(String tipo_pienso, String cantidad_pienso, String comentarios_pienso,
-			String tipo_intolerancia, String descripcion_intolerancia, Mascota perro) {
+			String tipo_intolerancia, String descripcion_intolerancia, Mascota mascota) {
 		super();		
 		this.tipo_pienso = tipo_pienso;
 		this.cantidad_pienso = cantidad_pienso;
 		this.comentarios_pienso = comentarios_pienso;
 		this.tipo_intolerancia = tipo_intolerancia;
 		this.descripcion_intolerancia = descripcion_intolerancia;
-		this.perro = perro;
+		this.mascota = mascota;
 	}
 
 	public String getTipo_pienso() {
@@ -94,15 +94,20 @@ public class Historial_alimenticio {
 	}
 
 	public Mascota getPerro() {
-		return perro;
+		return mascota;
 	}
 
 	public void setPerro(Mascota perro) {
-		this.perro = perro;
+		this.mascota = perro;
 	}
 
 	public long getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Historial_alimenticio [id=" + id + ", mascota=" + mascota + "]";
 	}
 	
 	

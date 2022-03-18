@@ -50,8 +50,8 @@ public class Historial_medico {
 	
 	@OneToOne
     @MapsId
-    @JoinColumn(name = "idPerro")
-	private Mascota perro;
+    @JoinColumn(name = "idMascota")
+	private Mascota mascota;
 	
 	public Historial_medico() {		
 	}
@@ -69,7 +69,7 @@ public class Historial_medico {
 		this.nombre_medicacion = nombre_medicacion;
 		this.dosis_medicacion = dosis_medicacion;
 		this.comentarios_medicacion = comentarios_medicacion;
-		this.perro = perro;
+		this.mascota = perro;
 	}
 
 	public String getPeso() {
@@ -145,15 +145,20 @@ public class Historial_medico {
 	}	
 
 	public Mascota getPerro() {
-		return perro;
+		return mascota;
 	}
 
-	public void setPerro(Mascota perro) {
-		this.perro = perro;
+	public void setPerro(Mascota mascota) {
+		this.mascota = mascota;
 	}
 
 	public long getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Historial_medico [id=" + id + ", mascota=" + mascota + "]";
 	}
 
 	

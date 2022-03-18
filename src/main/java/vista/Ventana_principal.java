@@ -3,11 +3,19 @@ package vista;
 import controlador.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
+import javax.swing.UIManager;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import com.formdev.flatlaf.FlatLightLaf;
 
 public class Ventana_principal extends javax.swing.JFrame {
 	
 	    public Ventana_principal() {
+	    	try {
+			    UIManager.setLookAndFeel( new FlatLightLaf() );
+			} catch( Exception ex ) {
+			    System.err.println( "Failed to initialize LaF" );
+			}
 	        initComponents();setSize(550,450);
 	        this.setLocationRelativeTo(null); 
 	    }

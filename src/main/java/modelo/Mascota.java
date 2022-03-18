@@ -33,11 +33,11 @@ public class Mascota {
 	@Column(name="Fecha")
 	private Date fecha;
 			
-	@OneToOne(mappedBy = "perro", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "mascota", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Historial_medico medico;
 	
-	@OneToOne(mappedBy = "perro", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "mascota", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Historial_alimenticio alimentos;
 	

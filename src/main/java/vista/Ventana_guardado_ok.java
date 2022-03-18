@@ -1,6 +1,9 @@
 package vista;
 
 import controlador.*;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.SwingConstants;
 
 public class Ventana_guardado_ok extends javax.swing.JDialog {
 
@@ -13,6 +16,7 @@ public class Ventana_guardado_ok extends javax.swing.JDialog {
     private void initComponents() {
 
         l_guardado = new javax.swing.JLabel();
+        l_guardado.setHorizontalAlignment(SwingConstants.CENTER);
         btn_ok = new javax.swing.JButton();
         
         setResizable(false);
@@ -25,27 +29,28 @@ public class Ventana_guardado_ok extends javax.swing.JDialog {
         btn_ok.setText("OK");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(l_guardado)
-                .addGap(37, 37, 37))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(btn_ok)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(153)
+        					.addComponent(btn_ok))
+        				.addGroup(layout.createSequentialGroup()
+        					.addContainerGap()
+        					.addComponent(l_guardado, GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)))
+        			.addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(l_guardado)
-                .addGap(32, 32, 32)
-                .addComponent(btn_ok)
-                .addContainerGap(49, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(48)
+        			.addComponent(l_guardado)
+        			.addGap(32)
+        			.addComponent(btn_ok)
+        			.addContainerGap(49, Short.MAX_VALUE))
         );
+        getContentPane().setLayout(layout);
 
         pack();
         

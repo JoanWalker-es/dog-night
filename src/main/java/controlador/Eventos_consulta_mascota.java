@@ -38,8 +38,17 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 		medicoDao=new HMedicoDao(sesion);
 		alimentoDao=new HAlimenticioDao(sesion);
 		this.mascota=mascotaDao.findOneById(Eventos_consulta_cliente.mascota.getIdMascota());	
-		medico=mascota.getMedico();
-		alimento=mascota.getAlimentos();
+		if(mascota.getMedico()==null) {
+			medico=new Historial_medico();		
+		}else {
+			medico=mascota.getMedico();
+		}
+		if(mascota.getAlimentos()==null) {
+			alimento=new Historial_alimenticio();
+		}else {
+			alimento=mascota.getAlimentos();
+		}	
+		
 	}
 	
 	@Override
@@ -60,6 +69,7 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 	}
 	
 	public void windowOpened(WindowEvent e) {		
+		
 		ventana.getTf_mascota_nombre().setText(mascota.getNombre());
 		ventana.getTf_mascota_chip().setText(mascota.getChip());
 		ventana.getJdate_mascota_fecha().setDate(mascota.getFecha());
@@ -78,7 +88,7 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 			ventana.getTf_intolerancia_tipo().setText(mascota.getAlimentos().getTipo_intolerancia());
 			ventana.getJt_intolerancia().setText(mascota.getAlimentos().getDescripcion_intolerancia());
 		}
-		if(mascota.getMedico()==null) {
+		if(mascota.getMedico()==null) {			
 			ventana.getCbox_talla().setSelectedItem("");
 			ventana.getCbox_esterilizado().setSelected(false);
 			ventana.getTf_medicacion_nombre().setText("");
@@ -98,9 +108,7 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 			ventana.getTf_mascota_peso().setText(mascota.getMedico().getPeso());		
 			ventana.getTf_mascota_sexo().setText(mascota.getMedico().getSexo());		
 			ventana.getJdate_mascota_rabia_fecha().setDate(mascota.getMedico().getFecha_vacuna());
-		}
-		
-		
+		}	
 		
 	}
 	
@@ -148,8 +156,11 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 				mascota.getMedico().setFecha_vacuna(new java.sql.Date(ventana.getJdate_mascota_rabia_fecha().getDate().getTime()));
 			}
 			
+			medicoDao.update(mascota.getMedico());
+			
 		}else {					
 			medico.setPerro(mascota);
+			mascota.setMedico(medico);
 			medico.setPeso(ventana.getTf_mascota_peso().getText());
 			medico.setSexo(ventana.getTf_mascota_sexo().getText());			
 			medico.setTalla(ventana.getCbox_talla().getSelectedItem().toString());
@@ -160,25 +171,27 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 			medico.setNombre_vacuna(ventana.getTf_vacuna_nombre().getText());
 			if(ventana.getJdate_mascota_rabia_fecha().getDate()!=null) {
 				medico.setFecha_vacuna(new java.sql.Date(ventana.getJdate_mascota_rabia_fecha().getDate().getTime()));
-			}
-			
+			}			
 			medicoDao.save(medico);
 		}
 		
-		if(mascota.getAlimentos()!=null) {
+		if(mascota.getAlimentos()!=null) {			
 			mascota.getAlimentos().setTipo_pienso(ventana.getTf_alimento_tipo().getText());
 			mascota.getAlimentos().setCantidad_pienso(ventana.getTf_alimento_cantidad().getText());
 			mascota.getAlimentos().setComentarios_pienso(ventana.getJt_alimento().getText());
 			mascota.getAlimentos().setTipo_intolerancia(ventana.getTf_intolerancia_tipo().getText());
 			mascota.getAlimentos().setDescripcion_intolerancia(ventana.getJt_intolerancia().getText());
+			alimentoDao.update(mascota.getAlimentos());
 		}else {			
+			alimento=new Historial_alimenticio();
 			alimento.setPerro(mascota);
+			mascota.setAlimentos(alimento);
+			System.out.println(alimento.toString());
 			alimento.setTipo_pienso(ventana.getTf_alimento_tipo().getText());
 			alimento.setCantidad_pienso(ventana.getTf_alimento_cantidad().getText());
 			alimento.setComentarios_pienso(ventana.getJt_alimento().getText());
 			alimento.setTipo_intolerancia(ventana.getTf_intolerancia_tipo().getText());
-			alimento.setDescripcion_intolerancia(ventana.getJt_intolerancia().getText());
-			
+			alimento.setDescripcion_intolerancia(ventana.getJt_intolerancia().getText());			
 			alimentoDao.save(alimento);
 		}				
 		
