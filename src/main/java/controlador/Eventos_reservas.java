@@ -45,13 +45,14 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 				if(Eventos_eliminar_reserva.eliminar) {	
 					ventana_reservas.getModelo().setRowCount(0);
 					cliente.getReservas().remove(reser);
-					clienteDao.update(cliente);	
-					reservaDao.delete(reser);											
+					reservaDao.delete(reser);
+					clienteDao.update(cliente);																	
 					rellenaTablaCliente(cliente);
 				}
 			}catch(Exception ex) {
 				mensaje="<html><body><center>DEBE SELECCIONAR UN</center><br><center>CÓDIGO DE RESERVA</center><br></body></html>";
 				new Ventana_error(ventana_reservas,true).setVisible(true);
+				ex.printStackTrace();
 			}						
 			
 		}else if(e.getSource()==ventana_reservas.getBtn_crear()) {				
@@ -105,14 +106,12 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 		for(Cliente c:clientes) {				
 			ventana_reservas.getCbox_selec_cliente().addItem(c);				
 		}		
-		ventana_reservas.getBtn_crear().setEnabled(false);	
-		
+		ventana_reservas.getBtn_crear().setEnabled(false);			
 		rellenaTabla();
 	}
 	
 	private void rellenaTabla() {	
-		ventana_reservas.getModelo().setRowCount(0);
-		
+		ventana_reservas.getModelo().setRowCount(0);		
 		List<Reserva> reservas=reservaDao.findAll();		
 		for(Reserva r:reservas) {
 			Object[] obj=new Object[6];

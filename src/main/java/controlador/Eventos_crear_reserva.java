@@ -102,18 +102,16 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 					
 					reserva.setCliente(cliente);				
 					
-					try {					
-						
+					try {										
 						if(Eventos_reservas.modificar) {
 							reservaDao.update(reserva);						
 						}else {
 
 							cliente.addReserva(reserva);
 							reservaDao.save(reserva);
-						}					
+						}		
 
 						clienteDao.update(cliente);
-						System.out.println(cliente.getReservas().toString());
 						new Reserva_creada(ventana,true).setVisible(true);
 						ventana.getBtn_registrar().setEnabled(false);
 						ventana.getTa_comentarios().setEnabled(false);
