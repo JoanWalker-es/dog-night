@@ -2,16 +2,21 @@ package vista;
 
 import controlador.*;
 import javax.swing.GroupLayout.Alignment;
+
+import java.awt.Image;
+
 import javax.swing.GroupLayout;
 import javax.swing.UIManager;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class Ventana_principal extends javax.swing.JFrame {
 	
 	    public Ventana_principal() {
+	    	setIconImage(Toolkit.getDefaultToolkit().getImage(Ventana_principal.class.getResource("/imagen/icono_DN.png")));
 	    	try {
 			    UIManager.setLookAndFeel( new FlatLightLaf() );
 			} catch( Exception ex ) {
