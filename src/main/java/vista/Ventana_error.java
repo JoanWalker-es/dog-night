@@ -5,6 +5,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.GroupLayout;
 import javax.swing.SwingConstants;
+import javax.swing.JPanel;
 
 public class Ventana_error extends javax.swing.JDialog {
 
@@ -20,7 +21,6 @@ public class Ventana_error extends javax.swing.JDialog {
 
         l_error = new javax.swing.JLabel();
         l_error.setHorizontalAlignment(SwingConstants.CENTER);
-        btn_ok = new javax.swing.JButton();
 
         setResizable(false);
         setTitle("Error");
@@ -28,36 +28,38 @@ public class Ventana_error extends javax.swing.JDialog {
 
         l_error.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         l_error.setText("ERROR GUARDANDO LOS DATOS");
-
-        btn_ok.setText("OK");
+        
+        JPanel panel = new JPanel();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addContainerGap()
-        					.addComponent(l_error, GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(147)
-        					.addComponent(btn_ok)))
+        		.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+        				.addComponent(l_error, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
         			.addContainerGap())
         );
         layout.setVerticalGroup(
-        	layout.createParallelGroup(Alignment.TRAILING)
-        		.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
         			.addContainerGap()
         			.addComponent(l_error)
-        			.addPreferredGap(ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-        			.addComponent(btn_ok)
+        			.addPreferredGap(ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+        			.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         			.addContainerGap())
         );
+        btn_ok = new javax.swing.JButton();
+        panel.add(btn_ok);
+        
+                btn_ok.setText("OK");              
+                
         getContentPane().setLayout(layout);
 
         pack();
         
-        //EVENTOS DE CLASE:
+      //EVENTOS DE CLASE:
         btn_ok.addActionListener(new Eventos_error(this));
     } 
     

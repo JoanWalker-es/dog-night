@@ -1,12 +1,12 @@
 package vista;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
 import controlador.Eventos_registro_mascota;
-
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 
 public class Registro_mascota extends javax.swing.JDialog {
@@ -14,129 +14,170 @@ public class Registro_mascota extends javax.swing.JDialog {
     public Registro_mascota(javax.swing.JDialog parent,boolean modal) {
     	super(parent,modal);
         initComponents();
-        setSize(420,306);
+        setSize(430,249);
         this.setLocationRelativeTo(null); 
     }            
     
     private void initComponents() {
-
-        l_mascota_nombre = new javax.swing.JLabel();
-        tf_mascota_nombre = new javax.swing.JTextField();
-        tf_mascota_chip = new javax.swing.JTextField();
-        l_mascota_chip = new javax.swing.JLabel();
-        l_mascota_fecha = new javax.swing.JLabel();
-        tf_mascota_raza = new javax.swing.JTextField();
-        l_mascota_raza = new javax.swing.JLabel();
         l_mascota_titulo = new javax.swing.JLabel();
-        btn_mascota_medico = new javax.swing.JButton();
-        btn_mascota_alimentos = new javax.swing.JButton();
-        btn_atras = new javax.swing.JButton();
-        btn_guardar = new javax.swing.JButton();
-        jDate_mascota_fecha = new JDateChooser();
+        l_mascota_titulo.setHorizontalAlignment(SwingConstants.CENTER);
         
         setResizable(false);
         setTitle("Registro mascota");
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        btn_mascota_medico.setEnabled(false);
-        btn_mascota_alimentos.setEnabled(false);
-
-        l_mascota_nombre.setText("Nombre:");
-
-        l_mascota_chip.setText("Microchip:");
-
-        l_mascota_fecha.setText("Fecha nacimiento:");
-
-        l_mascota_raza.setText("Raza:");
 
         l_mascota_titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         l_mascota_titulo.setText("Datos de la mascota:");
-
-        btn_mascota_medico.setText("DATOS MÉDICOS");
-
-        btn_mascota_alimentos.setText("ALIMENTACIÓN");
-
-        btn_atras.setText("ATRAS");
-
-        btn_guardar.setText("GUARDAR");
         
-        btn_limpiar = new JButton("LIMPIAR CAMPOS");        
+        panel = new JPanel();
+        
+        panel_1 = new JPanel();
+        
+        panel_2 = new JPanel();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
+        	layout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(91)
-        					.addComponent(l_mascota_titulo))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(21)
-        					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        						.addComponent(l_mascota_fecha)
-        						.addComponent(l_mascota_chip)
-        						.addComponent(l_mascota_nombre)
-        						.addComponent(l_mascota_raza)
-        						.addComponent(btn_atras))
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(layout.createSequentialGroup()
-        							.addPreferredGap(ComponentPlacement.UNRELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        								.addComponent(tf_mascota_chip, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-        								.addComponent(tf_mascota_nombre, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-        								.addComponent(tf_mascota_raza, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-        								.addComponent(jDate_mascota_fecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        							.addPreferredGap(ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        								.addComponent(btn_limpiar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        								.addComponent(btn_mascota_medico, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        								.addComponent(btn_mascota_alimentos, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        						.addGroup(layout.createSequentialGroup()
-        							.addGap(71)
-        							.addComponent(btn_guardar)))))
-        			.addContainerGap(189, Short.MAX_VALUE))
+        				.addComponent(l_mascota_titulo, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+        				.addComponent(panel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+        				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE))
+        			.addContainerGap())
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(266)
+        			.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+        			.addGap(20))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
         			.addContainerGap()
         			.addComponent(l_mascota_titulo)
-        			.addGap(26)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(l_mascota_nombre)
-        				.addComponent(tf_mascota_nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(btn_mascota_medico))
         			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(l_mascota_chip)
-        				.addComponent(tf_mascota_chip, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(btn_mascota_alimentos))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        						.addComponent(l_mascota_fecha)
-        						.addComponent(jDate_mascota_fecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(tf_mascota_raza, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(l_mascota_raza))
-        					.addGap(18)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(btn_guardar)
-        						.addComponent(btn_atras)))
-        				.addComponent(btn_limpiar))
-        			.addGap(78))
+        			.addComponent(panel, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+        			.addGap(51)
+        			.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        			.addGap(134)
+        			.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
+        btn_atras = new javax.swing.JButton();
+        panel_2.add(btn_atras);
+        
+                btn_atras.setText("ATRAS");
+                btn_guardar = new javax.swing.JButton();
+                panel_2.add(btn_guardar);
+                
+                        btn_guardar.setText("GUARDAR");
+                        btn_guardar.addActionListener(new Eventos_registro_mascota(this));
+                
+                btn_atras.addActionListener(new Eventos_registro_mascota(this));
+        
+        btn_limpiar = new JButton("LIMPIAR CAMPOS");
+        btn_limpiar.addActionListener(new Eventos_registro_mascota(this));
+        btn_mascota_alimentos = new javax.swing.JButton();
+        btn_mascota_alimentos.setEnabled(false);
+        
+                btn_mascota_alimentos.setText("ALIMENTACIÓN");
+                btn_mascota_alimentos.addActionListener(new Eventos_registro_mascota(this));
+        btn_mascota_medico = new javax.swing.JButton();
+        btn_mascota_medico.setEnabled(false);
+        
+                btn_mascota_medico.setText("DATOS MÉDICOS");
+                btn_mascota_medico.addActionListener(new Eventos_registro_mascota(this));
+        GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+        gl_panel_1.setHorizontalGroup(
+        	gl_panel_1.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel_1.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
+        				.addComponent(btn_mascota_alimentos, GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+        				.addComponent(btn_mascota_medico, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addComponent(btn_limpiar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        			.addContainerGap(173, Short.MAX_VALUE))
+        );
+        gl_panel_1.setVerticalGroup(
+        	gl_panel_1.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel_1.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(btn_mascota_medico)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(btn_mascota_alimentos)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(btn_limpiar)
+        			.addContainerGap(33, Short.MAX_VALUE))
+        );
+        panel_1.setLayout(gl_panel_1);
+        l_mascota_fecha = new javax.swing.JLabel();
+        l_mascota_fecha.setHorizontalAlignment(SwingConstants.RIGHT);
+        
+                l_mascota_fecha.setText("Fecha nacimiento:");
+        l_mascota_chip = new javax.swing.JLabel();
+        l_mascota_chip.setHorizontalAlignment(SwingConstants.RIGHT);
+        
+                l_mascota_chip.setText("Microchip:");
+        
+                l_mascota_nombre = new javax.swing.JLabel();
+                l_mascota_nombre.setHorizontalAlignment(SwingConstants.RIGHT);
+                
+                        l_mascota_nombre.setText("Nombre:");
+        tf_mascota_nombre = new javax.swing.JTextField();
+        tf_mascota_chip = new javax.swing.JTextField();
+        jDate_mascota_fecha = new JDateChooser();
+        tf_mascota_raza = new javax.swing.JTextField();
+        l_mascota_raza = new javax.swing.JLabel();
+        l_mascota_raza.setHorizontalAlignment(SwingConstants.RIGHT);
+        
+                l_mascota_raza.setText("Raza:");
+        GroupLayout gl_panel = new GroupLayout(panel);
+        gl_panel.setHorizontalGroup(
+        	gl_panel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+        				.addComponent(l_mascota_raza, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addComponent(l_mascota_fecha, GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+        				.addComponent(l_mascota_chip, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addComponent(l_mascota_nombre, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+        					.addComponent(tf_mascota_chip)
+        					.addComponent(tf_mascota_raza, Alignment.TRAILING)
+        					.addComponent(jDate_mascota_fecha, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+        				.addComponent(tf_mascota_nombre))
+        			.addContainerGap())
+        );
+        gl_panel.setVerticalGroup(
+        	gl_panel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addGap(4)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(l_mascota_nombre)
+        				.addComponent(tf_mascota_nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+        				.addGroup(gl_panel.createSequentialGroup()
+        					.addGap(9)
+        					.addComponent(tf_mascota_chip, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(gl_panel.createSequentialGroup()
+        					.addGap(12)
+        					.addComponent(l_mascota_chip)))
+        			.addGap(8)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(jDate_mascota_fecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_mascota_fecha))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(tf_mascota_raza, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(l_mascota_raza))
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panel.setLayout(gl_panel);
         getContentPane().setLayout(layout);
 
         pack();
-        
-        //EVENTOS DE CLASE:
-        btn_atras.addActionListener(new Eventos_registro_mascota(this));
-        btn_guardar.addActionListener(new Eventos_registro_mascota(this));
-        btn_mascota_alimentos.addActionListener(new Eventos_registro_mascota(this));
-        btn_mascota_medico.addActionListener(new Eventos_registro_mascota(this));
-        btn_limpiar.addActionListener(new Eventos_registro_mascota(this));
     }
         
                        
@@ -176,9 +217,6 @@ public class Registro_mascota extends javax.swing.JDialog {
 		return jDate_mascota_fecha;
 	}
 
-
-
-
 	private javax.swing.JButton btn_atras;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_mascota_alimentos;
@@ -193,5 +231,8 @@ public class Registro_mascota extends javax.swing.JDialog {
     private javax.swing.JTextField tf_mascota_raza;
     private JDateChooser jDate_mascota_fecha;
     private JButton btn_limpiar;
+    private JPanel panel;
+    private JPanel panel_1;
+    private JPanel panel_2;
 }
 

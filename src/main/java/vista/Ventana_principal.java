@@ -1,14 +1,7 @@
 package vista;
 
 import controlador.*;
-import javax.swing.GroupLayout.Alignment;
-
-import java.awt.Image;
-
-import javax.swing.GroupLayout;
 import javax.swing.UIManager;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;

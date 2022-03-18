@@ -4,6 +4,8 @@ import controlador.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.SwingConstants;
+import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Ventana_guardado_ok extends javax.swing.JDialog {
 
@@ -17,7 +19,6 @@ public class Ventana_guardado_ok extends javax.swing.JDialog {
 
         l_guardado = new javax.swing.JLabel();
         l_guardado.setHorizontalAlignment(SwingConstants.CENTER);
-        btn_ok = new javax.swing.JButton();
         
         setResizable(false);
         setTitle("Guardado correcto");
@@ -25,20 +26,17 @@ public class Ventana_guardado_ok extends javax.swing.JDialog {
 
         l_guardado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         l_guardado.setText("DATOS GUARDADOS CORRECTAMENTE.");
-
-        btn_ok.setText("OK");
+        
+        JPanel panel = new JPanel();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(layout.createSequentialGroup()
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(153)
-        					.addComponent(btn_ok))
-        				.addGroup(layout.createSequentialGroup()
-        					.addContainerGap()
-        					.addComponent(l_guardado, GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)))
+        			.addContainerGap()
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+        				.addComponent(l_guardado, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
         			.addContainerGap())
         );
         layout.setVerticalGroup(
@@ -46,15 +44,20 @@ public class Ventana_guardado_ok extends javax.swing.JDialog {
         		.addGroup(layout.createSequentialGroup()
         			.addGap(48)
         			.addComponent(l_guardado)
-        			.addGap(32)
-        			.addComponent(btn_ok)
-        			.addContainerGap(49, Short.MAX_VALUE))
+        			.addPreferredGap(ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+        			.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
+        btn_ok = new javax.swing.JButton();
+        panel.add(btn_ok);
+        
+                btn_ok.setText("OK");               
+                
         getContentPane().setLayout(layout);
 
         pack();
         
-        //EVENTOS DE CLASE:
+      //EVENTOS DE CLASE:
         btn_ok.addActionListener(new Eventos_guardado_ok(this));
     }
     

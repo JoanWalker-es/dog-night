@@ -10,36 +10,25 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
 
 public class Reservas extends javax.swing.JDialog {
 
     public Reservas(java.awt.Frame parent,boolean modal) {
     	super(parent,modal);
         initComponents();
-        setSize(1000,400);
+        setSize(1000,360);
         this.setLocationRelativeTo(null); 
     }
                          
     private void initComponents() {
-
-        l_cliente = new javax.swing.JLabel();
-        cbox_selec_cliente = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_reservas = new javax.swing.JTable();
-        btn_atras = new javax.swing.JButton();
-        btn_eliminar = new javax.swing.JButton();
-        btn_crear = new javax.swing.JButton();       
-        btn_mostrar = new JButton();
-        btn_modificar = new JButton();
         
         setResizable(false);
         setTitle("Reservas");
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        btn_eliminar.setEnabled(false);
-
-        l_cliente.setText("Cliente:");
-
-        cbox_selec_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new Cliente[] {}));          
         
         modelo = new DefaultTableModel();
         
@@ -70,72 +59,94 @@ public class Reservas extends javax.swing.JDialog {
         tabla_reservas.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_reservas);
         tabla_reservas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        btn_atras.setText("ATRAS");
-
-        btn_eliminar.setText("ELIMINAR RESERVA");
-
-        btn_crear.setText("CREAR RESERVA");
         
-        btn_mostrar.setText("MOSTRAR RESERVAS");        
+        panel = new JPanel();
         
-        btn_modificar.setText("MODIFICAR RESERVA");
-        btn_modificar.setEnabled(false);
+        panel_1 = new JPanel();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(72)
-        					.addComponent(l_cliente)
-        					.addPreferredGap(ComponentPlacement.UNRELATED)
-        					.addComponent(cbox_selec_cliente, GroupLayout.PREFERRED_SIZE, 281, GroupLayout.PREFERRED_SIZE)
-        					.addGap(18)
-        					.addComponent(btn_mostrar, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(169)
-        					.addComponent(btn_atras)
-        					.addGap(18)
-        					.addComponent(btn_eliminar)
-        					.addGap(18)
-        					.addComponent(btn_modificar)
-        					.addGap(18)
-        					.addComponent(btn_crear))
-        				.addGroup(layout.createSequentialGroup()
-        					.addContainerGap()
-        					.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)))
+        				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)
+        				.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)
+        				.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE))
         			.addContainerGap())
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addGap(28)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(l_cliente)
-        				.addComponent(cbox_selec_cliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(btn_mostrar))
-        			.addGap(35)
-        			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
+        			.addGap(22)
+        			.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         			.addGap(18)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(btn_atras)
-        				.addComponent(btn_eliminar)
-        				.addComponent(btn_modificar)
-        				.addComponent(btn_crear))
-        			.addContainerGap(40, Short.MAX_VALUE))
+        			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+        			.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
+        
+                l_cliente = new javax.swing.JLabel();
+                
+                        l_cliente.setText("Cliente:");
+                        cbox_selec_cliente = new javax.swing.JComboBox<>();
+                        
+                                cbox_selec_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new Cliente[] {}));
+                                btn_mostrar = new JButton();
+                                
+                                btn_mostrar.setText("MOSTRAR RESERVAS");
+                                GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+                                gl_panel_1.setHorizontalGroup(
+                                	gl_panel_1.createParallelGroup(Alignment.LEADING)
+                                		.addGroup(gl_panel_1.createSequentialGroup()
+                                			.addGap(179)
+                                			.addComponent(l_cliente)
+                                			.addGap(18)
+                                			.addComponent(cbox_selec_cliente, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
+                                			.addGap(18)
+                                			.addComponent(btn_mostrar)
+                                			.addGap(273))
+                                );
+                                gl_panel_1.setVerticalGroup(
+                                	gl_panel_1.createParallelGroup(Alignment.LEADING)
+                                		.addGroup(gl_panel_1.createSequentialGroup()
+                                			.addGap(5)
+                                			.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+                                				.addComponent(btn_mostrar)
+                                				.addComponent(cbox_selec_cliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                				.addComponent(l_cliente))
+                                			.addGap(1))
+                                );
+                                panel_1.setLayout(gl_panel_1);
+                                btn_mostrar.addActionListener(new Eventos_reservas(this));
+        btn_atras = new javax.swing.JButton();
+        
+                btn_atras.setText("ATRAS");
+                btn_eliminar = new javax.swing.JButton();
+                btn_eliminar.setEnabled(false);
+                
+                        btn_eliminar.setText("ELIMINAR RESERVA");
+                        btn_eliminar.addActionListener(new Eventos_reservas(this));
+                btn_modificar = new JButton();
+                
+                btn_modificar.setText("MODIFICAR RESERVA");
+                btn_modificar.setEnabled(false);
+                btn_modificar.addActionListener(new Eventos_reservas(this));
+                btn_crear = new javax.swing.JButton();       
+                
+                        btn_crear.setText("CREAR RESERVA");
+                        btn_crear.addActionListener(new Eventos_reservas(this));
+                panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+                panel.add(btn_atras);
+                panel.add(btn_eliminar);
+                panel.add(btn_modificar);
+                panel.add(btn_crear);              
+                
+                btn_atras.addActionListener(new Eventos_reservas(this));
         getContentPane().setLayout(layout);
 
         pack();
-        
-        //EVENTOS DE CLASE:
-        btn_atras.addActionListener(new Eventos_reservas(this));
-        btn_crear.addActionListener(new Eventos_reservas(this));
-        btn_eliminar.addActionListener(new Eventos_reservas(this));
-        btn_mostrar.addActionListener(new Eventos_reservas(this));
-        btn_modificar.addActionListener(new Eventos_reservas(this));
         addWindowListener(new Eventos_reservas(this));
     }    
     
@@ -172,7 +183,6 @@ public class Reservas extends javax.swing.JDialog {
 	}
 
 
-
 	private JButton btn_mostrar;
 	private javax.swing.JButton btn_atras;
     private javax.swing.JButton btn_crear;
@@ -183,4 +193,6 @@ public class Reservas extends javax.swing.JDialog {
     private javax.swing.JTable tabla_reservas;      
     private DefaultTableModel modelo;
     private JButton btn_modificar;
+    private JPanel panel;
+    private JPanel panel_1;
 }
