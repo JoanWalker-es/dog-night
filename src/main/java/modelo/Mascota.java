@@ -13,7 +13,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="perro")
+@Table(name="mascota")
 public class Mascota {
 	
 	@Id 

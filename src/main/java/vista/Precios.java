@@ -3,21 +3,21 @@ package vista;
 import java.text.DecimalFormat;
 
 import controlador.Eventos_precios;
+import javax.swing.JPanel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Precios extends javax.swing.JDialog {
 
     public Precios(java.awt.Frame parent,boolean modal) {
     	super(parent,modal);
         initComponents();
-        setSize(450,400);
+        setSize(400,347);
         this.setLocationRelativeTo(null); 
     }
                          
     private void initComponents() {
-
-    	
-        btn_atras = new javax.swing.JButton();
-        btn_guardar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         l_estancia = new javax.swing.JLabel();
         l_socios = new javax.swing.JLabel();
@@ -34,10 +34,6 @@ public class Precios extends javax.swing.JDialog {
         setResizable(false);
         setTitle("Configuración de precios");
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        
-        btn_atras.setText("ATRAS");
-
-        btn_guardar.setText("GUARDAR");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("PRECIOS"));
 
@@ -114,46 +110,48 @@ public class Precios extends javax.swing.JDialog {
                     .addComponent(tf_habitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        
+        panel = new JPanel();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(btn_atras)
-                .addGap(126, 126, 126)
-                .addComponent(btn_guardar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        				.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addComponent(jPanel2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addComponent(jPanel1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE))
+        			.addContainerGap(393, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_atras)
-                    .addComponent(btn_guardar))
-                .addContainerGap(26, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addGap(18)
+        			.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(26, Short.MAX_VALUE))
         );
+        
+            	
+                btn_atras = new javax.swing.JButton();
+                panel.add(btn_atras);
+                
+                btn_atras.setText("ATRAS");
+                btn_guardar = new javax.swing.JButton();
+                panel.add(btn_guardar);
+                
+                        btn_guardar.setText("GUARDAR");
+                        btn_guardar.addActionListener(new Eventos_precios(this));
+                
+                //EVENTOS DE CLASE:
+                btn_atras.addActionListener(new Eventos_precios(this));
+        getContentPane().setLayout(layout);
 
         pack();
-        
-        //EVENTOS DE CLASE:
-        btn_atras.addActionListener(new Eventos_precios(this));
-        btn_guardar.addActionListener(new Eventos_precios(this));
         addWindowListener(new Eventos_precios(this));
     }
     
@@ -203,5 +201,6 @@ public class Precios extends javax.swing.JDialog {
     private javax.swing.JTextField tf_habitaciones;
     private javax.swing.JTextField tf_peluqueria;
     private javax.swing.JTextField tf_socios;      
+    private JPanel panel;
 }
 

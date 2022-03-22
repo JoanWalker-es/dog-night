@@ -14,7 +14,7 @@ public class Registro_mascota extends javax.swing.JDialog {
     public Registro_mascota(javax.swing.JDialog parent,boolean modal) {
     	super(parent,modal);
         initComponents();
-        setSize(430,249);
+        setSize(449,238);
         this.setLocationRelativeTo(null); 
     }            
     
@@ -43,12 +43,11 @@ public class Registro_mascota extends javax.swing.JDialog {
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addComponent(l_mascota_titulo, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
         				.addComponent(panel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
-        				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        					.addGap(18)
+        					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)))
         			.addContainerGap())
-        		.addGroup(layout.createSequentialGroup()
-        			.addGap(266)
-        			.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-        			.addGap(20))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
@@ -56,10 +55,10 @@ public class Registro_mascota extends javax.swing.JDialog {
         			.addContainerGap()
         			.addComponent(l_mascota_titulo)
         			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(panel, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-        			.addGap(51)
-        			.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-        			.addGap(134)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
         			.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         			.addContainerGap())
         );

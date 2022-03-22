@@ -32,7 +32,7 @@ public class Eventos_registro_mascota implements ActionListener{
 		}else if(e.getSource()==ventana_registro.getBtn_guardar()) {
 		
 			if(ventana_registro.getTf_mascota_nombre().getText().isBlank()||ventana_registro.getTf_mascota_nombre().getText().isEmpty()) {
-				mensaje="<html><body><center>DEBE INTRODUCIR:</center><br><center>UN NOMBRE</center><br><center>DELA MASCOTA</center></body></html>";
+				mensaje="<html><body><center>DEBE INTRODUCIR:</center><br><center>UN NOMBRE</center><br><center>DE LA MASCOTA</center></body></html>";
 				new Ventana_error(ventana_registro,true).setVisible(true);
 			}else {
 				mascota=new Mascota();
@@ -57,14 +57,15 @@ public class Eventos_registro_mascota implements ActionListener{
 					new Ventana_guardado_ok(ventana_registro,true).setVisible(true);				
 					ventana_registro.getBtn_mascota_alimentos().setEnabled(true);
 					ventana_registro.getBtn_mascota_medico().setEnabled(true);
+					ventana_registro.getBtn_guardar().setEnabled(false);
+					Campos(false);
 					
 				}catch(Exception ex) {
 					ex.printStackTrace();
 					new Ventana_error(ventana_registro,true).setVisible(true);
 				}
-			}			
-			ventana_registro.getBtn_guardar().setEnabled(false);	
-			Campos(false);
+			}		
+			
 			
 		}else if(e.getSource()==ventana_registro.getBtn_mascota_alimentos()) {
 			new Datos_alimentos(ventana_registro,true).setVisible(true);			

@@ -6,6 +6,10 @@ import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.EtchedBorder;
+import java.awt.Color;
 
 public class Consulta_mascota extends javax.swing.JDialog {
 
@@ -46,6 +50,7 @@ public class Consulta_mascota extends javax.swing.JDialog {
         jt_medicacion.setLineWrap(true);
         jt_medicacion.setWrapStyleWord(true);
         jPanel3 = new javax.swing.JPanel();
+        jPanel3.setBorder(new TitledBorder(null, "Alimentaci\u00F3n:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         l_alimentos_tipo = new javax.swing.JLabel();
         l_alimentos_cantidad = new javax.swing.JLabel();
         l_alimentos_comentarios = new javax.swing.JLabel();
@@ -56,6 +61,7 @@ public class Consulta_mascota extends javax.swing.JDialog {
         jt_alimento.setWrapStyleWord(true);
         jt_alimento.setLineWrap(true);
         jPanel4 = new javax.swing.JPanel();
+        jPanel4.setBorder(new TitledBorder(null, "Intolerancias:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         l_intolerancias_descripcion = new javax.swing.JLabel();
         l_intolerancias_tipo = new javax.swing.JLabel();
         tf_intolerancia_tipo = new javax.swing.JTextField();
@@ -64,14 +70,12 @@ public class Consulta_mascota extends javax.swing.JDialog {
         jt_intolerancia.setLineWrap(true);
         jt_intolerancia.setWrapStyleWord(true);
         jPanel5 = new javax.swing.JPanel();
+        jPanel5.setBorder(new TitledBorder(null, "Vacuna rabia:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         l_vacuna_nombre = new javax.swing.JLabel();
         l_vacuna_fecha = new javax.swing.JLabel();
         tf_vacuna_nombre = new javax.swing.JTextField();
-        btn_volver = new javax.swing.JButton();
-        btn_editar = new javax.swing.JButton();   
         jdate_mascota_fecha = new JDateChooser();
         jdate_mascota_rabia_fecha = new JDateChooser();
-        btn_guardar=new JButton();
 
         tf_mascota_nombre.setEditable(false);
         tf_mascota_chip.setEditable(false);
@@ -93,17 +97,12 @@ public class Consulta_mascota extends javax.swing.JDialog {
         tf_alimento_cantidad.setEditable(false);   
         jdate_mascota_fecha.setEnabled(false);
         jdate_mascota_rabia_fecha.setEnabled(false);
-        btn_guardar.setEnabled(false);
                 
         setResizable(false);
         setTitle("Consulta de datos mascota");        
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        btn_volver.setText("VOLVER");
-
-        btn_editar.setText("EDITAR DATOS");        
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("DATOS GENERALES"));
+        jPanel1.setBorder(new TitledBorder(null, "General:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
         cbox_esterilizado.setText("SI");
 
@@ -210,7 +209,7 @@ public class Consulta_mascota extends javax.swing.JDialog {
         );
         jPanel1.setLayout(jPanel1Layout);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("MEDICACIÓN"));
+        jPanel2.setBorder(new TitledBorder(null, "Medicaci\u00F3n:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
         l_medicacion_nombre.setText("Nombre:");
 
@@ -267,8 +266,6 @@ public class Consulta_mascota extends javax.swing.JDialog {
                 .addGap(37, 37, 37))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("ALIMENTACIÓN"));
-
         l_alimentos_tipo.setText("Tipo de alimento:");
 
         l_alimentos_cantidad.setText("Cantidad diaria:");
@@ -324,8 +321,6 @@ public class Consulta_mascota extends javax.swing.JDialog {
                 .addGap(37, 37, 37))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("INTOLERANCIAS"));
-
         l_intolerancias_descripcion.setText("Descripción:");
 
         l_intolerancias_tipo.setText("Tipo de intolerancia:");
@@ -370,8 +365,6 @@ public class Consulta_mascota extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("VACUNA RABIA"));
-
         l_vacuna_nombre.setText("Nombre:");
 
         l_vacuna_fecha.setText("Fecha inoculación:");
@@ -408,20 +401,17 @@ public class Consulta_mascota extends javax.swing.JDialog {
         			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5.setLayout(jPanel5Layout);
-
-        btn_volver.setText("VOLVER");
-
-        btn_editar.setText("EDITAR DATOS");
         
-        btn_guardar.setText("GUARDAR MASCOTA");
+        panel = new JPanel();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
         				.addGroup(layout.createSequentialGroup()
-        					.addContainerGap()
         					.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
         						.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         						.addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE))
@@ -432,14 +422,7 @@ public class Consulta_mascota extends javax.swing.JDialog {
         								.addComponent(jPanel4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         								.addComponent(jPanel5, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
         							.addGap(0))
-        						.addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(159)
-        					.addComponent(btn_volver)
-        					.addGap(18)
-        					.addComponent(btn_editar)
-        					.addGap(18)
-        					.addComponent(btn_guardar)))
+        						.addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))))
         			.addContainerGap())
         );
         layout.setVerticalGroup(
@@ -459,21 +442,34 @@ public class Consulta_mascota extends javax.swing.JDialog {
         					.addGap(18)
         					.addComponent(jPanel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
         			.addPreferredGap(ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(btn_volver)
-        				.addComponent(btn_editar)
-        				.addComponent(btn_guardar))
-        			.addContainerGap())
+        			.addComponent(panel, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
         );
+        btn_volver = new javax.swing.JButton();
+        panel.add(btn_volver);
+        
+                btn_volver.setText("VOLVER");
+                
+                        btn_volver.setText("VOLVER");
+                        btn_editar = new javax.swing.JButton();   
+                        panel.add(btn_editar);
+                        
+                                btn_editar.setText("EDITAR DATOS");        
+                                
+                                        btn_editar.setText("EDITAR DATOS");
+                                        btn_guardar=new JButton();
+                                        panel.add(btn_guardar);
+                                        btn_guardar.setEnabled(false);
+                                        
+                                        btn_guardar.setText("GUARDAR MASCOTA");
+                                        btn_guardar.addActionListener(new Eventos_consulta_mascota(this));
+                                        btn_editar.addActionListener(new Eventos_consulta_mascota(this));
+                        btn_volver.addActionListener(new Eventos_consulta_mascota(this));
         getContentPane().setLayout(layout);
 
         pack();
         
         //EVENTOS DE CLASE:
         addWindowListener(new Eventos_consulta_mascota(this));
-        btn_editar.addActionListener(new Eventos_consulta_mascota(this));
-        btn_volver.addActionListener(new Eventos_consulta_mascota(this));
-        btn_guardar.addActionListener(new Eventos_consulta_mascota(this));
     }    
     
     public javax.swing.JButton getBtn_editar() {
@@ -609,4 +605,5 @@ public class Consulta_mascota extends javax.swing.JDialog {
     private JDateChooser jdate_mascota_fecha;
     private JDateChooser jdate_mascota_rabia_fecha; 
     private JButton btn_guardar;
+    private JPanel panel;
 }
