@@ -4,13 +4,13 @@ import org.hibernate.Session;
 
 import config.HibernateUtil;
 import modelo.Cliente;
-import modelo.ClienteDao;
+import modelo.ClienteRepository;
 import modelo.Hotel;
-import modelo.HotelDao;
+import modelo.HotelRepository;
 import modelo.Mascota;
-import modelo.MascotaDao;
+import modelo.MascotaRepository;
 import modelo.Servicios;
-import modelo.ServiciosDao;
+import modelo.ServiciosRepository;
 import vista.Ventana_principal;
 
 public class Inicio {
@@ -34,10 +34,10 @@ public class Inicio {
 	}
 	
 	public static void crearDatos(Session sesion) {
-		ClienteDao clienteDao = new ClienteDao(sesion);		
-		MascotaDao mascotaDao=new MascotaDao(sesion);
-		ServiciosDao oper_serv=new ServiciosDao(sesion);
-		HotelDao hotelDao=new HotelDao(sesion);
+		ClienteRepository clienteDao = new ClienteRepository(sesion);		
+		MascotaRepository mascotaDao=new MascotaRepository(sesion);
+		ServiciosRepository oper_serv=new ServiciosRepository(sesion);
+		HotelRepository hotelDao=new HotelRepository(sesion);
 		
 		Hotel dog_night=new Hotel();
 		dog_night.setNombre("Dog-Night");

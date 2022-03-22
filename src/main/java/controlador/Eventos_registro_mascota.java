@@ -10,8 +10,8 @@ import vista.*;
 public class Eventos_registro_mascota implements ActionListener{
 	
 	private Registro_mascota ventana_registro;
-	private MascotaDao mascotaDao;
-	private ClienteDao clienteDao;	
+	private MascotaRepository mascotaDao;
+	private ClienteRepository clienteDao;	
 	public static Mascota mascota;
 	public static String mensaje;
 	private Cliente cliente;
@@ -20,8 +20,8 @@ public class Eventos_registro_mascota implements ActionListener{
 	public Eventos_registro_mascota(Registro_mascota ventana_registro) {
 		this.ventana_registro=ventana_registro;
 		sesion=Inicio.sesion;
-		mascotaDao=new MascotaDao(sesion);
-		clienteDao=new ClienteDao(sesion);
+		mascotaDao=new MascotaRepository(sesion);
+		clienteDao=new ClienteRepository(sesion);
 
 	}
 

@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="2" language="java" name="modelo.CRUD" project="dognight" 
-    file="/dognight/src/main/java/modelo/CRUD.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="2" language="java" name="modelo.Repository" project="dognight" 
+    file="/dognight/src/main/java/modelo/Repository.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="490" y="465"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="modelo.HotelDao" project="dognight" 
-    file="/dognight/src/main/java/modelo/HotelDao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="modelo.HotelRepository" project="dognight" 
+    file="/dognight/src/main/java/modelo/HotelRepository.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="124" y="129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="modelo.MascotaDao" project="dognight" 
-    file="/dognight/src/main/java/modelo/MascotaDao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="modelo.MascotaRepository" project="dognight" 
+    file="/dognight/src/main/java/modelo/MascotaRepository.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="125" y="351"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -55,8 +55,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="modelo.HAlimenticioDao" project="dognight" 
-    file="/dognight/src/main/java/modelo/HAlimenticioDao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="modelo.HAlimenticioRepository" project="dognight" 
+    file="/dognight/src/main/java/modelo/HAlimenticioRepository.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="796" y="358"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="modelo.ClienteDao" project="dognight" 
-    file="/dognight/src/main/java/modelo/ClienteDao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="modelo.ClienteRepository" project="dognight" 
+    file="/dognight/src/main/java/modelo/ClienteRepository.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="126" y="572"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -82,8 +82,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="modelo.ReservaDao" project="dognight" 
-    file="/dognight/src/main/java/modelo/ReservaDao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="modelo.ReservaRepository" project="dognight" 
+    file="/dognight/src/main/java/modelo/ReservaRepository.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="366" y="139"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -118,8 +118,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="modelo.ServiciosDao" project="dognight" 
-    file="/dognight/src/main/java/modelo/ServiciosDao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="modelo.ServiciosRepository" project="dognight" 
+    file="/dognight/src/main/java/modelo/ServiciosRepository.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="591" y="132"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -127,8 +127,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="modelo.HMedicoDao" project="dognight" 
-    file="/dognight/src/main/java/modelo/HMedicoDao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="15" language="java" name="modelo.HMedicoRepository" project="dognight" 
+    file="/dognight/src/main/java/modelo/HMedicoRepository.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="790" y="135"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

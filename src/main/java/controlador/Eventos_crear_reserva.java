@@ -12,12 +12,12 @@ import org.hibernate.internal.build.AllowSysOut;
 import Principal.Inicio;
 import config.HibernateUtil;
 import modelo.Cliente;
-import modelo.ClienteDao;
+import modelo.ClienteRepository;
 import modelo.Mascota;
 import modelo.Reserva;
-import modelo.ReservaDao;
+import modelo.ReservaRepository;
 import modelo.Servicios;
-import modelo.ServiciosDao;
+import modelo.ServiciosRepository;
 import vista.Crear_reserva;
 import vista.Reserva_creada;
 import vista.Ventana_error;
@@ -25,9 +25,9 @@ import vista.Ventana_error;
 public class Eventos_crear_reserva extends WindowAdapter implements ActionListener{
 
 	private Crear_reserva ventana;
-	private ReservaDao reservaDao;
-	private ServiciosDao serviciosDao;
-	private ClienteDao clienteDao;
+	private ReservaRepository reservaDao;
+	private ServiciosRepository serviciosDao;
+	private ClienteRepository clienteDao;
 	public static Reserva reserva;
 	private Cliente cliente;
 	private List<Servicios> servicios=new ArrayList<Servicios>();
@@ -45,9 +45,9 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 
 		this.ventana=ventana;
 		sesion=Inicio.sesion;
-		reservaDao=new ReservaDao(sesion);
-		serviciosDao=new ServiciosDao(sesion);
-		clienteDao=new ClienteDao(sesion);	
+		reservaDao=new ReservaRepository(sesion);
+		serviciosDao=new ServiciosRepository(sesion);
+		clienteDao=new ClienteRepository(sesion);	
 		calendario=Calendar.getInstance();
 		if(Eventos_consulta_cliente.consulta) {
 			cliente=Eventos_consulta_cliente.cliente;

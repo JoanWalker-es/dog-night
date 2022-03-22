@@ -7,9 +7,9 @@ import org.hibernate.Session;
 
 import Principal.Inicio;
 import config.HibernateUtil;
-import modelo.HMedicoDao;
+import modelo.HMedicoRepository;
 import modelo.Historial_medico;
-import modelo.MascotaDao;
+import modelo.MascotaRepository;
 import vista.Datos_medicos;
 import vista.Ventana_error;
 import vista.Ventana_guardado_ok;
@@ -17,15 +17,15 @@ import vista.Ventana_guardado_ok;
 public class Eventos_medico implements ActionListener{
 
 	private Datos_medicos ventana;
-	private HMedicoDao medicoDao;
-	private MascotaDao mascotaDao;
+	private HMedicoRepository medicoDao;
+	private MascotaRepository mascotaDao;
 	private Session sesion;
 	
 	public Eventos_medico(Datos_medicos ventana) {
 		this.ventana=ventana;
 		sesion=Inicio.sesion;
-		medicoDao=new HMedicoDao(sesion);
-		mascotaDao=new MascotaDao(sesion);
+		medicoDao=new HMedicoRepository(sesion);
+		mascotaDao=new MascotaRepository(sesion);
 
 	}
 	

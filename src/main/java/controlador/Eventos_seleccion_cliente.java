@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import Principal.Inicio;
 import config.HibernateUtil;
 import modelo.Cliente;
-import modelo.ClienteDao;
+import modelo.ClienteRepository;
 import vista.Consulta_cliente;
 import vista.Seleccion_cliente;
 import vista.Ventana_error;
@@ -15,7 +15,7 @@ import vista.Ventana_error;
 public class Eventos_seleccion_cliente implements ActionListener{
 	
 	private Seleccion_cliente ventana;
-	private ClienteDao clienteDao;
+	private ClienteRepository clienteDao;
 	public static Cliente cliente;
 	public static String mensaje;
 	private Session sesion;
@@ -24,7 +24,7 @@ public class Eventos_seleccion_cliente implements ActionListener{
 
 		this.ventana=ventana_seleccion;
 		sesion=Inicio.sesion;
-		clienteDao=new ClienteDao(sesion);
+		clienteDao=new ClienteRepository(sesion);
 
 		
 	}

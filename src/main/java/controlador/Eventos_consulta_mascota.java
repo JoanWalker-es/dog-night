@@ -10,13 +10,13 @@ import org.hibernate.Session;
 
 import Principal.Inicio;
 import modelo.Cliente;
-import modelo.ClienteDao;
-import modelo.HAlimenticioDao;
-import modelo.HMedicoDao;
+import modelo.ClienteRepository;
+import modelo.HAlimenticioRepository;
+import modelo.HMedicoRepository;
 import modelo.Historial_alimenticio;
 import modelo.Historial_medico;
 import modelo.Mascota;
-import modelo.MascotaDao;
+import modelo.MascotaRepository;
 import vista.Consulta_cliente;
 import vista.Consulta_mascota;
 
@@ -24,9 +24,9 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 
 	private Consulta_mascota ventana;
 	private Mascota mascota;
-	private MascotaDao mascotaDao;
-	private HMedicoDao medicoDao;
-	private HAlimenticioDao alimentoDao;
+	private MascotaRepository mascotaDao;
+	private HMedicoRepository medicoDao;
+	private HAlimenticioRepository alimentoDao;
 	private Historial_medico medico;
 	private Historial_alimenticio alimento;
 	private Session sesion;
@@ -34,9 +34,9 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 	public Eventos_consulta_mascota(Consulta_mascota ventana) {
 		sesion=Inicio.sesion;
 		this.ventana=ventana;	
-		mascotaDao=new MascotaDao(sesion);		
-		medicoDao=new HMedicoDao(sesion);
-		alimentoDao=new HAlimenticioDao(sesion);
+		mascotaDao=new MascotaRepository(sesion);		
+		medicoDao=new HMedicoRepository(sesion);
+		alimentoDao=new HAlimenticioRepository(sesion);
 		this.mascota=mascotaDao.findOneById(Eventos_consulta_cliente.mascota.getIdMascota());	
 		if(mascota.getMedico()==null) {
 			medico=new Historial_medico();		

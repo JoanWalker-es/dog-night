@@ -6,9 +6,9 @@ import org.hibernate.Session;
 
 import Principal.Inicio;
 import config.HibernateUtil;
-import modelo.HAlimenticioDao;
+import modelo.HAlimenticioRepository;
 import modelo.Historial_alimenticio;
-import modelo.MascotaDao;
+import modelo.MascotaRepository;
 import vista.Datos_alimentos;
 import vista.Ventana_error;
 import vista.Ventana_guardado_ok;
@@ -16,16 +16,16 @@ import vista.Ventana_guardado_ok;
 public class Eventos_alimentos implements ActionListener{
 
 	private Datos_alimentos ventana;
-	private HAlimenticioDao alimentoDao;
+	private HAlimenticioRepository alimentoDao;
 	private Historial_alimenticio alimento;
 	private Session sesion;
-	private MascotaDao mascotaDao;
+	private MascotaRepository mascotaDao;
 	
 	public Eventos_alimentos(Datos_alimentos ventana) {
 		this.ventana=ventana;
 		sesion=Inicio.sesion;
-		alimentoDao=new HAlimenticioDao(sesion);
-		mascotaDao=new MascotaDao(sesion);
+		alimentoDao=new HAlimenticioRepository(sesion);
+		mascotaDao=new MascotaRepository(sesion);
 
 	}
 	

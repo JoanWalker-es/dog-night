@@ -7,11 +7,11 @@ import org.hibernate.Transaction;
 
 import config.HibernateUtil;
 
-public class HMedicoDao implements CRUD<Historial_medico> {
+public class HMedicoRepository implements Repository<Historial_medico> {
 
 	private static Session sesion;
 
-	public HMedicoDao(Session session) {
+	public HMedicoRepository(Session session) {
 		this.sesion=session;
 	}
 

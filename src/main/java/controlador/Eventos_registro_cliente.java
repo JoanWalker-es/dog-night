@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import Principal.Inicio;
 import config.HibernateUtil;
 import modelo.Cliente;
-import modelo.ClienteDao;
+import modelo.ClienteRepository;
 import vista.Ventana_guardado_ok;
 import vista.Crear_reserva;
 import vista.Registro_cliente;
@@ -17,7 +17,7 @@ import vista.Ventana_error;
 public class Eventos_registro_cliente implements ActionListener{
 	
 	private Registro_cliente ventana_registro;
-	private ClienteDao clienteDao;
+	private ClienteRepository clienteDao;
 	public static Cliente nuevo;
 	public static String mensaje;
 	private Session sesion;
@@ -25,7 +25,7 @@ public class Eventos_registro_cliente implements ActionListener{
 	public Eventos_registro_cliente(Registro_cliente ventana_registro) {
 		this.ventana_registro=ventana_registro;
 		sesion=Inicio.sesion;
-		clienteDao=new ClienteDao(sesion);
+		clienteDao=new ClienteRepository(sesion);
 
 	}
 

@@ -7,16 +7,16 @@ import org.hibernate.Session;
 import Principal.Inicio;
 import config.HibernateUtil;
 import modelo.Cliente;
-import modelo.ClienteDao;
+import modelo.ClienteRepository;
 import modelo.Reserva;
-import modelo.ReservaDao;
+import modelo.ReservaRepository;
 import vista.*;
 
 public class Eventos_reservas extends WindowAdapter implements ActionListener{
 	
 	private Reservas ventana_reservas;
-	private ReservaDao reservaDao;
-	private ClienteDao clienteDao;
+	private ReservaRepository reservaDao;
+	private ClienteRepository clienteDao;
 	public static Cliente cliente;
 	public static String mensaje;
 	private Cliente todos=new Cliente("TODOS","LOS CLIENTES");
@@ -27,8 +27,8 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 	public Eventos_reservas(Reservas ventana_reservas) {
 		this.ventana_reservas=ventana_reservas;
 		sesion=Inicio.sesion;
-		reservaDao=new ReservaDao(sesion);
-		clienteDao=new ClienteDao(sesion);
+		reservaDao=new ReservaRepository(sesion);
+		clienteDao=new ClienteRepository(sesion);
 		
 	}
 

@@ -9,23 +9,23 @@ import javax.swing.JDialog;
 import org.hibernate.Session;
 import Principal.Inicio;
 import modelo.Hotel;
-import modelo.HotelDao;
+import modelo.HotelRepository;
 import modelo.Reserva;
-import modelo.ReservaDao;
+import modelo.ReservaRepository;
 import vista.Ventana_error;
 
 public class Metodos_utiles {
 	
-	private ReservaDao reservaDao;
+	private ReservaRepository reservaDao;
 	private Session sesion;
 	private JDialog ventana;
-	private HotelDao hotelDao;
+	private HotelRepository hotelDao;
 	
 	public Metodos_utiles(JDialog ventana) {
 		this.ventana=ventana;
 		this.sesion=Inicio.sesion;
-		reservaDao=new ReservaDao(sesion);
-		hotelDao=new HotelDao(sesion);
+		reservaDao=new ReservaRepository(sesion);
+		hotelDao=new HotelRepository(sesion);
 	}
 	
 	public static List<Date> getListaFechas(Date fechaInicio, Date fechaFin) {

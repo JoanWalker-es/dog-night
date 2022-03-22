@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.List;
 
-public interface CRUD<T> {
+public interface Repository<T> {
 
 	void save(T t);
 	List<T> findAll();

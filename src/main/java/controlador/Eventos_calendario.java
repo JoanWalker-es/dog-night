@@ -11,23 +11,23 @@ import org.hibernate.Session;
 
 import Principal.Inicio;
 import modelo.Hotel;
-import modelo.HotelDao;
+import modelo.HotelRepository;
 import modelo.Reserva;
-import modelo.ReservaDao;
+import modelo.ReservaRepository;
 import vista.*;
 
 public class Eventos_calendario extends WindowAdapter implements ActionListener, PropertyChangeListener{
 	
 	private Calendario ventana_calendario;
-	private ReservaDao reservaDao;
-	private HotelDao hotelDao;
+	private ReservaRepository reservaDao;
+	private HotelRepository hotelDao;
 	private Session sesion;
 	
 	public Eventos_calendario(Calendario ventana) {
 		this.ventana_calendario=ventana;
 		sesion=Inicio.sesion;
-		reservaDao=new ReservaDao(sesion);
-		hotelDao=new HotelDao(sesion);
+		reservaDao=new ReservaRepository(sesion);
+		hotelDao=new HotelRepository(sesion);
 		
 	}	
 	

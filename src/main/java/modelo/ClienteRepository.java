@@ -7,11 +7,11 @@ import org.hibernate.Transaction;
 
 import config.HibernateUtil;
 
-public class ClienteDao implements CRUD<Cliente> {
+public class ClienteRepository implements Repository<Cliente> {
 	
 	private static Session sesion;
 	
-	public ClienteDao(Session session) {
+	public ClienteRepository(Session session) {
 		this.sesion=session;
 	}
 

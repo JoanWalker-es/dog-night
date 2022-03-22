@@ -5,11 +5,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 
-public class ReservaDao implements CRUD<Reserva> {
+public class ReservaRepository implements Repository<Reserva> {
 	
 	private Session sesion;
 
-	public ReservaDao(Session session) {
+	public ReservaRepository(Session session) {
 		this.sesion=session;
 	}
 

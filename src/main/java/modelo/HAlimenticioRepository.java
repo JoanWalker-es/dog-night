@@ -7,11 +7,11 @@ import org.hibernate.Transaction;
 
 import config.HibernateUtil;
 
-public class HAlimenticioDao implements CRUD<Historial_alimenticio> {
+public class HAlimenticioRepository implements Repository<Historial_alimenticio> {
 	
 	private static Session sesion;
 	
-	public HAlimenticioDao(Session session) {
+	public HAlimenticioRepository(Session session) {
 		this.sesion=session;
 	}
 

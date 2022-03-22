@@ -14,15 +14,15 @@ import vista.*;
 public class Eventos_precios extends WindowAdapter implements ActionListener{
 	
 	private Precios ventana_precios;
-	private ServiciosDao servicioDao;
-	private HotelDao hotelDao;
+	private ServiciosRepository servicioDao;
+	private HotelRepository hotelDao;
 	private Session sesion;
 	
 	public Eventos_precios(Precios ventana) {
 		this.ventana_precios=ventana;
 		sesion=Inicio.sesion;
-		servicioDao=new ServiciosDao(sesion);
-		hotelDao=new HotelDao(sesion);
+		servicioDao=new ServiciosRepository(sesion);
+		hotelDao=new HotelRepository(sesion);
 
 	}
 

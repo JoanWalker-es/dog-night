@@ -5,11 +5,11 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class HotelDao implements CRUD<Hotel>{
+public class HotelRepository implements Repository<Hotel>{
 	
 	private Session sesion;
 
-	public HotelDao(Session sesion) {
+	public HotelRepository(Session sesion) {
 		this.sesion=sesion;
 	}
 

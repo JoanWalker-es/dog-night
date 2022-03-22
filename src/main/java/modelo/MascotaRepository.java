@@ -7,11 +7,11 @@ import org.hibernate.Transaction;
 
 import config.HibernateUtil;
 
-public class MascotaDao implements CRUD<Mascota> {
+public class MascotaRepository implements Repository<Mascota> {
 	
 	private Session sesion;
 
-	public MascotaDao(Session session) {
+	public MascotaRepository(Session session) {
 		this.sesion=session;
 	}
 

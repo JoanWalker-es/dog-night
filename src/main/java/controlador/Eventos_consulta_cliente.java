@@ -10,9 +10,9 @@ import org.hibernate.Session;
 
 import Principal.Inicio;
 import modelo.Cliente;
-import modelo.ClienteDao;
+import modelo.ClienteRepository;
 import modelo.Mascota;
-import modelo.MascotaDao;
+import modelo.MascotaRepository;
 import vista.Consulta_cliente;
 import vista.Consulta_mascota;
 import vista.Crear_reserva;
@@ -23,9 +23,9 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 	private Consulta_cliente ventana;
 	public static Cliente cliente;
 	public static Mascota mascota;
-	private ClienteDao clienteDao;
+	private ClienteRepository clienteDao;
 	public static boolean consulta;
-	private MascotaDao mascotaDao;
+	private MascotaRepository mascotaDao;
 	private Session sesion;
 	
 
@@ -33,8 +33,8 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 		sesion=Inicio.sesion;
 		this.ventana=ventana;
 		this.cliente=Eventos_seleccion_cliente.cliente;
-		clienteDao=new ClienteDao(sesion);		
-		mascotaDao=new MascotaDao(sesion);
+		clienteDao=new ClienteRepository(sesion);		
+		mascotaDao=new MascotaRepository(sesion);
 	}
 	
 	@Override
