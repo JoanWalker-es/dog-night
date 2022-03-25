@@ -5,12 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Calendar;
 import java.util.Date;
-
 import org.hibernate.Session;
-import org.hibernate.internal.build.AllowSysOut;
-
 import Principal.Inicio;
-import config.HibernateUtil;
 import modelo.Cliente;
 import modelo.ClienteRepository;
 import modelo.Mascota;
@@ -141,6 +137,7 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 	
 	public void windowOpened(WindowEvent e) {		
 		if(Eventos_reservas.modificar) {
+			ventana.setTitle("Modificar reserva");
 			reserva=Eventos_reservas.reserva;
 			rellenaDatos();
 		}else {

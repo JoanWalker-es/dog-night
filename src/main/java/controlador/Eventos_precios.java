@@ -32,18 +32,18 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 			ventana_precios.dispose();
 		}else if(e.getSource()==ventana_precios.getBtn_guardar()) {	
 			
-			Servicios general=servicioDao.findOneById(1);
-			general.setPrecio(Double.parseDouble(ventana_precios.getTf_general().getText()));
-			Servicios peluqueria=servicioDao.findOneById(2);
-			peluqueria.setPrecio(Double.parseDouble(ventana_precios.getTf_peluqueria().getText()));
-			Servicios alimentos=servicioDao.findOneById(3);
-			alimentos.setPrecio(Double.parseDouble(ventana_precios.getTf_alimentos().getText()));
-			Servicios socios=servicioDao.findOneById(4);
-			socios.setPrecio(Double.parseDouble(ventana_precios.getTf_socios().getText()));			
-			Hotel nuevo=hotelDao.findOneById(1);
-			nuevo.setHabitaciones(Integer.parseInt(ventana_precios.getTf_habitaciones().getText()));
-						
 			try {
+				Servicios general=servicioDao.findOneById(1);
+				general.setPrecio(Double.parseDouble(ventana_precios.getTf_general().getText()));
+				Servicios peluqueria=servicioDao.findOneById(2);
+				peluqueria.setPrecio(Double.parseDouble(ventana_precios.getTf_peluqueria().getText()));
+				Servicios alimentos=servicioDao.findOneById(3);
+				alimentos.setPrecio(Double.parseDouble(ventana_precios.getTf_alimentos().getText()));
+				Servicios socios=servicioDao.findOneById(4);
+				socios.setPrecio(Double.parseDouble(ventana_precios.getTf_socios().getText()));			
+				Hotel nuevo=hotelDao.findOneById(1);
+				nuevo.setHabitaciones(Integer.parseInt(ventana_precios.getTf_habitaciones().getText()));
+
 				servicioDao.update(general);
 				servicioDao.update(peluqueria);
 				servicioDao.update(alimentos);

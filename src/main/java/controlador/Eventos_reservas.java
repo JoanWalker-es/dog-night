@@ -80,7 +80,7 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 			}
 			
 		}else if(e.getSource()==ventana_reservas.getBtn_modificar()) {
-			try {
+			try {				
 				Object ob=ventana_reservas.getTabla_reservas().getValueAt(ventana_reservas.getTabla_reservas().getSelectedRow(),ventana_reservas.getTabla_reservas().getSelectedColumn());
 				Reserva reser=reservaDao.findOneById(Long.parseLong(ob.toString()));
 				reserva=reser;

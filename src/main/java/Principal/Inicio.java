@@ -18,19 +18,13 @@ public class Inicio {
 	public static Session sesion;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		System.out.println("Iniciando configuracion Hibernate");		
+			
 		sesion=HibernateUtil.get().openSession(); 
 		
 		//crearDatos(sesion);		
 		
 		Ventana_principal nueva=new Ventana_principal();
 		nueva.setVisible(true);		
-		
-				
-		
-		System.out.println("Finalizando configuracion Hibernate");
 	}
 	
 	public static void crearDatos(Session sesion) {

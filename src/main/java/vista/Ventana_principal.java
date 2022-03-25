@@ -40,7 +40,7 @@ public class Ventana_principal extends javax.swing.JFrame {
 	        btn_calendario.setText("CALENDARIO");
 	        btn_calendario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-	        btn_precios.setText("PRECIOS");
+	        btn_precios.setText("CONFIGURACIÓN PRECIOS/DISPONIBILIDAD");
 	        btn_precios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
 	        btn_reservas.setText("RESERVAS");

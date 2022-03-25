@@ -40,13 +40,6 @@ public class ReservaRepository implements Repository<Reserva> {
 		System.out.println("Reserva actualizada correctamente con el id: "+t.getCodigo());
 		tx.commit();
 	}
-	
-	public void saveOrUpdate(Reserva t) {
-		Transaction tx=sesion.beginTransaction();
-		sesion.saveOrUpdate(t);
-		System.out.println("Reserva actualizada correctamente con el id: "+t.getCodigo());
-		tx.commit();
-	}
 
 	public void delete(Reserva t) {
 		Transaction tx=sesion.beginTransaction();
