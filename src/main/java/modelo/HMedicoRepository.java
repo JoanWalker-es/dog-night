@@ -5,11 +5,10 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import config.HibernateUtil;
 
 public class HMedicoRepository implements Repository<Historial_medico> {
 
-	private static Session sesion;
+	private Session sesion;
 
 	public HMedicoRepository(Session session) {
 		this.sesion=session;

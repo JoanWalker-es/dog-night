@@ -5,11 +5,10 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import config.HibernateUtil;
 
 public class HAlimenticioRepository implements Repository<Historial_alimenticio> {
 	
-	private static Session sesion;
+	private Session sesion;
 	
 	public HAlimenticioRepository(Session session) {
 		this.sesion=session;

@@ -5,11 +5,10 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import config.HibernateUtil;
 
 public class ClienteRepository implements Repository<Cliente> {
 	
-	private static Session sesion;
+	private Session sesion;
 	
 	public ClienteRepository(Session session) {
 		this.sesion=session;

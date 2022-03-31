@@ -5,7 +5,6 @@ import java.awt.event.*;
 import org.hibernate.Session;
 
 import Principal.Inicio;
-import config.HibernateUtil;
 import modelo.HAlimenticioRepository;
 import modelo.Historial_alimenticio;
 import modelo.MascotaRepository;
