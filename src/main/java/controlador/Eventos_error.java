@@ -2,8 +2,6 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import vista.Ventana_guardado_ok;
 import vista.Ventana_error;
 
 public class Eventos_error implements ActionListener{

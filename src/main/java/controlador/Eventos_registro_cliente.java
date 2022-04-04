@@ -5,11 +5,9 @@ import java.awt.event.*;
 import org.hibernate.Session;
 
 import Principal.Inicio;
-import config.HibernateUtil;
 import modelo.Cliente;
 import modelo.ClienteRepository;
 import vista.Ventana_guardado_ok;
-import vista.Crear_reserva;
 import vista.Registro_cliente;
 import vista.Registro_mascota;
 import vista.Ventana_error;

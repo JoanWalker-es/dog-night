@@ -2,11 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import org.hibernate.Session;
-
 import Principal.Inicio;
-import config.HibernateUtil;
 import modelo.HMedicoRepository;
 import modelo.Historial_medico;
 import modelo.MascotaRepository;

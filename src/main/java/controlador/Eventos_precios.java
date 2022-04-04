@@ -2,12 +2,8 @@ package controlador;
 
 import java.awt.event.*;
 import java.text.DecimalFormat;
-import java.util.List;
-
 import org.hibernate.Session;
-
 import Principal.Inicio;
-import config.HibernateUtil;
 import modelo.*;
 import vista.*;
 

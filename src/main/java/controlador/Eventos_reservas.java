@@ -3,9 +3,7 @@ package controlador;
 import java.awt.event.*;
 import java.util.List;
 import org.hibernate.Session;
-
 import Principal.Inicio;
-import config.HibernateUtil;
 import modelo.Cliente;
 import modelo.ClienteRepository;
 import modelo.Reserva;

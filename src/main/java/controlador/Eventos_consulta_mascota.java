@@ -4,20 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.List;
-
 import org.hibernate.Session;
 
 import Principal.Inicio;
-import modelo.Cliente;
-import modelo.ClienteRepository;
 import modelo.HAlimenticioRepository;
 import modelo.HMedicoRepository;
 import modelo.Historial_alimenticio;
 import modelo.Historial_medico;
 import modelo.Mascota;
 import modelo.MascotaRepository;
-import vista.Consulta_cliente;
 import vista.Consulta_mascota;
 
 public class Eventos_consulta_mascota extends WindowAdapter implements ActionListener {
