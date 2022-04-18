@@ -5,6 +5,8 @@ import java.text.DecimalFormat;
 import org.hibernate.Session;
 import Principal.Inicio;
 import modelo.*;
+import modeloRepository.HotelRepository;
+import modeloRepository.ServiciosRepository;
 import vista.*;
 
 public class Eventos_precios extends WindowAdapter implements ActionListener{

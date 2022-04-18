@@ -1,9 +1,11 @@
-package modelo;
+package modeloRepository;
 
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import modelo.Historial_medico;
 
 
 public class HMedicoRepository implements Repository<Historial_medico> {

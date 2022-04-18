@@ -1,8 +1,10 @@
-package modelo;
+package modeloRepository;
 
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import modelo.Reserva;
 
 
 public class ReservaRepository implements Repository<Reserva> {

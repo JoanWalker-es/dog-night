@@ -7,12 +7,12 @@ import java.awt.event.WindowEvent;
 import org.hibernate.Session;
 
 import Principal.Inicio;
-import modelo.HAlimenticioRepository;
-import modelo.HMedicoRepository;
 import modelo.Historial_alimenticio;
 import modelo.Historial_medico;
 import modelo.Mascota;
-import modelo.MascotaRepository;
+import modeloRepository.HAlimenticioRepository;
+import modeloRepository.HMedicoRepository;
+import modeloRepository.MascotaRepository;
 import vista.Consulta_mascota;
 
 public class Eventos_consulta_mascota extends WindowAdapter implements ActionListener {

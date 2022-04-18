@@ -5,9 +5,9 @@ import java.awt.event.*;
 import org.hibernate.Session;
 
 import Principal.Inicio;
-import modelo.HAlimenticioRepository;
 import modelo.Historial_alimenticio;
-import modelo.MascotaRepository;
+import modeloRepository.HAlimenticioRepository;
+import modeloRepository.MascotaRepository;
 import vista.Datos_alimentos;
 import vista.Ventana_error;
 import vista.Ventana_guardado_ok;

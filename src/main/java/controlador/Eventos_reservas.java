@@ -5,9 +5,9 @@ import java.util.List;
 import org.hibernate.Session;
 import Principal.Inicio;
 import modelo.Cliente;
-import modelo.ClienteRepository;
 import modelo.Reserva;
-import modelo.ReservaRepository;
+import modeloRepository.ClienteRepository;
+import modeloRepository.ReservaRepository;
 import vista.*;
 
 public class Eventos_reservas extends WindowAdapter implements ActionListener{

@@ -5,6 +5,8 @@ import org.hibernate.Session;
 
 import Principal.Inicio;
 import modelo.*;
+import modeloRepository.ClienteRepository;
+import modeloRepository.MascotaRepository;
 import vista.*;
 
 public class Eventos_registro_mascota implements ActionListener{

@@ -9,9 +9,9 @@ import javax.swing.JDialog;
 import org.hibernate.Session;
 import Principal.Inicio;
 import modelo.Hotel;
-import modelo.HotelRepository;
 import modelo.Reserva;
-import modelo.ReservaRepository;
+import modeloRepository.HotelRepository;
+import modeloRepository.ReservaRepository;
 import vista.Ventana_error;
 
 public class Metodos_utiles {

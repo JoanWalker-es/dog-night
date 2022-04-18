@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 import Principal.Inicio;
 import modelo.Cliente;
-import modelo.ClienteRepository;
+import modeloRepository.ClienteRepository;
 import vista.Consulta_cliente;
 import vista.Seleccion_cliente;
 import vista.Ventana_error;

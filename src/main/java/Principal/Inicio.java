@@ -4,13 +4,13 @@ import org.hibernate.Session;
 
 import config.HibernateUtil;
 import modelo.Cliente;
-import modelo.ClienteRepository;
 import modelo.Hotel;
-import modelo.HotelRepository;
 import modelo.Mascota;
-import modelo.MascotaRepository;
 import modelo.Servicios;
-import modelo.ServiciosRepository;
+import modeloRepository.ClienteRepository;
+import modeloRepository.HotelRepository;
+import modeloRepository.MascotaRepository;
+import modeloRepository.ServiciosRepository;
 import vista.Ventana_principal;
 
 public class Inicio {

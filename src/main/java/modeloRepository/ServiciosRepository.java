@@ -1,9 +1,11 @@
-package modelo;
+package modeloRepository;
 
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import modelo.Servicios;
 
 
 public class ServiciosRepository implements Repository<Servicios>{
