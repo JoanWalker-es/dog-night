@@ -1,6 +1,8 @@
 package controlador;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -118,6 +120,18 @@ public class Metodos_utiles {
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		formato.format(dia);
 		return dia;
+	}
+	
+	/**
+	 * Método que convierte un tipo Date en LocalDate.
+	 * @param dateToConvert
+	 * @return
+	 */
+	
+	public static LocalDate convertToLocalDate(Date date) {
+	    return date.toInstant()
+	      .atZone(ZoneId.systemDefault())
+	      .toLocalDate();
 	}
 
 }

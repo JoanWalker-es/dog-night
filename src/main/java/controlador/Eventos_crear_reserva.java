@@ -1,9 +1,9 @@
 package controlador;
 
 import java.awt.event.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Calendar;
 import java.util.Date;
 import org.hibernate.Session;
 import Principal.Inicio;
@@ -40,7 +40,6 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 	private Servicios alimentos;
 	private Servicios socios;
 	public static String mensaje;
-	private Calendar calendario;
 	private Session sesion;
 	private boolean num_mascotas=true;
 	
@@ -51,8 +50,7 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 		sesion=Inicio.sesion;
 		reservaDao=new ReservaRepository(sesion);
 		serviciosDao=new ServiciosRepository(sesion);
-		clienteDao=new ClienteRepository(sesion);	
-		calendario=Calendar.getInstance();
+		clienteDao=new ClienteRepository(sesion);
 		if(Eventos_consulta_cliente.consulta) {
 			cliente=Eventos_consulta_cliente.cliente;
 		}else {
@@ -74,15 +72,17 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==ventana.getBtn_cancelar()) {
 			ventana.dispose();
-		}else if(e.getSource()==ventana.getBtn_registrar()) {		
+		}else if(e.getSource()==ventana.getBtn_registrar()) {					
+			LocalDate inicio=Metodos_utiles.convertToLocalDate(ventana.getJdate_llegada().getDate());
+			LocalDate fin=Metodos_utiles.convertToLocalDate(ventana.getJdate_salida().getDate());			
 			
 			if(ventana.getJdate_llegada().getDate()==null || ventana.getJdate_salida().getDate()==null) {
 				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>DEBE SELECCIONAR LAS FECHAS</center><br><center>DE LLEGADA Y SALIDA</center></body></html>";				
 				new Ventana_error(ventana,true).setVisible(true);						
-			}else if(Metodos_utiles.diasEntreFechas(ventana.getJdate_llegada().getDate(),ventana.getJdate_salida().getDate())<0) {
+			}else if(fin.isBefore(inicio)){				
 				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>LA FECHA DE LLEGADA DEBE SER</center><br><center>ANTERIOR A LA DE SALIDA</center></body></html>";
 				new Ventana_error(ventana,true).setVisible(true);
-			}else if(ventana.getJdate_llegada().getDate().getTime()<calendario.getTime().getTime()-86400000) {				
+			}else if(inicio.isBefore(LocalDate.now())){			
 				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>LA FECHA DE LLEGADA DEBE SER</center><br><center>COMO MÍNIMO EL DÍA DE HOY</center></body></html>";
 				new Ventana_error(ventana,true).setVisible(true);
 			}else if(cliente.getMascotas().size()<1){
@@ -112,8 +112,7 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 				}
 				
 				if(num_mascotas) {
-					reserva.setServicios(serviciosSeleccion(servicios));								
-					
+					reserva.setServicios(serviciosSeleccion(servicios));						
 					reserva.setCliente(cliente);				
 					
 					try {										
