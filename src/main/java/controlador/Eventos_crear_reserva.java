@@ -73,10 +73,14 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 		if(e.getSource()==ventana.getBtn_cancelar()) {
 			ventana.dispose();
 		}else if(e.getSource()==ventana.getBtn_registrar()) {					
-			LocalDate inicio=Metodos_utiles.convertToLocalDate(ventana.getJdate_llegada().getDate());
-			LocalDate fin=Metodos_utiles.convertToLocalDate(ventana.getJdate_salida().getDate());			
+			LocalDate inicio=null;
+			LocalDate fin=null;
+			if(ventana.getJdate_llegada().getDate()!=null|| ventana.getJdate_salida().getDate()!=null) {
+				inicio=Metodos_utiles.convertToLocalDate(ventana.getJdate_llegada().getDate());
+				fin=Metodos_utiles.convertToLocalDate(ventana.getJdate_salida().getDate());	
+			}					
 			
-			if(ventana.getJdate_llegada().getDate()==null || ventana.getJdate_salida().getDate()==null) {
+			if(inicio==null || fin==null) {
 				mensaje="<html><body><center>ERROR GUARDANDO LOS DATOS</center><br><center>DEBE SELECCIONAR LAS FECHAS</center><br><center>DE LLEGADA Y SALIDA</center></body></html>";				
 				new Ventana_error(ventana,true).setVisible(true);						
 			}else if(fin.isBefore(inicio)){				
