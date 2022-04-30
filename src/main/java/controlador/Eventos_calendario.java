@@ -6,15 +6,22 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
 import org.hibernate.Session;
-
 import Principal.Inicio;
 import modelo.Hotel;
 import modelo.Reserva;
 import modeloRepository.HotelRepository;
 import modeloRepository.ReservaRepository;
 import vista.*;
+
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la 
+ * ventana de la interfaz Calendario reservas.
+ *
+ */
 
 public class Eventos_calendario extends WindowAdapter implements ActionListener, PropertyChangeListener{
 	
@@ -45,6 +52,10 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 	}
 
 
+	/**
+	 * Método sobreescrito que recoge un PropertyChangeEvent del 
+	 * calendario.
+	 */
 
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
@@ -52,6 +63,14 @@ public class Eventos_calendario extends WindowAdapter implements ActionListener,
 			comprobarDia(ventana_calendario.getjCalendar().getDate());
         }
 	}
+	
+	/**
+	 * Método que comprueba la fecha seleccionada del calendario para ver 
+	 * los datos de las reservas que incluyan ese día. Si hay menos 
+	 * mascotas en el hotel que habitaciones libres el color de fondo del recuadro
+	 * de la disponibilidad aparecerá en verde, de lo contrario en rojo.
+	 * @param dia
+	 */
 	
 	private void comprobarDia(Date dia) {
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");

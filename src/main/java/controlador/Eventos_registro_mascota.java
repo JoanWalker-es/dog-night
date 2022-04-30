@@ -8,7 +8,14 @@ import modelo.*;
 import modeloRepository.ClienteRepository;
 import modeloRepository.MascotaRepository;
 import vista.*;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * registro de mascota.
+ *
+ */
 public class Eventos_registro_mascota implements ActionListener{
 	
 	private Registro_mascota ventana_registro;
@@ -85,6 +92,12 @@ public class Eventos_registro_mascota implements ActionListener{
 		}
 		
 	}
+	
+	/**
+	 * Método que se encarga de activar o desactivar los campos para
+	 * introducir datos de una mascota al clicar en el botón limpiar campos.
+	 * @param activar
+	 */
 	
 	private void Campos(boolean activar) {
 		ventana_registro.getTf_mascota_nombre().setEnabled(activar);

@@ -6,7 +6,16 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import modelo.Historial_medico;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase modelo para persistir datos del historial
+ * médico de las mascotas en la base de datos.
+ * Usamos las anotaciones de Hibernate para marcar 
+ * las relaciones y los campos de la base de datos.
+ * Implementa todos los métodos de la interfaz Repository.
+ */
 
 public class HMedicoRepository implements Repository<Historial_medico> {
 

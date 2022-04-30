@@ -18,6 +18,14 @@ import vista.Crear_reserva;
 import vista.Reserva_creada;
 import vista.Ventana_error;
 
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * crear reserva.
+ *
+ */
 public class Eventos_crear_reserva extends WindowAdapter implements ActionListener{
 
 	private Crear_reserva ventana;
@@ -51,6 +59,16 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 			cliente=Eventos_reservas.cliente;			
 		}		
 	}
+	
+	/**
+	 * Método sobreescrito de la interfaz ActionListener en el que recibimos un evento
+	 * por parámetro y comprobamos su origen. Depende del origen, realizamos una acción 
+	 * u otra. Aquí comprobamos que botón a clicado el usuario y dependiendo del botón
+	 * haremos una acción.
+	 * 
+	 * Al botón el botón registrar hacemos una serie de comprobaciones que determinan si 
+	 * lanzamos una ventana de error o no con un mensaje determinado.
+	 */
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -149,6 +167,12 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 				
 	}
 	
+	/**
+	 * Método que se encarga de rellenar los datos de esta ventana
+	 * dependiendo de si la hemos abierto para crear una nueva reserva 
+	 * o estamos modificando una ya realizada.
+	 */
+	
 	private void rellenaDatos() {		
 		ventana.getJdate_llegada().setDate(reserva.getFecha_inicio());
 		ventana.getJdate_salida().setDate(reserva.getFecha_fin());
@@ -161,6 +185,12 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 		ventana.getTf_precio().setText(Double.toString(reserva.getTotal()));
 		
 	}
+	
+	/**
+	 * Método que se encarga de marcar los servicios seleccionados cuando 
+	 * cargamos una reserva de la base de datos para modificarla.
+	 * @param servicios
+	 */
 	
 	private void seleccionServicios(List<Servicios> servicios) {
 		for(Servicios s:servicios) {
@@ -175,6 +205,11 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 		
 	}
 	
+	/**
+	 * Método que devuelve el total de la reserva calculando los días
+	 * y los servicios seleccionados.
+	 * @return
+	 */
 	
 	private double total() {
 		double total=0;
@@ -213,6 +248,14 @@ public class Eventos_crear_reserva extends WindowAdapter implements ActionListen
 		}
 		return total;
 	}
+	
+	/**
+	 * Método que se encarga de setear los servicios seleccionados en la 
+	 * creación o modificación de la reserva.
+	 * @param servicios
+	 * @return
+	 */
+	
 	
 	private List<Servicios> serviciosSeleccion(List<Servicios> servicios){
 		if(ventana.getCbox_peluqueria().isSelected()&&ventana.getCbox_alimentos().isSelected()&&ventana.getCbox_socio().isSelected()) {

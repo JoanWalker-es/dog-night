@@ -4,7 +4,14 @@ import java.awt.event.*;
 
 import Principal.Inicio;
 import vista.*;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * principal.
+ *
+ */
 public class Eventos_principal extends WindowAdapter implements ActionListener {
 	
 	private Ventana_principal ventana;
@@ -30,6 +37,9 @@ public class Eventos_principal extends WindowAdapter implements ActionListener {
 		}		
 		
 	}
+	/**
+	 * Método que cierra la session de hibernate al cerrar la aplicación.
+	 */
 	
 	public void windowClosing(WindowEvent e) {
 		Inicio.sesion.close();

@@ -3,7 +3,15 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import vista.Ventana_error;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * ventana de error. Muestra al usuario los mensajes que provienen de distintas
+ * partes de la aplicación.
+ *
+ */
 public class Eventos_error implements ActionListener{
 
 	private Ventana_error ventana;

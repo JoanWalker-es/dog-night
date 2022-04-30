@@ -6,7 +6,13 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.GroupLayout;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Ventana de error.
+ */
 public class Ventana_error extends javax.swing.JDialog {
 
 	public Ventana_error(javax.swing.JDialog parent,boolean modal) {

@@ -10,7 +10,13 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Consulta de mascota.
+ */
 public class Consulta_mascota extends javax.swing.JDialog {
 
     public Consulta_mascota(javax.swing.JDialog parent,boolean modal) {

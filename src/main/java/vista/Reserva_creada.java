@@ -10,7 +10,13 @@ import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 
 public class Reserva_creada extends javax.swing.JDialog {
-    
+	/**
+	 * 
+	 * @author Juan De la Rubia
+	 * 
+	 * Clase que genera la ventana de la interfaz
+	 * Reserva creada.
+	 */
     public Reserva_creada(javax.swing.JDialog parent,boolean modal) {
     	super(parent,modal);
         initComponents();

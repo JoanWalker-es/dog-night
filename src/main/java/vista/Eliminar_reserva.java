@@ -6,7 +6,13 @@ import javax.swing.GroupLayout;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Eliminar reserva.
+ */
 public class Eliminar_reserva extends javax.swing.JDialog {
 
     public Eliminar_reserva(javax.swing.JDialog parent,boolean modal) {

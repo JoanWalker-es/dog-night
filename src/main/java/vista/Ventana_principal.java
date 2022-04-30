@@ -5,7 +5,13 @@ import javax.swing.UIManager;
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Ventana principal de la aplicación.
+ */
 public class Ventana_principal extends javax.swing.JFrame {
 	
 	    public Ventana_principal() {

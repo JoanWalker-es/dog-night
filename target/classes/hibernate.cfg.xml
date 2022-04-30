@@ -4,7 +4,8 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
     <hibernate-configuration>
     	<session-factory>    	
-    		<property name="hbm2ddl.auto">update</property>    		
+    		<property name="hbm2ddl.auto">update</property>    	
+    		<!-- configuración de la conexión con la base de datos -->    	
     		<property name="dialect">org.hibernate.dialect.MySQL55Dialect</property>    		
     		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/dog_night</property>
     		<property name="connection.username">root</property>

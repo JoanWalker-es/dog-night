@@ -11,7 +11,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase modelo para persistir datos del historial 
+ * médico de las mascotas en la base de datos.
+ * Usamos las anotaciones de Hibernate para marcar 
+ * las relaciones y los campos de la base de datos.
+ */
 @Entity
 @Table(name="historial_medico")
 public class Historial_medico {

@@ -15,6 +15,14 @@ import vista.Consulta_mascota;
 import vista.Crear_reserva;
 import vista.Registro_mascota;
 
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la
+ * interfaz consulta datos cliente.
+ *
+ */
 public class Eventos_consulta_cliente extends WindowAdapter implements ActionListener {
 
 	private Consulta_cliente ventana;
@@ -68,6 +76,12 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 		rellenaCombo();		
 	}
 	
+	/**
+	 * Método que acepta una variable de tipo booleano que habilita o desabilita
+	 * los campos de la ventana para la edición de los datos.
+	 * @param variable
+	 */
+	
 	private void habilitarCampos(boolean variable) {
 		ventana.getTf_cliente_nombre().setEditable(variable);
 		ventana.getTf_cliente_apellidos().setEditable(variable);
@@ -76,6 +90,10 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 		ventana.getTf_cliente_DNI().setEditable(variable);
 		ventana.getTf_cliente_telefono().setEditable(variable);
 	}
+	
+	/**
+	 * Método que guarda el cliente en la base de datos.
+	 */
 	
 	private void guardarCliente() {
 		cliente.setNombre(ventana.getTf_cliente_nombre().getText());
@@ -86,6 +104,11 @@ public class Eventos_consulta_cliente extends WindowAdapter implements ActionLis
 		cliente.setTelefono(ventana.getTf_cliente_telefono().getText());
 		clienteDao.update(cliente);
 	}
+	
+	/**
+	 * Métodos que carga los datos del cliente en la ventana de la interfaz.
+	 * 
+	 */
 	
 	private void rellenaCombo() {
 		ventana.getCb_mascotas().removeAllItems();

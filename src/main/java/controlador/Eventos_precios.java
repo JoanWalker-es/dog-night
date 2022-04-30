@@ -8,7 +8,14 @@ import modelo.*;
 import modeloRepository.HotelRepository;
 import modeloRepository.ServiciosRepository;
 import vista.*;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * Configuración de precios.
+ *
+ */
 public class Eventos_precios extends WindowAdapter implements ActionListener{
 	
 	private Precios ventana_precios;
@@ -62,6 +69,11 @@ public class Eventos_precios extends WindowAdapter implements ActionListener{
 		cargarPrecios();		
 	}
 	
+	/**
+	 * Método que se encarga de cargar los precios y la disponibilidad en sus campos 
+	 * correspondientes de la interfaz gráfica. También les da formato a los doubles 
+	 * sacando sólo dos decimales y mostrando . en vez de ,
+	 */
 	private void cargarPrecios() {
 		DecimalFormat formato = new DecimalFormat("0.00");
 		

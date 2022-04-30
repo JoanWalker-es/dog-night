@@ -10,7 +10,14 @@ import modeloRepository.MascotaRepository;
 import vista.Datos_medicos;
 import vista.Ventana_error;
 import vista.Ventana_guardado_ok;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * datos médicos de la mascota.
+ *
+ */
 public class Eventos_medico implements ActionListener{
 
 	private Datos_medicos ventana;

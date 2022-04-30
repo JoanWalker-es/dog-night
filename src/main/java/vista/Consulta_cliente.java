@@ -16,7 +16,13 @@ import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Consulta de cliente.
+ */
 public class Consulta_cliente extends javax.swing.JDialog {
 
     public Consulta_cliente(javax.swing.JDialog parent,boolean modal) {
@@ -173,9 +179,7 @@ public class Consulta_cliente extends javax.swing.JDialog {
                 
                 btn_reserva = new JButton("CREAR RESERVA");
                 panel.add(btn_reserva);
-                btn_reserva.addActionListener(new Eventos_consulta_cliente(this));
-                
-                //EVENTOS DE CLASE:
+                btn_reserva.addActionListener(new Eventos_consulta_cliente(this));               
                 btn_editar.addActionListener(new Eventos_consulta_cliente(this));
         getContentPane().setLayout(layout);
 

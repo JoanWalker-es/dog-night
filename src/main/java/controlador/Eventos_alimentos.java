@@ -2,6 +2,15 @@ package controlador;
 
 import java.awt.event.*;
 
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase encargada de gestionar los eventos de la ventana de la interfaz 
+ * datos alimentcios.
+ *
+ */
+
 import org.hibernate.Session;
 
 import Principal.Inicio;
@@ -11,7 +20,14 @@ import modeloRepository.MascotaRepository;
 import vista.Datos_alimentos;
 import vista.Ventana_error;
 import vista.Ventana_guardado_ok;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la 
+ * ventana de la interfaz datos alimenticios.
+ *
+ */
 public class Eventos_alimentos implements ActionListener{
 
 	private Datos_alimentos ventana;

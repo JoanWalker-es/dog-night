@@ -1,7 +1,5 @@
 package Principal;
-
 import org.hibernate.Session;
-
 import config.HibernateUtil;
 import modelo.Cliente;
 import modelo.Hotel;
@@ -12,7 +10,13 @@ import modeloRepository.HotelRepository;
 import modeloRepository.MascotaRepository;
 import modeloRepository.ServiciosRepository;
 import vista.Ventana_principal;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase donde se aloja el método main que inicia 
+ * la aplicación.
+ */
 public class Inicio {
 	
 	public static Session sesion;
@@ -79,34 +83,33 @@ public class Inicio {
 
 		Cliente uno=new Cliente();
 		uno.setNombre("Juan");
-		uno.setApellidos("De la Rubia Jiménez");
-		uno.setCorreo("juandelarubia@msn.com");
-		uno.setTelefono("600634605");
-		uno.setDireccion("Calle Los Robles, 12, Casarrubios del Monte");
-		uno.setDNI("74891618F");
+		uno.setApellidos("De la Rubia");
+		uno.setCorreo("orreo@msn.com");
+		uno.setTelefono("666555888");
+		uno.setDireccion("Calle sin número, 55, Pueblo nuevo");
+		uno.setDNI("88996655G");
 		uno.getMascotas().add(mUno);
 		clienteDao.save(uno);
 		
 		Cliente dos=new Cliente();
 		dos.setNombre("Mónica");
-		dos.setApellidos("Iniesta Calero");
-		dos.setCorreo("monica_ic_fb@hotmail.com");
-		dos.setTelefono("666219105");
-		dos.setDireccion("Calle Los Robles, 12, Casarrubios del Monte");
-		dos.setDNI("47098448Z");
+		dos.setApellidos("Sánchez");
+		dos.setCorreo("monica@mail.com");
+		dos.setTelefono("654654654");
+		dos.setDireccion("Calle de los tifosi, 56, Pueblo viejo");
+		dos.setDNI("87884512H");
 		dos.getMascotas().add(mDos);
 		clienteDao.save(dos);
 		
 		Cliente tres=new Cliente();
 		tres.setNombre("Paula");
-		tres.setApellidos("De la Rubia Iniesta");
+		tres.setApellidos("De la Rubia");
 		tres.setCorreo("no tiene");
 		tres.setTelefono("no tiene");
-		tres.setDireccion("Calle Los Robles, 12, Casarrubios del Monte");
+		tres.setDireccion("Calle Sin numero, 20, Pueblo nuevo");
 		tres.setDNI("no tiene");
 		tres.getMascotas().add(mTres);
-		clienteDao.save(tres);
-		
+		clienteDao.save(tres);	
 		
 		
 	}

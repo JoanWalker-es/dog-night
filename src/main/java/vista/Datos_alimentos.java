@@ -6,7 +6,13 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.GroupLayout;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Datos alimenticios.
+ */
 public class Datos_alimentos extends javax.swing.JDialog {
 
     public Datos_alimentos(javax.swing.JDialog parent,boolean modal) {

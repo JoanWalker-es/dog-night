@@ -7,7 +7,16 @@ import org.hibernate.Transaction;
 
 import modelo.Mascota;
 
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase modelo para persistir datos de
+ * las mascotas en la base de datos.
+ * Usamos las anotaciones de Hibernate para marcar 
+ * las relaciones y los campos de la base de datos.
+ * Implementa todos los métodos de la interfaz Repository.
+ */
 public class MascotaRepository implements Repository<Mascota> {
 	
 	private Session sesion;

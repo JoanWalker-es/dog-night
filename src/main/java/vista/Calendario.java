@@ -9,7 +9,13 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.FlowLayout;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Calendario.
+ */
 public class Calendario extends javax.swing.JDialog {
 
     public Calendario(java.awt.Frame parent,boolean modal) {

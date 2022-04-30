@@ -6,7 +6,15 @@ import java.util.List;
 
 import javax.persistence.*;
 
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase modelo para persistir datos de las reservas 
+ * en la base de datos.
+ * Usamos las anotaciones de Hibernate para marcar 
+ * las relaciones y los campos de la base de datos.
+ */
 @Entity
 @Table(name="reserva")
 public class Reserva {

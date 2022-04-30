@@ -15,6 +15,14 @@ import modeloRepository.HMedicoRepository;
 import modeloRepository.MascotaRepository;
 import vista.Consulta_mascota;
 
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * consulta datos mascota.
+ *
+ */
 public class Eventos_consulta_mascota extends WindowAdapter implements ActionListener {
 
 	private Consulta_mascota ventana;
@@ -63,6 +71,11 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 		
 	}
 	
+	/**
+	 * Método sobreescrito de la clase WindowAdapter para cargar los datos 
+	 * de la mascota en la venta al abrirla.
+	 */
+	
 	public void windowOpened(WindowEvent e) {		
 		
 		ventana.getTf_mascota_nombre().setText(mascota.getNombre());
@@ -107,6 +120,12 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 		
 	}
 	
+	/**
+	 * Método que habilita o desabilita los campos de la ventana 
+	 * para poder editarlos.
+	 * @param variable
+	 */
+	
 	private void habilitarCampos(boolean variable) {
 		
 		ventana.getTf_mascota_nombre().setEditable(variable);
@@ -128,6 +147,11 @@ public class Eventos_consulta_mascota extends WindowAdapter implements ActionLis
 		ventana.getTf_vacuna_nombre().setEditable(variable);
 		ventana.getJdate_mascota_rabia_fecha().setEnabled(variable);
 	}
+	
+	/**
+	 * Método que realiza el guardado en la base de datos de los datos
+	 * de las mascotas.
+	 */
 	
 	private void guardarMascota() {
 		

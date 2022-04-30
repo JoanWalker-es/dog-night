@@ -2,7 +2,13 @@ package config;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de devolver una instancia de SessionFactory de Hibernate
+ *
+ */
 public class HibernateUtil {
 	
 	private static final SessionFactory sessionFactory;

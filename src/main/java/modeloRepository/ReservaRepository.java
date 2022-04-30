@@ -6,7 +6,16 @@ import org.hibernate.Transaction;
 
 import modelo.Reserva;
 
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase modelo para persistir datos de las reservas
+ * en la base de datos.
+ * Usamos las anotaciones de Hibernate para marcar 
+ * las relaciones y los campos de la base de datos.
+ * Implementa todos los métodos de la interfaz Repository.
+ */
 public class ReservaRepository implements Repository<Reserva> {
 	
 	private Session sesion;

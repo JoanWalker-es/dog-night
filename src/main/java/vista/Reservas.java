@@ -12,7 +12,13 @@ import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Reservas.
+ */
 public class Reservas extends javax.swing.JDialog {
 
     public Reservas(java.awt.Frame parent,boolean modal) {

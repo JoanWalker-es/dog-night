@@ -9,7 +9,13 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Selección de cliente.
+ */
 public class Seleccion_cliente extends javax.swing.JDialog {
 
     public Seleccion_cliente(java.awt.Frame parent,boolean modal) {

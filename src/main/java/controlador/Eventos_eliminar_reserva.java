@@ -4,7 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import vista.Eliminar_reserva;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * eliminar reserva.
+ *
+ */
 public class Eventos_eliminar_reserva implements ActionListener{
 
 	private Eliminar_reserva ventana;

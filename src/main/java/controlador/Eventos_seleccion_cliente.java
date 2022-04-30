@@ -9,7 +9,14 @@ import modeloRepository.ClienteRepository;
 import vista.Consulta_cliente;
 import vista.Seleccion_cliente;
 import vista.Ventana_error;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * selección de cliente.
+ *
+ */
 public class Eventos_seleccion_cliente implements ActionListener{
 	
 	private Seleccion_cliente ventana;

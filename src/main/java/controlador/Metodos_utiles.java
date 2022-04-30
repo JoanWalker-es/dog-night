@@ -13,7 +13,13 @@ import modelo.Reserva;
 import modeloRepository.HotelRepository;
 import modeloRepository.ReservaRepository;
 import vista.Ventana_error;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase auxiliar que tiene métodos útiles para varias clases.
+ *
+ */
 public class Metodos_utiles {
 	
 	private ReservaRepository reservaDao;
@@ -28,6 +34,14 @@ public class Metodos_utiles {
 		hotelDao=new HotelRepository(sesion);
 	}
 	
+	/**
+	 * Método que se encarga de retornar una lista de fechas introduciendo 
+	 * la fecha de inicio y la de fin. 
+	 * @param fechaInicio
+	 * @param fechaFin
+	 * @return
+	 */
+	
 	public static List<Date> getListaFechas(Date fechaInicio, Date fechaFin) {
 	    Calendar c1 = Calendar.getInstance();
 	    c1.setTime(fechaInicio);
@@ -41,6 +55,12 @@ public class Metodos_utiles {
 	    return listaFechas;
 	}
 	
+	/**
+	 * Método que devuelve un long con los días ente una fecha de inicio y otra de fin.
+	 * @param fechaInicio
+	 * @param fechaFin
+	 * @return
+	 */
 	public static long diasEntreFechas(java.util.Date fechaInicio, java.util.Date fechaFin){
 	     long inicio = fechaInicio.getTime() ;
 	     long fin = fechaFin.getTime();
@@ -50,6 +70,16 @@ public class Metodos_utiles {
 	     return dias;
 	}
 
+	/**
+	 * Método que comprueba la fecha seleccionada para ver 
+	 * los datos de las reservas que incluyan ese día. 
+	 * Nos devuelve true o false dependiendo de si podemos 
+	 * realizar la reserva o no. Se comprueba el número de 
+	 * habitaciones ocupadas en el hotel canino y si no hay
+	 * disponibilidad no permite realizar la reserva.
+	 * 
+	 * @param dia
+	 */
 	public boolean comprobarDia(Date dia) {
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		int contador=0;
@@ -79,6 +109,11 @@ public class Metodos_utiles {
 		return true;
 	}
 	
+	/**
+	 * Método que se encarga de dar formato a una fecha.
+	 * @param dia
+	 * @return
+	 */
 	public static Date formatoFecha(Date dia) {
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		formato.format(dia);

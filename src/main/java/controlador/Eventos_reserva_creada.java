@@ -7,7 +7,14 @@ import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
 
 import vista.Reserva_creada;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * reserva creada.
+ *
+ */
 public class Eventos_reserva_creada extends WindowAdapter implements ActionListener{
 
 	private Reserva_creada ventana;

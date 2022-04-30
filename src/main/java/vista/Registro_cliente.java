@@ -11,7 +11,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Registro de cliente.
+ */
 public class Registro_cliente extends javax.swing.JDialog {
 
     public Registro_cliente(java.awt.Frame parent,boolean modal) {

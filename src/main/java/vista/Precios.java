@@ -1,13 +1,17 @@
 package vista;
 
-import java.text.DecimalFormat;
-
 import controlador.Eventos_precios;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Configuración de precios.
+ */
 public class Precios extends javax.swing.JDialog {
 
     public Precios(java.awt.Frame parent,boolean modal) {

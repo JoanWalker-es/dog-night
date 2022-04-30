@@ -11,7 +11,14 @@ import vista.Ventana_guardado_ok;
 import vista.Registro_cliente;
 import vista.Registro_mascota;
 import vista.Ventana_error;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * Registro de cliente.
+ *
+ */
 public class Eventos_registro_cliente implements ActionListener{
 	
 	private Registro_cliente ventana_registro;

@@ -10,7 +10,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Datos médicos.
+ */
 public class Datos_medicos extends javax.swing.JDialog {
 
     public Datos_medicos(javax.swing.JDialog parent,boolean modal) {

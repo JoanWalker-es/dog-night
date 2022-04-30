@@ -14,7 +14,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Crear reserva.
+ */
 public class Crear_reserva extends javax.swing.JDialog {
 
     public Crear_reserva(javax.swing.JDialog parent,boolean modal) {

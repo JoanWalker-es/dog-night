@@ -9,7 +9,14 @@ import modelo.Reserva;
 import modeloRepository.ClienteRepository;
 import modeloRepository.ReservaRepository;
 import vista.*;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que se encarga de gestionar los eventos de la ventana de la interfaz 
+ * ventana principal de reservas.
+ *
+ */
 public class Eventos_reservas extends WindowAdapter implements ActionListener{
 	
 	private Reservas ventana_reservas;
@@ -108,6 +115,10 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 		rellenaTabla();
 	}
 	
+	/**
+	 * Metodo que se encarga de rellenar la tabla de reservas con 
+	 * los datos de todas las reservas de la base de datos.
+	 */
 	private void rellenaTabla() {	
 		ventana_reservas.getModelo().setRowCount(0);		
 		List<Reserva> reservas=reservaDao.findAll();		
@@ -122,7 +133,10 @@ public class Eventos_reservas extends WindowAdapter implements ActionListener{
 			ventana_reservas.getModelo().addRow(obj);			
 		}
 	}
-
+	/**
+	 * Metodo que se encarga de rellenar la tabla de reservas con 
+	 * los datos de las reservas de un cliente en concreto.
+	 */
 	private void rellenaTablaCliente(Cliente cliente) {	
 		List<Reserva> reservas=clienteDao.findOneById(cliente.getId()).getReservas();
 		ventana_reservas.getModelo().setRowCount(0);

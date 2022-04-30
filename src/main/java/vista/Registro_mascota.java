@@ -7,7 +7,13 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
+/**
+ * 
+ * @author Juan De la Rubia
+ * 
+ * Clase que genera la ventana de la interfaz
+ * Registro de mascota.
+ */
 
 public class Registro_mascota extends javax.swing.JDialog {
 
