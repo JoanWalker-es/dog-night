@@ -25,6 +25,7 @@ public class Inicio {
 			
 		sesion=HibernateUtil.get().openSession(); 
 		
+		//DESCOMENTAR EN LA PRIMERA EJECUCIÓN PARA CARGAR DATOS EN LA APLICACIÓN
 		//crearDatos(sesion);		
 		
 		Ventana_principal nueva=new Ventana_principal();
@@ -84,7 +85,7 @@ public class Inicio {
 		Cliente uno=new Cliente();
 		uno.setNombre("Juan");
 		uno.setApellidos("De la Rubia");
-		uno.setCorreo("orreo@msn.com");
+		uno.setCorreo("correo@msn.com");
 		uno.setTelefono("666555888");
 		uno.setDireccion("Calle sin número, 55, Pueblo nuevo");
 		uno.setDNI("88996655G");

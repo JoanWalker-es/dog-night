@@ -8,8 +8,8 @@
     		<!-- configuración de la conexión con la base de datos -->    	
     		<property name="dialect">org.hibernate.dialect.MySQL55Dialect</property>    		
     		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/dog_night</property>
-    		<property name="connection.username">root</property>
-    		<property name="connection.password">wazap55</property>					
+    		<property name="connection.username">user</property>
+    		<property name="connection.password">pass</property>					
     		<property name="connection.driver_class">com.mysql.jdbc.Driver</property> 
     		<property name="hibernate.show_sql">false</property>
     		<!-- Archivos mapping de las clases creadas -->     		

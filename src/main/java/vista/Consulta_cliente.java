@@ -28,7 +28,7 @@ public class Consulta_cliente extends javax.swing.JDialog {
     public Consulta_cliente(javax.swing.JDialog parent,boolean modal) {
     	super(parent,modal);
         initComponents();
-        setSize(480,400);
+        setSize(500,400);
         this.setLocationRelativeTo(null); 
     }
     
